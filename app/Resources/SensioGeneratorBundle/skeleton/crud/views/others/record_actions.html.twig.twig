@@ -1,0 +1,17 @@
+<ul class="{{ class.ul }}">
+    <li>
+        <a class="{{ class.bouton }}" href="{{ "{{ path('" ~ route_name_prefix ~ "') }}" }}">
+            {{ "{{ '" ~ ( entity | lower ) ~ ".index.back' | trans }}" }}
+        </a>
+    </li>
+{% if ('edit' in actions) and (not hide_edit) %}
+    <li>
+        <a class="{{ class.bouton }}" href="{{ "{{ path('" ~ route_name_prefix ~ "_edit', { 'id': entity.id }) }}" }}">
+            {{ "{{ 'actions.edit' | trans }}" }}
+        </a>
+    </li>
+{% endif %}
+{% if ('delete' in actions) and (not hide_delete) %}
+    <li>{{ '{{ form(delete_form) }}' }}</li>
+{% endif %}
+</ul>

@@ -1,0 +1,19 @@
+{% extends "::base.html.twig" %}
+{% block header %}
+<div class="entete-portfolio btn-primary">    
+    <h1>{% block header_title %}{% endblock %}</h1>
+    {% block pubdate %}
+    <p>{{ 'page.publie_le' | trans }} <time datetime="2013-12-15" pubdate>{{ '2013-12-15'|localizeddate('full', 'none') }}</time> {{ 'page.par' | trans }} LOKO Steeve</p>
+    {% endblock %}
+</div>
+{% endblock %}
+
+{% block subnavbar %}
+<ul class="nav">
+    <li><a title="{{ 'portfolio.menu.accueil' | trans }}" href="{{ path('app_portfolio_homepage') }}"><i class="icon-home"></i> {{'portfolio.menu.accueil' | trans}}</a></li>  
+    <li><a title="{{ 'portfolio.menu.profile' | trans }}" href="{{ path('app_portfolio_profile') }}"><i class="icon-user"></i> {{'portfolio.menu.profile' | trans}}</a></li>
+    <li><a title="{{ 'portfolio.menu.realisations' | trans }}" href="{{ path('app_portfolio_realisatons') }}"><i class="icon-th-list"></i> {{'portfolio.menu.realisations' | trans}}</a></li>
+    <li><a title="{{ 'portfolio.menu.projets' | trans }}" href="{{ path('app_portfolio_projets') }}"><i class="icon-briefcase"></i> {{'portfolio.menu.projets' | trans}}</a></li>
+    <li><a title="{{ 'portfolio.menu.contact' | trans }}" href="{{ path('app_portfolio_contact') }}"><i class="icon-envelope"></i> {{'portfolio.menu.contact' | trans}}</a></li>
+</ul>
+{% endblock %}

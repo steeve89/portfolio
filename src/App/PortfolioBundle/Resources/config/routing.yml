@@ -1,0 +1,129 @@
+app_portfolio_homepage:
+    pattern:  /
+    defaults: { _controller: AppPortfolioBundle:Portfolio:index }
+
+app_portfolio_profile:
+    pattern:  /profile-developpeur-web-freelance/
+    defaults: { _controller: AppPortfolioBundle:Portfolio:profile }
+
+app_portfolio_realisatons:
+    pattern:  /realisations-developpeur-web-freelance/
+    defaults: { _controller: AppPortfolioBundle:Portfolio:realisations }
+
+app_portfolio_projets:
+    pattern:  /projets-developpeur-web-freelance/
+    defaults: { _controller: AppPortfolioBundle:Portfolio:projets }
+
+app_portfolio_contact:
+    pattern:  /contact-developpeur-web-freelance/
+    defaults: { _controller: AppPortfolioBundle:Portfolio:contact }
+
+app_portfolio_service_client:
+    pattern:  /service-client/
+    defaults: { _controller: AppPortfolioBundle:Portfolio:serviceClient }
+
+#
+# ROOT PROJET #
+#
+projet:
+    pattern:  /projet/{page}/
+    defaults: { _controller: AppPortfolioBundle:Projet:index, page: 1 }
+    requirements:
+        page: \d*
+
+projet_new:
+    pattern:  /projet/new/
+    defaults: { _controller: AppPortfolioBundle:Projet:new}
+    requirements:
+        _method: GET|POST
+
+projet_edit:
+    pattern:  /projet/edit/{slug}
+    defaults: { _controller: AppPortfolioBundle:Projet:edit}
+    requirements:
+        _method: GET|PUT
+
+projet_delete:
+    pattern:  /projet/delete/{slug}
+    defaults: { _controller: AppPortfolioBundle:Projet:delete }
+    requirements:
+        _method: DELETE
+
+projet_show:
+    pattern:  /projet/{slug}/
+    defaults: { _controller: AppPortfolioBundle:Projet:show}
+    requirements:
+        _method: GET
+
+#
+# MESSAGE #
+#
+message:
+    pattern:  /rapport/projet/{slug}/{page}/
+    defaults: { _controller: AppPortfolioBundle:Message:index, page: 1}
+    requirements:
+        page: \d*
+        _method: GET|POST
+
+message_edit:
+    pattern:  /message/edit/{id}/projet/{slug}/
+    defaults: { _controller: AppPortfolioBundle:Message:edit}
+    requirements:
+        _method: GET|PUT
+        id: \d*
+
+message_delete:
+    pattern:  /message/delete/{id}/projet/{slug}/
+    defaults: { _controller: AppPortfolioBundle:Message:delete }
+    requirements:
+        _method: DELETE
+        id: \d*
+
+#
+# ROOT PAIEMENT #
+#
+paiement:
+    pattern:  /paiement/{page}/
+    defaults: { _controller: AppPortfolioBundle:Paiement:index, page: 1 }
+    requirements:
+        page: \d*
+
+paiement_new:
+    pattern:  /paiement/new/
+    defaults: { _controller: AppPortfolioBundle:Paiement:new}
+    requirements:
+        _method: GET|POST
+
+paiement_edit:
+    pattern:  /paiement/edit/{id}
+    defaults: { _controller: AppPortfolioBundle:Paiement:edit}
+    requirements:
+        _method: GET|PUT
+        id: \d*
+
+paiement_delete:
+    pattern:  /paiement/delete/{id}
+    defaults: { _controller: AppPortfolioBundle:Paiement:delete }
+    requirements:
+        _method: DELETE
+        id: \d*
+
+paiement_show:
+    pattern:  /paiement/show/{id}/
+    defaults: { _controller: AppPortfolioBundle:Paiement:show}
+    requirements:
+        _method: GET
+        id: \d*
+
+invoice:
+    pattern:  /facture/{slug}/{action}/
+    defaults: { _controller: AppPortfolioBundle:Paiement:invoice, action: view }
+    requirements:
+        _method: GET
+        action:   view|print
+
+paiement_wire_transfert:
+    pattern:  /virement-bancaire/{slug}/
+    defaults: { _controller: AppPortfolioBundle:Paiement:virementBancaire }
+    requirements:
+        _method: GET

@@ -1,0 +1,170 @@
+<?php
+
+namespace App\PortfolioBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Projet
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="App\PortfolioBundle\Entity\ProjetRepository")
+ */
+class Projet
+{
+    /**
+    * @ORM\OneToMany(targetEntity="App\PortfolioBundle\Entity\Message", mappedBy="projet", cascade={"persist"})
+    */
+    private $messages;
+    
+    /**
+    * @ORM\ManyToOne(targetEntity="App\userBundle\Entity\User", inversedBy="projets")
+    * @ORM\JoinColumn(nullable=false)
+    */
+    private $user;
+    
+    /**
+    * @ORM\OneToMany(targetEntity="App\PortfolioBundle\Entity\PieceJointe", mappedBy="projet", cascade={"persist"})
+    */
+    private $pieceJointes;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="titre", type="string", length=255)
+     */
+    private $titre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text")
+     */
+    private $description;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="duree", type="integer")
+     */
+    private $duree;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime")
+     */
+    private $date;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set titre
+     *
+     * @param string $titre
+     * @return Projet
+     */
+    public function setTitre($titre)
+    {
+        $this->titre = $titre;
+    
+        return $this;
+    }
+
+    /**
+     * Get titre
+     *
+     * @return string 
+     */
+    public function getTitre()
+    {
+        return $this->titre;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Projet
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set duree
+     *
+     * @param integer $duree
+     * @return Projet
+     */
+    public function setDuree($duree)
+    {
+        $this->duree = $duree;
+    
+        return $this;
+    }
+
+    /**
+     * Get duree
+     *
+     * @return integer 
+     */
+    public function getDuree()
+    {
+        return $this->duree;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     * @return Projet
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+    
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime 
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+}

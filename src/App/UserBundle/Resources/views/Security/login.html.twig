@@ -1,0 +1,60 @@
+{% extends "AppPortfolioBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block title %}{{ 'security.login.title' | trans }} | {{ parent() }}{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+
+{% block header_title %}{{ 'security.login.title' | trans }}{% endblock %}
+{% block pubdate %}{% endblock %}
+
+{% block body %}
+<div class="main">
+    {% block fos_user_content %}   
+
+    <form id="fos_user_security_login" class="form-horizontal well" action="{{ path("fos_user_security_check") }}" method="post">
+        <fieldset>
+            <legend class="text-center">{{ 'security.login.title' | trans }}</legend>
+            <figure class="text-center">
+                <img src="{{ asset('/img/icon-user.png') }}" alt="" width="150" height="150">
+            </figure>
+            {% if error %}
+                <div class="alert alert-error text-center">{{ error|trans }}</div>
+            {% endif %}
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+            <div class="control-group">
+                <label for="username" class="control-label">{{ 'security.login.username_email'|trans }}</label>
+                <div class="controls">
+                    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required"/>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label for="password" class="control-label">{{ 'security.login.password'|trans }}</label>
+                <div class="controls">
+                    <input type="password" id="password" name="_password" required="required" />
+                </div>
+            </div>
+            
+            <div class="control-group">
+                <div class="controls">
+                    <label for="remember_me" class="checkbox">
+                        <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                        {{ 'security.login.remember_me'|trans }}
+                    </label>
+                </div>
+            </div>
+            
+            <div class="form-action well text-center">
+                <ul class="inline">
+                    <li><input type="submit" id="_submit" class="btn btn-primary" name="_submit" value="{{ 'security.login.submit'|trans }}" /></li>
+                    <li><a class="btn" href="{{ path('fos_user_resetting_request') }}">{{ 'resetting.request.title' | trans }}</a></li>
+                </ul>
+            </div>
+        </fieldset>
+    </form>
+    {% endblock fos_user_content %}
+</div>
+{% endblock %}

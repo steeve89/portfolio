@@ -1,0 +1,61 @@
+{% extends "::base.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block title %}{{ app.user.nom }} {{ app.user.prenom }}{% endblock %}
+
+{% block header %}
+<div class="entete-portfolio btn-primary">    
+    <h1>{% block header_title %}{{ app.user.nom }} {{ app.user.prenom }}{% endblock %}</h1>
+</div>
+{% endblock %}
+
+{% block subnavbar %}
+<ul class="nav">
+    <li><a title="{{ 'user.menu.profile' | trans }}" href="{{ path('fos_user_profile_show') }}"><i class="icon-user"></i> {{'user.menu.profile' | trans}}</a></li> 
+    {% if is_granted("ROLE_SUPER_ADMIN") %}
+    <li class="divider-vertical"></li>
+    <li><a class="brand" href="#">{{ 'user.menu.portfolio' | trans }}</a></li>
+    <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" title="{{ 'user.menu.user.title' | trans }}" href="#">
+            <i class="icon-user"></i> {{'user.menu.user.title' | trans}} <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li><a title="{{ 'user.menu.user.client' | trans }}" href="{{ path('client') }}">{{ 'user.menu.user.client' | trans }}</a></li>
+            <li class="divider"></li>
+            <li><a title="{{'user.menu.user.partenaire'|trans}}" href="{{ path('partenaire') }}">{{'user.menu.user.partenaire'|trans}}</a></li>
+        </ul>
+    </li>
+    {% endif %}
+    {% if is_granted("ROLE_ADMIN") %}
+    <li><a title="{{ 'user.menu.log' | trans }}" href="{{ path('userlog') }}"><i class="icon-list-alt"></i> {{'user.menu.log' | trans}}</a></li>
+    {% endif %}     
+    <li><a title="{{ 'user.menu.projet' | trans }}" href="{{ path('projet') }}"><i class="icon-briefcase"></i> {{'user.menu.projet' | trans}}</a></li>
+    {% if is_granted("ROLE_ADMIN") %}
+    <li><a title="{{ 'user.menu.paiement' | trans }}" href="{{ path('paiement') }}"><i class="icon-file"></i> {{'user.menu.paiement' | trans}}</a></li>
+    {% endif %}
+    {# Partie destinée à la gestion du blog #}
+    {% if is_granted("ROLE_ADMIN") %}
+    <li class="divider-vertical"></li>
+    <li><a class="brand" href="#">{{ 'user.menu.blog' | trans }}</a></li>
+    <li><a title="{{ 'user.menu.categorie' | trans }}" href="{{ path('categorie') }}"><i class="icon-list-alt"></i> {{'user.menu.categorie' | trans}}</a></li>
+    <li><a title="{{ 'user.menu.article' | trans }}" href="{{ path('article') }}"><i class="icon-font"></i> {{'user.menu.article' | trans}}</a></li>
+    <li><a title="{{ 'user.menu.commentaire' | trans }}" href="{{ path('commentaire') }}"><i class="icon-comment"></i> {{'user.menu.commentaire' | trans}}</a></li>
+    {% endif %}
+    {# Partie destinée à la gestion du boutique #}
+    {% if is_granted("ROLE_ADMIN") %}
+    <li class="divider-vertical"></li>
+    <li><a class="brand" href="#">{{ 'user.menu.boutique' | trans }}</a></li>
+    <li><a title="{{ 'user.menu.produit' | trans }}" href="#"><i class="icon-book"></i> {{'user.menu.produit' | trans}}</a></li>
+    <li><a title="{{ 'user.menu.commande' | trans }}" href="#"><i class="icon-shopping-cart"></i> {{'user.menu.commande' | trans}}</a></li>
+    <li><a title="{{ 'user.menu.paiement_commande' | trans }}" href="#"><i class="icon-file"></i> {{'user.menu.paiement_commande' | trans}}</a></li>
+    {% endif %}
+    {% if not is_granted("ROLE_ADMIN") %}
+    <li><a title="{{ 'user.menu.serviceClient' | trans }}" href="{{ path('app_portfolio_service_client') }}"><i class="icon-envelope"></i> {{'user.menu.serviceClient' | trans}}</a></li>    
+    {% endif %}
+</ul>
+{% endblock %}
+
+{% if is_granted("ROLE_SUPER_ADMIN") %}
+{% block reseausocial %}{% endblock %} 
+{% endif %}

@@ -1,0 +1,38 @@
+{% extends "AppPortfolioBundle::layout.html.twig" %}
+
+{% block title %}{{ 'portfolio.profil.titre' | trans }} | {{ parent() }}{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+
+{% block header_title %}{{ 'portfolio.profil.titre' | trans }}{% endblock %}
+
+{% block body %}
+<div class="row-fluid page">
+    <div class="span4 wrap-left text-center">
+        <section>
+            <h1>{{ 'portfolio.profil.section1.titre' | trans }}</h1>
+            <figure>
+                <img src="{{ asset('/img/icon-user.png') }}" alt="" />
+            </figure>
+            <address>{{ 'portfolio.profil.section1.contenu' | trans({ '%skype%' : '<img src="' ~ asset('/img/skype_icon.png')~'" alt="" />'}) | raw | nl2br }}</address>
+        </section>
+    </div>
+    <div class="span8 wrap-right">
+        <section>
+            <h1>{{ 'portfolio.profil.section2.titre' | trans }}</h1>
+        </section>
+
+        <section>
+            <h1>{{ 'portfolio.profil.section3.titre' | trans }}</h1>
+        </section>
+
+        <section>
+            <h1>{{ 'portfolio.profil.section4.titre' | trans }}</h1>
+        </section>
+
+        <section>
+            <h1>{{ 'portfolio.profil.section5.titre' | trans }}</h1>
+        </section>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "AppUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block title %}{{ 'paiement.title' | trans }} {{ 'invoice.index.entete' | trans }} "{{ 'invoice.prefix' | trans }}{{ entity.id }}" | {{ parent() }}{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+
+{% block header_title %}{{ 'paiement.title' | trans }} {{ 'invoice.index.entete' | trans }} "{{ 'invoice.prefix' | trans }}{{ entity.id }}" | {{ parent() }}{% endblock %}
+
+{% block body -%}
+<div class="main">
+    <article>
+        
+        <h1>{{ 'wireTransfert.index.title' | trans }}</h1>
+        
+        <div class="content">
+            {{ 'wireTransfert.index.content' | trans | nl2br }}
+        </div>
+        
+        <h2>{{ 'wireTransfert.index.comptebancaire.title' | trans }}</h2>
+        <ul>
+            <li>
+                <strong>{{ 'wireTransfert.index.comptebancaire.content.intituleCompte.title' | trans }}</strong>:  
+                {{ 'wireTransfert.index.comptebancaire.content.intituleCompte.content' | trans }}
+            </li>
+            <li>
+                <strong>{{ 'wireTransfert.index.comptebancaire.content.codeIban.title' | trans }}</strong>:  
+                {{ 'wireTransfert.index.comptebancaire.content.codeIban.content' | trans }}
+            </li>
+            <li>
+                <strong>{{ 'wireTransfert.index.comptebancaire.content.netapayer' | trans }}</strong>:  
+                {{ entity.paiement.total }} {{ 'currency' | trans }}
+            </li>
+        </ul>
+        
+        <div class="content-footer">
+            {{ 'wireTransfert.index.remerciemet' | trans | nl2br }}
+        </div>
+
+    </article>
+    
+    <div class="form-actions">
+        <a class="btn btn-inverse" href="{{ path('invoice', {'slug': entity.slug}) }}">
+            <i class="icon-chevron-left icon-white"></i>
+            {{ 'invoice.index.back' | trans }}
+        </a>
+    </div>
+    
+</div>
+{% endblock %}

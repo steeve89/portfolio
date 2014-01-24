@@ -1,0 +1,177 @@
+<?php
+
+/*
+ * This file is part of the BlogBundle.
+ *
+ * (c) LOKO Steeve <loko.steeve@yahoo.fr>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace App\BlogBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * Image
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="App\BlogBundle\Entity\ImageRepository")
+ * @ORM\HasLifecycleCallbacks()
+ */
+class Image
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=255)
+     * 
+     * @Assert\NotBlank()
+     * @Assert\Length(min="5")
+     */
+    private $nom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="alt", type="string", length=255, nullable=true)
+     */
+    private $alt;
+
+    /**
+     * @Assert\File(maxSize="6000000")
+     */
+    public $file;
+    
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     * @return Image
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+    
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string 
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * Set alt
+     *
+     * @param string $alt
+     * @return Image
+     */
+    public function setAlt($alt)
+    {
+        $this->alt = $alt;
+    
+        return $this;
+    }
+
+    /**
+     * Get alt
+     *
+     * @return string 
+     */
+    public function getAlt()
+    {
+        return $this->alt;
+    }
+    
+     /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUpload()
+    {
+        if (null !== $this->file) {
+            // faites ce que vous voulez pour générer un nom unique
+            $this->nom = sha1(uniqid(mt_rand(), true)).'.'.$this->file->guessExtension();
+        }
+    }
+
+    /**
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
+     */
+    public function upload()
+    {
+        if (null === $this->file) {
+            return;
+        }
+
+        // s'il y a une erreur lors du déplacement du fichier, une exception
+        // va automatiquement être lancée par la méthode move(). Cela va empêcher
+        // proprement l'entité d'être persistée dans la base de données si
+        // erreur il y a
+        $this->file->move($this->getUploadRootDir(), $this->nom);
+
+        unset($this->file);
+    }
+
+    /**
+     * @ORM\PostRemove()
+     */
+    public function removeUpload()
+    {
+        $file = $this->getAbsolutePath();
+        if ($file) {
+            unlink($file);
+        }
+    }
+    
+    public function getAbsolutePath()
+    {
+        return null === $this->nom ? null : $this->getUploadRootDir().'/'.$this->nom;
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->nom ? null : $this->getUploadDir().'/'.$this->nom;
+    }
+
+    protected function getUploadRootDir()
+    {
+        // le chemin absolu du répertoire où les documents uploadés doivent être sauvegardés
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        // on se débarrasse de « __DIR__ » afin de ne pas avoir de problème lorsqu'on affiche
+        // le document/image dans la vue.
+        return 'uploads/article';
+    }
+}

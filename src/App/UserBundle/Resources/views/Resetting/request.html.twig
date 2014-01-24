@@ -1,0 +1,18 @@
+{% extends "AppPortfolioBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block title %}{{ 'resetting.request.title' | trans }} | {{ parent() }}{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+
+{% block header_title %}{{ 'resetting.request.title' | trans }}{% endblock %}
+{% block pubdate %}{% endblock %}
+
+{% block body %}
+<div class="main">
+{% block fos_user_content %}
+{% include "AppUserBundle:Resetting:request_content.html.twig" %}
+{% endblock fos_user_content %}
+</div>
+{% endblock %}

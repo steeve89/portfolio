@@ -1,0 +1,356 @@
+<?php
+
+/*
+ * This file is part of the BlogBundle.
+ *
+ * (c) LOKO Steeve <loko.steeve@yahoo.fr>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace App\BlogBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * Commentaire
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="App\BlogBundle\Entity\CommentaireRepository")
+ * @ORM\HasLifecycleCallbacks()
+ */
+class Commentaire
+{
+    /**
+    * @ORM\ManyToOne(targetEntity="App\BlogBundle\Entity\Article", inversedBy="commentaires")
+    * @ORM\JoinColumn(nullable=false)
+    */
+    private $article;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=45)
+     * 
+     * @Assert\NotBlank()
+     * @Assert\Length(min="3")
+     */
+    private $nom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prenom", type="string", length=45)
+     * 
+     * @Assert\NotBlank()
+     * @Assert\Length(min="3")
+     */
+    private $prenom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=100)
+     * 
+     * @Assert\NotBlank()
+     * @Assert\Length(min="5")
+     */
+    private $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="contenu", type="text")
+     * 
+     * @Assert\NotBlank()
+     * @Assert\Length(min="10")
+     */
+    private $contenu;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="note", type="integer")
+     * 
+     * @Assert\NotBlank()
+     */
+    private $note;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_de_creation", type="datetime")
+     */
+    private $createdDate;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_mise_a_jour", type="datetime", nullable=true)
+     */
+    private $updatedDate;
+    
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="is_actived", type="boolean")
+     * 
+     * @Assert\NotBlank()
+     */
+    private $isActived;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->isActived = false;
+    }
+    
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     * @return Commentaire
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+    
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string 
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * Set prenom
+     *
+     * @param string $prenom
+     * @return Commentaire
+     */
+    public function setPrenom($prenom)
+    {
+        $this->prenom = $prenom;
+    
+        return $this;
+    }
+
+    /**
+     * Get prenom
+     *
+     * @return string 
+     */
+    public function getPrenom()
+    {
+        return $this->prenom;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     * @return Commentaire
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string 
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set contenu
+     *
+     * @param string $contenu
+     * @return Commentaire
+     */
+    public function setContenu($contenu)
+    {
+        $this->contenu = $contenu;
+    
+        return $this;
+    }
+
+    /**
+     * Get contenu
+     *
+     * @return string 
+     */
+    public function getContenu()
+    {
+        return $this->contenu;
+    }
+
+    /**
+     * Set note
+     *
+     * @param integer $note
+     * @return Commentaire
+     */
+    public function setNote($note)
+    {
+        $this->note = $note;
+    
+        return $this;
+    }
+
+    /**
+     * Get note
+     *
+     * @return integer 
+     */
+    public function getNote()
+    {
+        return $this->note;
+    }
+
+    /**
+     * Set article
+     *
+     * @param \App\BlogBundle\Entity\Article $article
+     * @return Commentaire
+     */
+    public function setArticle(\App\BlogBundle\Entity\Article $article)
+    {
+        $this->article = $article;
+    
+        return $this;
+    }
+
+    /**
+     * Get article
+     *
+     * @return \App\BlogBundle\Entity\Article 
+     */
+    public function getArticle()
+    {
+        return $this->article;
+    }
+
+    /**
+     * Set createdDate
+     *
+     * @param \DateTime $createdDate
+     * @return Commentaire
+     */
+    public function setCreatedDate($createdDate)
+    {
+        $this->createdDate = $createdDate;
+    
+        return $this;
+    }
+
+    /**
+     * Get createdDate
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedDate()
+    {
+        return $this->createdDate;
+    }
+
+    /**
+     * Set updatedDate
+     *
+     * @param \DateTime $updatedDate
+     * @return Commentaire
+     */
+    public function setUpdatedDate($updatedDate)
+    {
+        $this->updatedDate = $updatedDate;
+    
+        return $this;
+    }
+
+    /**
+     * Get updatedDate
+     *
+     * @return \DateTime 
+     */
+    public function getUpdatedDate()
+    {
+        return $this->updatedDate;
+    }
+
+    /**
+     * Set isActived
+     *
+     * @param boolean $isActived
+     * @return Commentaire
+     */
+    public function setIsActived($isActived)
+    {
+        $this->isActived = $isActived;
+    
+        return $this;
+    }
+
+    /**
+     * Get isActived
+     *
+     * @return boolean 
+     */
+    public function getIsActived()
+    {
+        return $this->isActived;
+    }
+    
+    /**
+    * Appeler avant la persistence d'un objet en base de donnée
+    * @ORM\PrePersist
+    */
+    public function onPrePersist()
+    {
+        $this->setCreatedDate(new \DateTime('now'));
+    }
+
+    /**
+    * Appeler avant la mise à jour d'un objet en base de donnée
+    * @ORM\PreUpdate
+    */
+    public function onPreUpdate()
+    {
+        $this->setUpdatedDate(new \DateTime('now'));
+    }
+
+}

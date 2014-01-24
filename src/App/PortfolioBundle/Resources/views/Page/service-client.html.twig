@@ -1,0 +1,26 @@
+{% extends "AppUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block title %}{{ 'service_client.title' | trans }}{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+
+{% block header_title %}{{ 'service_client.title' | trans }}{% endblock %}
+
+{% block body %}
+<div class="row-fluid">
+    <div class="well well-header">
+        {{ 'service_client.content' | trans }}
+    </div>
+    <form class="form-horizontal well" id="contactform" action="" method="post" {{ form_enctype(form) }}>
+        <fieldset>
+            <legend>{{ 'service_client.form.legend' | trans }}</legend>
+            {{ form_widget(form) }}
+            <div class="form-actions">
+                <button class="btn btn-primary" type="submit">{{ 'service_client.form.submit'|trans }}</button>
+            </div>
+        </fieldset>
+    </form>
+</div>
+{% endblock %}

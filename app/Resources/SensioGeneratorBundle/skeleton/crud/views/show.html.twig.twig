@@ -1,0 +1,36 @@
+{% block extends %}
+{{ "{% extends '::base.html.twig' %}" }}
+{% endblock extends %}
+
+{% block body %}
+{{ "{% block body -%}" }}
+    <h1>{{ entity }}</h1>
+
+    <table class="{{ class.table }}">
+        <tbody>
+        {%- for field, metadata in fields %}
+            {%- if metadata.table == true %}
+            <tr>
+                <th>{{ "{{ '" ~ ( entity | lower ) ~ '.field.' ~ field ~ "'" ~ '| trans }}' }}</th>
+
+            {%- if metadata.type in ['date', 'datetime'] %}
+
+                <td>{{ '{{ entity.' ~ field|replace({'_': ''}) ~ '|localizeddate(\'full\', \'none\') }}' }}</td>
+
+            {%- else %}
+
+                <td>{{ '{{ entity.' ~ field|replace({'_': ''}) ~ ' }}' }}</td>
+
+            {%- endif %}
+
+            </tr>
+            {%- endif %} 
+        {%- endfor %}
+
+        </tbody>
+    </table>
+
+    {% set hide_edit, hide_delete = false, false %}
+    {% include 'crud/views/others/record_actions.html.twig.twig' %}
+{{ "{% endblock %}" }}
+{% endblock body %}

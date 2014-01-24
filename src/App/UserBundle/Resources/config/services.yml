@@ -1,0 +1,50 @@
+parameters:
+    app_user.registration.form.type.class: App\UserBundle\Form\Type\RegistrationFormType
+    app_user.profile.form.type.class: App\UserBundle\Form\Type\ProfileFormType
+    app_user.resetting.form.type.class: App\UserBundle\Form\Type\ResettingFormType
+    app_user.change_password.form.type.class: App\UserBundle\Form\Type\ChangePasswordFormType
+    app_user.user_listener_class: App\UserBundle\EventListener\UserListener
+    userlog: 10
+    user: 10
+
+services:
+    # Servce pour le formulaire d'inscription
+    app_user.registration.form.type:
+        class: %app_user.registration.form.type.class%
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: registration }
+    
+    # Servce pour le formulaire d'édition du profile
+    app_user.profile.form.type:
+        class: %app_user.profile.form.type.class%
+        arguments: ["@security.context", %fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: profile }
+    
+    # Servce pour le formulaire de réinitialisation du mot de passe
+    app_user.resetting.form.type:
+        class: %app_user.resetting.form.type.class%
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: resetting }
+    
+    # Servce pour le formulaire de modification du mot de passe
+    app_user.change_password.form.type:
+        class: %app_user.change_password.form.type.class%
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: change_password }
+    
+    # Ecoute les connexion à l'application
+    app_user.user_listener:
+        class:      %app_user.user_listener_class%
+        arguments:  ['@service_container']
+        tags:
+            - { name: kernel.event_listener, event: security.interactive_login,   method: onUserLoginSuccess }
+            - { name: kernel.event_listener, event: fos_user.registration.confirmed,   method: onUserRegistrationConfirmed }
+            - { name: kernel.event_listener, event: app_portfolio.projet.post_projet,   method: onUserProjetPost }
+            - { name: kernel.event_listener, event: app_portfolio.message.post_message,   method: onUserMessagePost }
+
+
+

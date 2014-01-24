@@ -1,0 +1,375 @@
+<?php
+
+/*
+ * This file is part of the BlogBundle.
+ *
+ * (c) LOKO Steeve <loko.steeve@yahoo.fr>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace App\BlogBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
+
+/**
+ * Categorie
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="App\BlogBundle\Entity\CategorieRepository")
+ * @ORM\HasLifecycleCallbacks()
+ */
+class Categorie
+{
+    /**
+    * @ORM\ManyToMany(targetEntity="App\BlogBundle\Entity\Article", mappedBy="categories")
+    */
+    private $articles;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=45)
+     * 
+     * @Assert\NotBlank()
+     * @Assert\Length(min="3")
+     */
+    private $nom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text")
+     * 
+     * @Assert\NotBlank()
+     * @Assert\Length(min="10")
+     */
+    private $description;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="langue", type="string", length=2)
+     * 
+     * @Assert\NotBlank()
+     */
+    private $langue;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="position", type="integer")
+     * 
+     * @Assert\NotBlank()
+     */
+    private $position;
+    
+    /**
+     * @var string
+     * 
+     * @ORM\Column(length=128, unique=true)
+     * 
+     * @Gedmo\Slug(fields={"nom"})
+     * 
+     */
+    private $slug;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_de_creation", type="datetime")
+     */
+    private $createdDate;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_mise_a_jour", type="datetime", nullable=true)
+     */
+    private $updatedDate;
+    
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="is_actived", type="boolean")
+     * 
+     * @Assert\NotBlank()
+     */
+    private $isActived;
+    
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     * @return Categorie
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+    
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string 
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->articles = new ArrayCollection();
+        $this->isActived = true;
+        $this->position = 1;
+    }
+    
+    /**
+     * toString
+     */
+    public function __toString()
+    {
+        return $this->nom.' - '.$this->langue;
+   }
+    
+    /**
+     * Add articles
+     *
+     * @param \App\BlogBundle\Entity\Article $articles
+     * @return Categorie
+     */
+    public function addArticle(\App\BlogBundle\Entity\Article $articles)
+    {
+        $this->articles[] = $articles;
+    
+        return $this;
+    }
+
+    /**
+     * Remove articles
+     *
+     * @param \App\BlogBundle\Entity\Article $articles
+     */
+    public function removeArticle(\App\BlogBundle\Entity\Article $articles)
+    {
+        $this->articles->removeElement($articles);
+    }
+
+    /**
+     * Get articles
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getArticles()
+    {
+        return $this->articles;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Categorie
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set langue
+     *
+     * @param string $langue
+     * @return Categorie
+     */
+    public function setLangue($langue)
+    {
+        $this->langue = $langue;
+    
+        return $this;
+    }
+
+    /**
+     * Get langue
+     *
+     * @return string 
+     */
+    public function getLangue()
+    {
+        return $this->langue;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Categorie
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * Set createdDate
+     *
+     * @param \DateTime $createdDate
+     * @return Categorie
+     */
+    public function setCreatedDate($createdDate)
+    {
+        $this->createdDate = $createdDate;
+    
+        return $this;
+    }
+
+    /**
+     * Get createdDate
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedDate()
+    {
+        return $this->createdDate;
+    }
+
+    /**
+     * Set updatedDate
+     *
+     * @param \DateTime $updatedDate
+     * @return Categorie
+     */
+    public function setUpdatedDate($updatedDate)
+    {
+        $this->updatedDate = $updatedDate;
+    
+        return $this;
+    }
+
+    /**
+     * Get updatedDate
+     *
+     * @return \DateTime 
+     */
+    public function getUpdatedDate()
+    {
+        return $this->updatedDate;
+    }
+
+    /**
+     * Set isActived
+     *
+     * @param boolean $isActived
+     * @return Categorie
+     */
+    public function setIsActived($isActived)
+    {
+        $this->isActived = $isActived;
+    
+        return $this;
+    }
+
+    /**
+     * Get isActived
+     *
+     * @return boolean 
+     */
+    public function getIsActived()
+    {
+        return $this->isActived;
+    }
+    
+    /**
+    * Appeler avant la persistence d'un objet en base de donnée
+    * @ORM\PrePersist
+    */
+    public function onPrePersist()
+    {
+        $this->setCreatedDate(new \DateTime('now'));
+    }
+
+    /**
+    * Appeler avant la mise à jour d'un objet en base de donnée
+    * @ORM\PreUpdate
+    */
+    public function onPreUpdate()
+    {
+        $this->setUpdatedDate(new \DateTime('now'));
+    }
+
+    /**
+     * Set position
+     *
+     * @param integer $position
+     * @return Categorie
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+    
+        return $this;
+    }
+
+    /**
+     * Get position
+     *
+     * @return integer 
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+}

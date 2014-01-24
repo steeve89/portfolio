@@ -1,0 +1,83 @@
+{% extends "AppPortfolioBundle::layout.html.twig" %}
+
+{% block title %}{{ 'portfolio.realisations.titre' | trans }} | {{ parent() }}{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+
+{% block header_title %}{{ 'portfolio.realisations.titre' | trans }}{% endblock %}
+
+{% block body %}
+<div class="row-fluid page">
+    <div class="span3" id="myNav">
+        <ul class="nav nav-list nav-stacked" data-spy="affix" data-offset-top="190">
+            <li><a href="#lifeschool-fr"><i class="icon-chevron-right"></i> {{ 'portfolio.realisations.section1.titre' | trans }}</a></li>
+            <li><a href="#loko-steeve-com"><i class="icon-chevron-right"></i> {{ 'portfolio.realisations.section2.titre' | trans }}</a></li>
+            <li><a href="#delete-friend"><i class="icon-chevron-right"></i> {{ 'portfolio.realisations.section3.titre' | trans }}</a></li>
+        </ul>
+    </div>
+    <div class="span9 wrap-right">
+        <section id="lifeschool-fr">
+            <h1>{{ 'portfolio.realisations.section1.titre' | trans }}</h1>
+            <div class="row-fluid">
+                <div class="span6">
+                    <figure>
+                        <img src="{{ asset('/img/app-delete-friends.jpg') }}" alt="" />
+                    </figure>
+                </div>
+                <div class="span6">
+                    <p>
+                        {{ 'portfolio.realisations.section1.contenu' | trans }}
+                    </p>
+                    <p class="text-center">
+                        <a class="btn btn-primary targetblank" href="#">
+                            {{ 'portfolio.realisations.voir_site' | trans }}
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="loko-steeve-com">
+            <h1>{{ 'portfolio.realisations.section2.titre' | trans }}</h1>
+            <div class="row-fluid">
+                <div class="span6">
+                    <figure>
+                        <img src="{{ asset('/img/app-delete-friends.jpg') }}" alt="" />
+                    </figure>
+                </div>
+                <div class="span6">
+                    <p>
+                        {{ 'portfolio.realisations.section2.contenu' | trans }}
+                    </p>
+                    <p class="text-center">
+                        <a class="btn btn-primary targetblank" href="#">
+                            {{ 'portfolio.realisations.voir_site' | trans }}
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="delete-friend">
+            <h1>{{ 'portfolio.realisations.section3.titre' | trans }}</h1>
+            <div class="row-fluid">
+                <div class="span6">
+                    <figure>
+                        <img src="{{ asset('/img/app-delete-friends.jpg') }}" alt="" />
+                    </figure>
+                </div>
+                <div class="span6">
+                    <p>
+                        {{ 'portfolio.realisations.section3.contenu' | trans }}
+                    </p>
+                    <p class="text-center">
+                        <a class="btn btn-primary targetblank" href="#">
+                            {{ 'portfolio.realisations.voir_site' | trans }}
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock %}

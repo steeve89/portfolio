@@ -1,0 +1,103 @@
+{% extends "AppUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block title %}{{ 'article.show.title' | trans({'%titre%': entity.titre }) }} | {{ parent() }}{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+
+{% block header_title %}{{ 'article.show.title' | trans({'%titre%': entity.titre }) }} | {{ parent() }}{% endblock %}
+
+{% block body -%}
+<div id="main">
+
+    <table class="table table-hover">
+        <tbody>            
+            <tr>
+                <th>{{ 'article.field.id'| trans }}</th>
+                <td>{{ 'article.prefix'| trans }}{{ entity.id }}</td>
+            </tr>        
+            <tr>
+                <th>{{ 'article.field.langue'| trans }}</th>
+                <td>{{ entity.langue }}</td>
+            </tr>  
+            <tr>
+                <th>{{ 'article.field.titre'| trans }}</th>
+                <td>{{ entity.titre }}</td>
+            </tr> 
+            <tr>
+                <th>{{ 'article.field.categories'| trans }}</th>
+                <td>
+                    {% for key, categorie in entity.categories %}
+                        {% if key > 0 %}<br />{% endif %}
+                        {{ categorie }}
+                    {% endfor %}
+                </td>
+            </tr>        
+            <tr>
+                <th>{{ 'article.field.extrait'| trans }}</th>
+                <td>{{ entity.extrait }}</td>
+            </tr>  
+            <tr>
+                <th>{{ 'article.field.commentaires'| trans }}</th>
+                <td>{{ entity.commentaires | length }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'article.field.isActived'| trans }}</th>
+                <td>
+                    {% if entity.isActived == 1 %}
+                        {{ 'article.choices.isActived.1' | trans }}
+                    {% else %}
+                        {{ 'article.choices.isActived.1' | trans }}                            
+                    {% endif %}
+                </td>
+            </tr>            
+            <tr>
+                <th>{{ 'article.field.image'| trans }}</th>
+                <td>
+                    {% if entity.image %}
+                        <img src="{{ asset(entity.image.webPath) }}" alt="{{ entity.image.alt }}" height="100" width="100"/>                                          
+                    {% endif %}
+                </td>
+            </tr>       
+            <tr>
+                <th colspan="2"><h2>{{ 'article.field.contenu'| trans }}</h2></th>
+            </tr>
+            <tr>                
+                <td colspan="2">
+                    {{ entity.contenu | raw }}
+                    <br /><br />
+                    <em>
+                    {# On affiche le jour de créatio ou d'édition du message #}
+                    {% if entity.updatedDate is not null %}
+                        {{ 'article.message.update' | trans}}
+                        {{ entity.updatedDate | localizeddate('full', 'none') }}
+                        {{ entity.updatedDate | localizeddate('none', 'short') }}
+                    {% else %}
+                        {{ 'article.message.write' | trans}}
+                        {{ entity.createdDate|localizeddate('full', 'none') }}
+                        {{ entity.createdDate | localizeddate('none', 'short') }}
+                    {% endif %}
+                    </em>
+                </td>
+            </tr>    
+        </tbody>
+    </table>
+
+    <ul class="inline">
+        <li>
+            <a class="btn" href="{{ path('article') }}">
+                <i class="icon-chevron-left"></i>
+                {{ 'article.index.back' | trans }}
+            </a>
+        </li>
+        <li>
+            <a class="btn btn-primary" href="{{ path('article_edit', { 'id': entity.id }) }}">
+                <i class="icon-edit icon-white"></i>
+                {{ 'actions.edit' | trans }}
+            </a>
+        </li>
+        <li>{{ form(delete_form) }}</li>
+    </ul>
+</div>
+{% endblock %}

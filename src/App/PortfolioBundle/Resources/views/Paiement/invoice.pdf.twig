@@ -1,0 +1,91 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<!doctype html>
+<html>
+    <head>
+        <title>{{ 'invoice.index.title'|trans }}</title>
+        {% block stylesheets %}
+            {% stylesheets
+                '@AppPortfolioBundle/Resources/public/css/invoice.css'                
+                output='css/invoice.css'
+                filter="cssrewrite" 
+            %}
+            <link rel="stylesheet" href="http://{{ app.request.host }}{{ asset_url }}" type="text/css" />
+            {% endstylesheets %}
+        {% endblock %}
+    </head>
+    <body>
+        <div class="well well-header">
+            <div class="row-fluid">
+                <h1 class="span12 text-center">{{ 'invoice.index.entete' | trans }} {{ 'invoice.prefix' | trans }}{{ entity.id }}</h1>
+                <div class="span5">
+                    <h2>{{ 'invoice.field.client' | trans }}</h2>
+                    <ul class="unstyled">                        
+                        <li>{{ entity.user.prenom ~ ' ' ~ entity.user.nom }}</li>
+                        <li>{{ 'invoice.field.email' | trans }}: {{ entity.user.email }}</li>
+                        <li>{{ 'invoice.field.reference' | trans }}: {{ 'invoice.field.referenceClient' | trans }}{{ entity.user.id }}</li>
+                    </ul>
+                </div>
+                <div class="span6">                
+                    <h2>{{ 'invoice.field.prestataire' | trans }}</h2>
+                    <ul class="unstyled pull-right">
+                        <li>LOKO Steeve</li>
+                        <li>Développeur Web Freelance</li>
+                        <li>{{ 'invoice.field.email' | trans }}: loko.steeve@yahoo.fr</li>
+                        <li>{{ 'invoice.field.website' | trans }}: <a href="{{ path('app_portfolio_homepage') }}">loko-steeve.com</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="datagrid">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>{{ 'invoice.field.line' | trans }}</th>
+                        <th>{{ 'invoice.field.reference'|trans }}</th>
+                        <th>{{ 'invoice.field.designation'|trans }}</th>
+                        <th>{{ 'invoice.field.quantite'|trans }}</th>
+                        <th>{{ 'invoice.field.prixunitaire'|trans }}</th>
+                        <th>{{ 'invoice.field.total'|trans }}</th>                
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th colspan="4" class="border-top"></th>
+                        <th colspan="1" class="border-left border-top">{{ 'invoice.field.totalHT'|trans }}</th>
+                        <td colspan="1" class="border-top">{{ entity.paiement.prixHorsTaxe }} &euro;</td>
+                    </tr>
+                    <tr class="border-left">
+                        <th colspan="4"></th>
+                        <th colspan="1" class="border-left">{{ 'invoice.field.taxe'|trans }} (19.6%)</th>
+                        <td colspan="1">{{ entity.paiement.taxe }} &euro;</td>
+                    </tr>
+                    <tr>
+                        <th colspan="4"></th>
+                        <th colspan="1" class="border-left border-top">{{ 'invoice.field.totalTTC'|trans }}</th>
+                        <td colspan="1" class="border-top">{{ entity.paiement.total }} &euro;</td>
+                    </tr>
+                </tfoot>
+                <tbody>                 
+                    <tr>
+                        <td>1</td>                
+                        <td>{{ 'projet.prefix'|trans }}{{ entity.id }}</td>
+                        <td>{{ entity.titre }}</td>
+                        <td>1</td>
+                        <td>{{ entity.paiement.prixHorsTaxe }}</td>
+                        <td>{{ entity.paiement.prixHorsTaxe }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="6"></td>
+                    </tr>
+                </tbody>        
+            </table>
+        </div>    
+        
+        <div class="well text-center">
+            {{ 'invoice.index.footer' | trans }}
+        </div>
+
+    </body>
+</html>

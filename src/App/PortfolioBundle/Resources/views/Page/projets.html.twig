@@ -1,0 +1,45 @@
+{% extends "AppPortfolioBundle::layout.html.twig" %}
+
+{% block title %}{{ 'portfolio.projets.titre' | trans }} | {{ parent() }}{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+
+{% block header_title %}{{ 'portfolio.projets.titre' | trans }}{% endblock %}
+
+{% block body %}
+<div class="row-fluid page">
+    <div class="span3" id="myNav">
+        <ul class="nav nav-list nav-stacked" data-spy="affix" data-offset-top="190">
+            <li><a href="#freelance-benin"><i class="icon-chevron-right"></i> {{ 'portfolio.projets.section1.titre' | trans }}</a></li>
+        </ul>
+    </div>
+    <div class="span9 wrap-right">
+        <section id="freelance-benin">
+            <h1>{{ 'portfolio.projets.section1.titre' | trans }}</h1>
+            <div class="row-fluid">
+                <div class="span6">
+                    <figure>
+                        <img src="{{ asset('/img/app-delete-friends.jpg') }}" alt="" />
+                    </figure>
+                </div>
+                <div class="span6">
+                    <p>
+                        {{ 'portfolio.projets.section1.contenu' | trans }}
+                    </p>
+                    <p class="text-center">
+                        <a class="btn btn-success targetblank" href="#">
+                            {{ 'portfolio.projets.github' | trans }}
+                        </a>
+                        <a class="btn btn-primary targetblank" href="#">
+                            {{ 'portfolio.projets.voir_site' | trans }}
+                        </a>
+                        <a class="btn btn-danger" href="#">
+                            {{ 'portfolio.projets.don' | trans }}
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock %}

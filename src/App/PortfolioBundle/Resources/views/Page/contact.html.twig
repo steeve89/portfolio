@@ -1,0 +1,21 @@
+{% extends "AppPortfolioBundle::layout.html.twig" %}
+
+{% block title %}{{ 'portfolio.contact.titre' | trans }} | {{ parent() }}{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+
+{% block header_title %}{{ 'portfolio.contact.titre' | trans }}{% endblock %}
+
+{% block body %}
+<div class="row-fluid">
+    <form class="form-horizontal well" id="contactform" action="" method="post" {{ form_enctype(form) }}>
+        <fieldset>
+            <legend>{{ 'portfolio.contact.titre' | trans }}</legend>
+            {{ form_widget(form) }}
+            <div class="form-actions">
+                <button class="btn btn-primary" type="submit">{{ 'portfolio.contact.form.submit'|trans }}</button>
+            </div>
+        </fieldset>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "AppPortfolioBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block title %}{{ 'registration.title' | trans }} | {{ parent() }}{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+
+{% block header_title %}{{ 'registration.title' | trans }}{% endblock %}
+{% block pubdate %}{% endblock %}
+
+{% block body %}
+<div class="main">
+    {% block fos_user_content %}
+    {% include "AppUserBundle:Registration:register_content.html.twig" %}
+    {% endblock fos_user_content %}
+</div>
+{% endblock %}

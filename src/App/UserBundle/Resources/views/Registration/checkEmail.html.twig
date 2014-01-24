@@ -1,0 +1,18 @@
+{% extends "AppPortfolioBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block title %}{{ 'registration.check_email.title' | trans }} | {{ parent() }}{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+
+{% block header_title %}{{ 'registration.check_email.title' | trans }}{% endblock %}
+{% block pubdate %}{% endblock %}
+
+{% block body %}
+<div class="main">
+{% block fos_user_content %}
+    <p class="alert alert-info text-center">{{ 'registration.check_email.content'|trans({'%email%': user.email}) }}</p>
+{% endblock fos_user_content %}
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "AppUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block title %}{{ 'user.partenaire.edit.title' | trans({'%username%': entity.username }) }} | {{ parent() }}{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+
+{% block header_title %}{{ 'user.partenaire.edit.title' | trans({'%username%': entity.username }) }} | {{ parent() }}{% endblock %}
+
+{% block body -%}
+<div class="main">
+
+    {{ form(edit_form) }}
+
+    <ul class="inline">
+        <li>
+            <a class="btn" href="{{ path('partenaire') }}">
+                <i class="icon-chevron-left"></i>
+                {{ 'user.partenaire.index.back' | trans }}
+            </a>
+        </li>
+        <li>{{ form(delete_form) }}</li>
+    </ul>
+</div>
+{% endblock %}

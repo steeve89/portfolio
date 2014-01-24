@@ -1,0 +1,69 @@
+{% extends "AppUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block title %}{{ 'categorie.show.title' | trans({'%nom%': entity.nom }) }} | {{ parent() }}{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+
+{% block header_title %}{{ 'categorie.show.title' | trans({'%nom%': entity.nom }) }} | {{ parent() }}{% endblock %}
+
+{% block body -%}
+<div id="main">
+    
+    <table class="table table-hover">
+        <tbody>            
+            <tr>
+                <th>{{ 'categorie.field.id'| trans }}</th>
+                <td>{{ 'categorie.prefix'| trans }}{{ entity.id }}</td>
+            </tr>            
+            <tr>
+                <th>{{ 'categorie.field.nom'| trans }}</th>
+                <td>{{ entity.nom }}</td>
+            </tr>            
+            <tr>
+                <th>{{ 'categorie.field.description'| trans }}</th>
+                <td>{{ entity.description }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'categorie.field.position'| trans }}</th>
+                <td>{{ entity.position }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'categorie.field.articles'| trans }}</th>
+                <td>{{ entity.articles | length }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'categorie.field.langue'| trans }}</th>
+                <td>{{ entity.langue }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'categorie.field.isActived'| trans }}</th>
+                <td>
+                    {% if entity.isActived == 1 %}
+                        {{ 'categorie.choices.isActived.1' | trans }}
+                    {% else %}
+                        {{ 'categorie.choices.isActived.1' | trans }}                            
+                    {% endif %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul class="inline">
+        <li>
+            <a class="btn" href="{{ path('categorie') }}">
+                <i class="icon-chevron-left"></i>
+                {{ 'categorie.index.back' | trans }}
+            </a>
+        </li>
+        <li>
+            <a class="btn btn-primary" href="{{ path('categorie_edit', { 'id': entity.id }) }}">
+                <i class="icon-edit icon-white"></i>
+                {{ 'actions.edit' | trans }}
+            </a>
+        </li>
+        <li>{{ form(delete_form) }}</li>
+    </ul>
+</div>
+{% endblock %}

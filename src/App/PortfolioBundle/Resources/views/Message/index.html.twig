@@ -1,0 +1,91 @@
+{% extends "AppUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block title %}{{ 'rapport.index.title' | trans }} "{{ projet.titre }}" | {{ parent() }}{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+
+{% block header_title %}{{ 'rapport.index.title' | trans }} "{{ projet.titre }}" | {{ parent() }}{% endblock %}
+
+{% block body -%}
+<div class="main">
+    {% if not is_granted("ROLE_ADMIN") %}
+    <div class="alert alert-info">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <h2>{{ 'rapport.index.help.title' | trans }}</h2>
+        <p>
+            {{ 'rapport.index.help.content' | trans | nl2br }}
+        </p>
+    </div>
+    {% endif %}
+
+    <table class="table table-hover">
+        <thead>
+            <tr>  
+                <th>{{ 'numero' | trans }}</th>
+                <th>{{ 'rapport.field.user'| trans }}</th>  
+                <th>{{ 'rapport.field.contenu'| trans }}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for key, entity in entities %}
+            <tr>
+                <td>{{ key + 1 }}</td>
+                {# Si c'est un message de l'administrateur, on change l'arrière plan #}
+                <td {% if entity.user.roles[0] == "ROLE_ADMIN" or entity.user.roles[0] == "ROLE_SUPER_ADMIN"  %}class="alert alert-error"{% endif %}>                    
+                    {# Si l'utilisateur courant est l'auteur du message, on affiche Moi #}
+                    {% if entity.user.id == app.user.id %}
+                        {{ 'rapport.field.me'| trans }}
+                    {% else %}
+                        {{ entity.user.prenom }} {{ entity.user.nom }}
+                    {% endif %}
+                </td>
+                <td>
+                    {{ entity.contenu }}
+                    <br /><br />
+                    {% if entity.pieceJointe %}
+                    {{ 'rapport.field.pieceJointe_abr'| trans }}: <a class="targetblank" href="{{ asset( entity.pieceJointe.webPath ) }}">{{  entity.pieceJointe.nom }}</a>
+                    <br /><br />
+                    {% endif %}
+                    <em>
+                    {# On affiche le jour de créatio ou d'édition du message #}
+                    {% if entity.updatedDate is not null %}
+                        {{ 'rapport.message.update' | trans}}
+                        {{ entity.updatedDate | localizeddate('full', 'none') }}
+                        {{ entity.updatedDate | localizeddate('none', 'short') }}
+                    {% else %}
+                        {{ 'rapport.message.write' | trans}}
+                        {{ entity.createdDate|localizeddate('full', 'none') }}
+                        {{ entity.createdDate | localizeddate('none', 'short') }}
+                    {% endif %}
+                    </em>
+                    {# Si l'utilisateur est l'auteur de ce message, on affiche le bouton d'edition #}
+                    {% if entity.user.id == app.user.id %}
+                    <ul class="inline pull-right">
+                        <li><a class="btn" href="{{ path('message_edit', { 'id': entity.id, 'slug': projet.slug }) }}">{{ 'actions.edit' | trans }}</a></li>
+                    </ul>
+                    {% endif %}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td class="alert alert-info" colspan="3">{{ 'rapport.index.unavailable'| trans }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    
+    <div class="pagination">
+        <ul>
+            {% for p in range(1, nb_pages) %}
+            <li{% if p == page %} class="active"{% endif %}>
+                <a href="{{ path('message', {'slug': projet.slug, 'page': p }) }}">{{ p }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+    {% include "AppPortfolioBundle:Message:new.html.twig" %}
+ </div>   
+{% endblock %}

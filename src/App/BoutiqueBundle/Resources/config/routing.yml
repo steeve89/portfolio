@@ -1,0 +1,3 @@
+app_boutique_homepage:
+    pattern:  /boutique/
+    defaults: { _controller: AppBoutiqueBundle:Boutique:index }

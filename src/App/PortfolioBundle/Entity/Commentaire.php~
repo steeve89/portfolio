@@ -1,0 +1,220 @@
+<?php
+
+namespace App\PortfolioBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Commentaire
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="App\PortfolioBundle\Entity\CommentaireRepository")
+ */
+class Commentaire
+{
+    /**
+    * @ORM\ManyToOne(targetEntity="App\PortfolioBundle\Entity\Article", inversedBy="commentaires")
+    * @ORM\JoinColumn(nullable=false)
+    */
+    private $article;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=45)
+     */
+    private $nom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prenom", type="string", length=45)
+     */
+    private $prenom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=100)
+     */
+    private $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="contenu", type="text")
+     */
+    private $contenu;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="note", type="integer")
+     */
+    private $note;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime")
+     */
+    private $date;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     * @return Commentaire
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+    
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string 
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * Set prenom
+     *
+     * @param string $prenom
+     * @return Commentaire
+     */
+    public function setPrenom($prenom)
+    {
+        $this->prenom = $prenom;
+    
+        return $this;
+    }
+
+    /**
+     * Get prenom
+     *
+     * @return string 
+     */
+    public function getPrenom()
+    {
+        return $this->prenom;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     * @return Commentaire
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string 
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set contenu
+     *
+     * @param string $contenu
+     * @return Commentaire
+     */
+    public function setContenu($contenu)
+    {
+        $this->contenu = $contenu;
+    
+        return $this;
+    }
+
+    /**
+     * Get contenu
+     *
+     * @return string 
+     */
+    public function getContenu()
+    {
+        return $this->contenu;
+    }
+
+    /**
+     * Set note
+     *
+     * @param integer $note
+     * @return Commentaire
+     */
+    public function setNote($note)
+    {
+        $this->note = $note;
+    
+        return $this;
+    }
+
+    /**
+     * Get note
+     *
+     * @return integer 
+     */
+    public function getNote()
+    {
+        return $this->note;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     * @return Commentaire
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+    
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime 
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+}

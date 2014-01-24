@@ -1,0 +1,13 @@
+parameters:
+    projet: 10
+    portfolio.form.type.projet.class: App\PortfolioBundle\Form\ProjetType
+    paiement: 10
+    message:  10
+
+services:
+    # Service pour le formulaire de créaton de projet
+    portfolio.form.type.projet:
+        class: %portfolio.form.type.projet.class%
+        arguments: ["@security.context"]
+        tags:
+            - { name: form.type, alias: projet }

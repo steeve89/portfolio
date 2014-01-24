@@ -1,0 +1,204 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{# Form message #}
+{% block message_widget %}
+{% spaceless %}
+<fieldset>
+    <legend>
+        {% if form.identifier.vars.value is not defined %}
+            {{ 'rapport.new.title' | trans }}
+        {% else %}
+            {{ 'rapport.edit.title' | trans({'%id%': form.identifier.vars.value }) }}
+        {%endif %}
+    </legend>
+    <div class="row-fluid rapport">        
+        {# Affichage du champ contenu #}
+        <div class="control-group">
+            {{ form_label(form.contenu, null, {'label_attr': {'class' : 'control-label' }}) }}
+            <div class="controls">        
+                {{ form_widget(form.contenu, {'attr' : {'class' : 'span5'}}) }}
+            </div>
+            {{ form_errors(form.contenu) }}
+        </div>
+        <div class="control-group">
+            {{ form_label(form.pieceJointe, null, {'label_attr': {'class' : 'control-label' }}) }}
+            <div class="controls collection">        
+                {{ form_widget(form.pieceJointe) }}
+            </div>
+            {{ form_errors(form.pieceJointe) }}
+        </div>
+        <div class="form-actions">
+            {{ form_rest(form) }}
+        </div>         
+    </div>
+</fieldset>
+{% endspaceless %}
+{% endblock %}
+
+{# Form paiement #}
+{% block paiement_widget %}
+{% spaceless %}
+<fieldset>
+    <legend>
+        {% if form.identifier.vars.value is not defined %}
+            {{ 'paiement.new.title' | trans }}
+        {% else %}
+            {{ 'paiement.edit.title' | trans({'%id%': form.identifier.vars.value }) }}
+        {%endif %}
+    </legend>
+    <div class="row-fluid projet">
+        {# Affichage du champ projet #}
+        <div class="control-group">
+            {{ form_label(form.projet, null, {'label_attr': {'class' : 'control-label' }}) }}
+            <div class="controls">        
+                {{ form_widget(form.projet) }}
+            </div>
+            {{ form_errors(form.projet) }}
+        </div>
+        {# Affichage du champ prixHorsTaxe #}
+        <div class="control-group">
+            {{ form_label(form.prixHorsTaxe, null, {'label_attr': {'class' : 'control-label' }}) }}
+            <div class="controls">        
+                {{ form_widget(form.prixHorsTaxe) }}
+            </div>
+            {{ form_errors(form.prixHorsTaxe) }}
+        </div>    
+        {# Affichage du champ date #}
+        <div class="control-group">
+            {{ form_label(form.date, null, {'label_attr': {'class' : 'control-label' }}) }}
+            <div class="controls">        
+                {{ form_widget(form.date) }}
+            </div>
+            {{ form_errors(form.date) }}
+        </div>  
+        {# Affichage du champ details #}
+        <div class="control-group">
+            {{ form_label(form.details, null, {'label_attr': {'class' : 'control-label' }}) }}
+            <div class="controls">        
+                {{ form_widget(form.details, {'attr' : {'class' : 'span5'}}) }}
+            </div>
+            {{ form_errors(form.details) }}
+        </div>
+        {# Affichage du champ status #}
+        <div class="control-group">
+            <div class="controls">
+                {{ form_widget(form.status, {'attr' : {'class' : 'checkbox'}}) }}
+                {{ form_label(form.status, null, {'label_attr': {'class' : 'checkbox inline' }}) }}
+            </div>
+            {{ form_errors(form.status) }}
+        </div>
+        <div class="form-actions">
+            {{ form_rest(form) }}
+        </div>         
+    </div>
+</fieldset>
+{% endspaceless %}
+{% endblock %}
+
+{# Form piecejointe #}
+{% block piecejointe_widget %}
+{% spaceless %}
+<div class="row-fluid">
+    <div class="span6">
+        {# Affichage du champ file #}
+        <div class="control-group">
+            {{ form_label(form.file, null, {'label_attr': {'class' : 'control-label' }}) }}
+            <div class="controls">        
+                {{ form_widget(form.file) }}
+            </div>
+            {{ form_errors(form.file) }}
+        </div>
+    </div>
+    {% if form.identifier.vars.value is defined and form.identifier.vars.value is not null %}
+    <div class="span6">
+        <a class="targetblank" href="{{ asset( form.identifier.vars.value ) }}">{{ form.identifier.vars.value }}</a>
+    </div>   
+    {% endif %}
+    {{ form_rest(form) }}
+</div>
+{% endspaceless %}
+{% endblock %}
+
+
+{# Form projet #}
+{% block projet_widget %}
+{% spaceless %}
+<fieldset>
+    <legend>
+        {% if form.titre.vars.value is empty %}
+            {{ 'projet.new.title' | trans }}
+        {% else %}
+            {{ 'projet.edit.title' | trans({'%title%': form.titre.vars.value }) }}
+        {%endif %}
+    </legend>
+    <div class="row-fluid projet">
+        {% if form.titre.vars.value is empty %}
+        {# Affichage du champ titre #}
+        <div class="control-group">
+            {{ form_label(form.titre, null, {'label_attr': {'class' : 'control-label' }}) }}
+            <div class="controls">        
+                {{ form_widget(form.titre) }}
+            </div>
+            {{ form_errors(form.titre) }}
+        </div>
+        {% endif %}
+        {# Affichage du champ budget #}
+        <div class="control-group">
+            {{ form_label(form.budget, null, {'label_attr': {'class' : 'control-label' }}) }}
+            <div class="controls">        
+                {{ form_widget(form.budget) }}
+            </div>
+            {{ form_errors(form.budget) }}
+        </div>    
+        {# Affichage du champ dateButoir #}
+        <div class="control-group">
+            {{ form_label(form.dateButoir, null, {'label_attr': {'class' : 'control-label' }}) }}
+            <div class="controls">        
+                {{ form_widget(form.dateButoir) }}
+            </div>
+            {{ form_errors(form.dateButoir) }}
+        </div>  
+        {# Affichage du champ description #}
+        <div class="control-group">
+            {{ form_label(form.description, null, {'label_attr': {'class' : 'control-label' }}) }}
+            <div class="controls">        
+                {{ form_widget(form.description, {'attr' : {'class' : 'span5'}}) }}
+            </div>
+            {{ form_errors(form.description) }}
+        </div>
+        {% if form.dateDeLivraison is defined %}
+        {# Affichage du champ dateDeLivraison #}
+        <div class="control-group">
+            {{ form_label(form.dateDeLivraison, null, {'label_attr': {'class' : 'control-label' }}) }}
+            <div class="controls">        
+                {{ form_widget(form.dateDeLivraison) }}
+            </div>
+            {{ form_errors(form.dateDeLivraison) }}
+        </div>
+        {% endif %}
+        {% if form.status is defined %}
+        {# Affichage du champ dateDeLivraison #}
+        <div class="control-group">
+            {{ form_label(form.status, null, {'label_attr': {'class' : 'control-label' }}) }}
+            <div class="controls">        
+                {{ form_widget(form.status) }}
+            </div>
+            {{ form_errors(form.status) }}
+        </div>
+        {% endif %}
+        <h3>{{ form.pieceJointes.vars.label | trans }}</h3>
+        <ul class="collections unstyled" data-prototype="{{ form_widget(form.pieceJointes.vars.prototype)|e }}">
+            {# itère sur chaque tag existant et affiche son unique champ : name #}
+            {% for pieceJointe in form.pieceJointes %}
+                <li class="piecejointe">                    
+                    {{ form_row(pieceJointe) }}
+                </li>
+            {% endfor %}
+        </ul>
+        <div class="form-actions">
+            {{ form_rest(form) }}
+        </div>         
+    </div>
+</fieldset>
+{% endspaceless %}
+{% endblock %}

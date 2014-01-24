@@ -1,0 +1,50 @@
+{% extends "AppUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block title %}{{ 'userlog.index.title' | trans }} | {{ parent() }}{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+
+{% block header_title %}{{ 'userlog.index.title' | trans }} | {{ parent() }}{% endblock %}
+
+
+{% block body -%}
+<div class="main">
+    <table class="table table-hover">
+        <thead>
+            <tr>  
+                <th>{{'userlog.field.user'| trans}}</th>
+                <th>{{'userlog.field.titre'| trans}}</th>  
+                <th>{{'userlog.field.contenu'| trans}}</th>  
+                <th>{{'userlog.field.date'| trans}}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td>{{ entity.user.nom ~ ' ' ~ entity.user.prenom }}</td>
+                <td>{{ entity.titre }}</td>
+                <td>{{ entity.contenu }}</td>
+                <td>{% if entity.date %}{{ entity.date | localizeddate('full', 'none') }}{% endif %}</td>                
+            </tr>
+        {% else %}
+            <tr>
+                <td class="alert alert-info" colspan="4">{{ 'userlog.index.unavailable'| trans }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    
+    <div class="pagination">
+        <ul>
+            {% for p in range(1, nb_pages) %}
+            <li{% if p == page %} class="active"{% endif %}>
+                <a href="{{ path('userlog', {'page': p }) }}">{{ p }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+</div>
+{% endblock %}

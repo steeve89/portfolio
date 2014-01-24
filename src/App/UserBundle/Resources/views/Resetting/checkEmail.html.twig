@@ -1,0 +1,20 @@
+{% extends "AppPortfolioBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block title %}{{ 'resetting.check_email.title' | trans }} | {{ parent() }}{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+
+{% block header_title %}{{ 'resetting.check_email.title' | trans }}{% endblock %}
+{% block pubdate %}{% endblock %}
+
+{% block body %}
+<div class="main">
+    {% block fos_user_content %}
+    <p class="alert alert-info text-center">
+    {{ 'resetting.check_email.content'|trans({'%email%': email}) }}
+    </p>
+    {% endblock %}
+</div>
+{% endblock %}

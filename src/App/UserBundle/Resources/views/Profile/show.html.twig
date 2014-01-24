@@ -1,0 +1,36 @@
+{% extends "AppUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block title %}{{ 'profile.show.title' | trans }} | {{ parent() }}{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+
+{% block header_title %}{{ 'profile.show.title' | trans }} | {{ parent() }}{% endblock %}
+
+{% block body %}
+<div class="main">
+    <section>
+        <h1>{{ 'profile.show.personal_info' | trans }}</h1>
+        {% block fos_user_content %}
+        {% include "AppUserBundle:Profile:show_content.html.twig" %}
+        {% endblock fos_user_content %}
+        <div class="form-action well">
+            <ul class="inline">
+                <li>
+                    <a class="btn btn-primary" href="{{ path('fos_user_profile_edit') }}">
+                        <i class="icon-edit icon-white"></i>
+                        {{ 'profile.edit.submit' | trans }}
+                    </a>
+                </li>
+                <li>
+                    <a class="btn btn-inverse" href="{{ path('fos_user_change_password') }}">                        
+                        {{ 'actions.change_password' | trans }}
+                        <i class="icon-chevron-right icon-white"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+</div>
+{% endblock %}

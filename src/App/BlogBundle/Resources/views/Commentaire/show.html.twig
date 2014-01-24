@@ -1,0 +1,42 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Commentaire</h1>
+
+    <table class="table table-hover">
+        <tbody>            <tr>
+                <th>{{ 'commentaire.field.id'| trans }}</th>
+                <td>{{ entity.id }}</td>
+            </tr>            <tr>
+                <th>{{ 'commentaire.field.nom'| trans }}</th>
+                <td>{{ entity.nom }}</td>
+            </tr>            <tr>
+                <th>{{ 'commentaire.field.prenom'| trans }}</th>
+                <td>{{ entity.prenom }}</td>
+            </tr>            <tr>
+                <th>{{ 'commentaire.field.email'| trans }}</th>
+                <td>{{ entity.email }}</td>
+            </tr>            <tr>
+                <th>{{ 'commentaire.field.contenu'| trans }}</th>
+                <td>{{ entity.contenu }}</td>
+            </tr>            <tr>
+                <th>{{ 'commentaire.field.note'| trans }}</th>
+                <td>{{ entity.note }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="inline">
+    <li>
+        <a class="btn" href="{{ path('commentaire') }}">
+            {{ 'commentaire.index.back' | trans }}
+        </a>
+    </li>
+    <li>
+        <a class="btn" href="{{ path('commentaire_edit', { 'id': entity.id }) }}">
+            {{ 'actions.edit' | trans }}
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

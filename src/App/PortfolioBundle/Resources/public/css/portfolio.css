@@ -1,0 +1,89 @@
+/* 
+    Document   : portfolio
+    Created on : 6 oct. 2013, 13:03:10
+    Author     : Steeve LOKO <loko.steeve@yahoo.fr>
+    Description:
+        Style CSS du bundle PortfolioBundle.
+*/
+body { position: relative; padding-top: 40px; }
+/* Entête */
+.navbar { margin-bottom: 33px; }
+.navbar li.remove-padding-right a { padding: 10px 0 10px 15px; }
+.submenu li { line-height: 32px; }
+.navbar .submenu li a { padding: 10px 0 10px 15px; }
+.navbar .submenu .brand { font-size: 24px; line-height: 32px; }
+.entete-portfolio { padding: 40px 20px;  }
+.entete-portfolio h1 { padding: 0; margin: 0; color: white; font-size: 40px;}
+/* CONTENU */
+.container-fluid { padding: 0 33px; }
+.accueil { margin-bottom: 33px; }
+.accueil section h1 { font-size: 24px; }
+.accueil article { padding: 0 20px 20px; }
+.accueil article h1, .page h1 { font-size: 20px; border-bottom: 2px solid #e3e3e3; }
+.page .span9 { margin-left: 20px; }
+.accueil .service { border-bottom: 2px solid #e3e3e3; margin: 0 2%; width: 96%; margin-bottom: 0; }
+#myCarousel .item, #myCarousel img { height: 320px; width: 100%; }
+.footer { padding: 20px; }
+.fos_user { max-width: 1000px; margin: 0 auto;}
+.wrap-well {
+  min-height: 20px;
+  margin-bottom: 20px;
+  background-color: #f5f5f5;
+  border: 1px solid #e3e3e3;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+.wrap-left, .wrap-right { border: 2px solid #e3e3e3; padding: 0 20px 33px; }
+.page section address { margin: 0; }
+.page { padding-bottom: 33px; }
+.page section { padding-top: 33px; }
+.page h1 { margin-top: 0; }
+.removeItem { margin-left: 20px; }
+.projet .form-actions label { display: none; }
+.piecejointe label.required { display: none; }
+.piecejointe .targetblank { margin-bottom: 10px; }
+.actions { width: 100px; }
+
+/***************/
+/** Textarea  **/
+/***************/
+#message_contenu, #projet_description, #paiement_details { height: 180px; }
+
+
+/*-------------------------------------------------- */
+#myNav {  margin-right: -13px; }
+#myNav ul.nav-list{
+    margin: 0;
+    padding: 0;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
+}
+#myNav ul.nav-list li a{
+    padding: 8px 16px;
+}
+#myNav ul.nav-list li.active a, #myNav ul.nav-list li.active a:hover{
+    color: #fff;
+    background: #0088cc;
+    border: 1px solid #0088cc;
+}
+#myNav ul.nav-list li a .icon-chevron-right{
+    float: right;
+    margin-top: 2px;
+    margin-right: -6px;
+    opacity: 0.25;
+}
+#myNav ul.nav-list a:hover .icon-chevron-right {
+    opacity: 0.5;
+}
+#myNav ul.nav-list .active .icon-chevron-right,
+#myNav ul.nav-list .active a:hover .icon-chevron-right {
+    opacity: 1;
+}
+#myNav .affix{
+    top: 60px; /* Set the top position of pinned element */
+    width: 300px;
+}
+

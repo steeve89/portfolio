@@ -1,0 +1,458 @@
+numero: N°
+currency: euros
+
+# image
+image:
+    field:
+        id:           identifiant
+        nom:          Nom
+        file:         Fichier
+        alt:          Texte Alternatif (alt)
+
+# article
+article:
+    prefix: ATLOO 
+    field:
+        id:           identifiant
+        titre:        Titre
+        contenu:      Contenu
+        langue:       Langue
+        extrait:      Extrait
+        image:        Image
+        categories:    Catégories
+        commentaires: Commentaires
+        isActived:    Actif ?
+    message:
+        write: Ecrit le
+        update: Mis à jour le
+    choices:
+        isActived:
+            - NON
+            - OUI
+    index:
+        title: Liste des articles
+        new: Ajouter un article
+        back: Retour à la liste des articles
+        unavailable: Aucun article est disponible pour le moment.
+    new:
+        title:  Ajout d'un article
+    show:
+        title: Article "%titre%"
+    edit:
+        title: Edition Article "%titre%"
+
+# Categorie
+categorie:
+    prefix: CTGOO 
+    field:
+        id:           identifiant
+        nom:          Nom
+        description:  Description
+        langue:       Langue
+        position:     Position
+        articles:     Articles
+        isActived:    Actif ?
+    choices:
+        isActived:
+            - NON
+            - OUI
+    index:
+        title: Liste des catégories
+        new: Ajouter une categorie
+        back: Retour à la liste des catégories
+        unavailable: Aucune catégorie est disponible pour le moment.
+    new:
+        title:  Ajout d'une catégorie
+    show:
+        title: Categorie "%nom%"
+    edit:
+        title: Edition Catégorie "%nom%"
+    error:
+        delete: Impossible de supprimer cette catégorie. Un ou plusieurs articles sont liés à cette catégorie. Merci !
+
+# service client
+service_client:
+    title:  Service Client
+    content: Notre Service Clientèle est à votre disposition pour répondre à vos besoins sous 48H.
+    form:
+        legend: FORMULAIRE DE CONTACT
+        submit: Envoyer
+
+# mssage
+message:
+    pending: En attente
+    notice: Mis à jour effectuée avec succès.
+    none: Aucun
+    delete: Suppression effectuée avec succès
+    notAuthorized: Vous n'êtes pas authorisé à faire cette action. Merci!
+    
+rapport:
+    field:  
+        user: Auteur
+        contenu:  Contenu
+        me: Moi
+        pieceJointe: Pièce Jointe
+        pieceJointe_abr: PJ
+    message:
+        write: Ecrit le
+        update: Mis à jour le
+    index:
+        title: Rapport
+        help: 
+            title: Aide        
+            content: |
+                      Vous trouverez ici toutes les informations concernant l'avancement de votre projet.
+                      Vous pouvez demander une information sur votre projet en ajoutant un message.
+        unavailable: Aucune information est disponible pour le moment.
+        add:  Un nouveau message a été ajouté !
+        back: Retour au rapport
+    new:
+        title: Ajouter un message
+    edit:
+        title: Editer message N°%id%
+
+# wreTransfert
+wireTransfert:
+    index:
+        title:  Paiement par Virement Bancaire
+        content: |
+                  Nous n'acceptons que les paiement par virement bancaire.
+                  Nous procéderons à l'installation de votre site sur votre domaine dès que nous aurons reçu votre virement bancaire.
+                  
+                  Ne payer que lorsque le projet est validé sur l'un de nos sous domaine (ex: votreprojet.loko-steeve.com).
+                  Une fois votre projet validé, vous avez un délai de 14 jours pour effectuer votre virement bancaire.                                    
+                  
+        comptebancaire:
+            title:  COMPTE BANCAIRE
+            content:
+                intituleCompte:
+                      title:        INTITULE DU COMPTE
+                      content:      LOKO C. Rodrigue Steeve
+                codeIban:
+                      title:        CODE IBAN
+                      content:      BJ06201002081111253250178
+                netapayer:         Net à Payer
+        remerciemet: |                      
+                      Cordialement,
+                      L'équipe.
+                                    
+# invoice
+invoice:
+    prefix:             INV00 
+    field:
+        client:         Client
+        referenceClient: CL00
+        prestataire:    Prestataire
+        email:          Email
+        website:        Site Web
+        line:           N°
+        reference:      Référence
+        designation:     Désignation
+        quantite:       Quantité
+        prixunitaire:   Prix Unitaire
+        total:          Total
+        taxe:           Taxe
+        totalHT:        Total HT
+        totalTTC:       Net à Payer
+    pdf:
+        title:  loko-steeve.com-facture-INV00
+    index:
+        entete:         FACTURE Ref.
+        back:           Retour à la facture
+        footer:         En cas de problème, veuillez contacter le prestataire. Merci !
+    error: La facture n'est pas encore disponible pour le moment. Merci !
+
+# paiement
+paiement:
+    title:              Paiement
+    prefix:             PMTOO 
+    field:
+        id:             identifiant
+        prixHorsTaxe:   Prix Hors Taxe
+        prixHT:         Prix HT
+        date:           Date
+        details:        Détails
+        status:         Status
+        projet:         Projet
+    choices:
+        status:
+            - En attente
+            - Effectué
+    index:
+        title: Liste des paiements
+        new: Ajouter un paiement
+        back: Retour à la liste des paiements
+        unavailable: Aucun paiement est disponible pour le moment !
+    new:
+        title:  Ajout d'un paiement
+    show:
+        title: Paiement N°%id%
+    edit:
+        title: Edition Paiement N°%id%
+
+# LOG
+userlog:
+    field:
+        user:     Utilisateur
+        titre:    Titre
+        contenu:  Contenu
+        date:     Date
+    index:
+        title: Liste des logs
+        unavailable: Aucun log est disponible pour le moment.
+
+# projet
+pieceJointe:
+    field:
+        file: Fichier
+
+# projet
+projet:
+    prefix: PJTOO 
+    field:
+        id:           identifiant
+        titre:        Titre
+        description:  Description
+        budget:       Budget
+        user:         Client
+        dateButoir:   Date Butoir
+        paiement: Paiement
+        dateDeLivraison: Date de Livraison
+        status:           Status
+        pieceJointe: Pieces Jointes
+        file: Fichier
+        isActived:  Actif ?
+    choices:
+        budget:
+            - 0 à 500 euros
+            - 500 à 1000 euros
+            - 1000 à 2000 euros
+            - 2000 à 5000 euros
+            - + de 5000 euros
+        status:
+            - En attente
+            - En cours de développement
+            - Terminé
+        isActived:
+            - NON
+            - OUI
+    index:
+        title: Liste des projets
+        new: Soumettre un projet
+        back: Retour à la liste des projets
+        unavailable: Aucun projet est disponible pour le moment.
+    new:
+        title:  Soumettre mon projet
+    show:
+        title: Projet "%title%"
+    edit:
+        title: Edition Projet "%title%"
+
+# User menu
+user:    
+    menu:
+        profile:  Profile
+        portfolio:  Portfolio
+        user:     
+            title:  Utilisateurs
+            client: Client
+            partenaire: Partenaire
+        projet:   Projets
+        message:  Messages
+        serviceClient:  Service Client
+        log:      Logs
+        paiement: Paiement
+        categorie: Categorie
+        blog:   Blog
+        article: Article
+        commentaire:  Commentaire
+        boutique: Boutique
+        produit:      Produit
+        commande:     Commande
+        paiement_commande:  Paiement
+        statistique:        Statistique
+    field:
+        id: Identifiant
+        nom: Nom
+        prenom: Prénom
+        username: Nom d'utilisateur
+        email: Email
+        profession: Profession
+        description: Description
+        projet: Projet(s)
+        locked: Bloqué ?
+    choices:
+        locked:
+            - NON
+            - OUI
+    client:
+        prefix: CL00
+        index:
+            title: Liste des clients
+            new: Ajouter un client
+            back: Retour à la liste des client
+            unavailable: Aucun client est disponible pour le moment.
+        new:
+            title:  Ajouter un client
+        show:
+            title: Client "%username%"
+        edit:
+            title: Edition Client "%username%"
+    partenaire:
+        prefix: PT00
+        index:
+            title: Liste des partenaires
+            new: Ajouter un partenaire
+            back: Retour à la liste des partenaires
+            unavailable: Aucun partenaire est disponible pour le moment.
+        new:
+            title:  Ajouter un partenaire
+        show:
+            title: Partenaire "%username%"
+        edit:
+            title: Edition Partenaire "%username%"
+
+# Actions
+actions:
+    create:           Valider
+    title:            Actions
+    new:              Ajouter
+    show:             Voir
+    edit:             Editer
+    soumettre:        Soumettre
+    update:           Mettre à jour
+    change_password:  Changer mon mot de passe
+    delete:           Supprimer
+    invoice:          Facture
+    download:         Télécharger
+    paiement:         Payer
+    rapport:          Rapport
+    lock_unlock:      Bloqué/Débloqué
+
+# Group
+group:
+    edit:
+        submit: Mettre à jour le groupe
+    show:
+        name: Nom du groupe
+    new:
+        submit: Créer le groupe
+    flash:
+        updated: Le groupe a été mis à jour
+        created: Le groupe a été créé
+        deleted: Le groupe a été supprimé
+
+# Security
+"Bad credentials": Nom d'utilisateur ou mot de passe incorrect
+
+security:
+    login:
+        title: Connexion Membre
+        username: "Nom d'utilisateur :"
+        username_email: "Nom d'utilisateur ou Email :"
+        password: "Mot de passe :"
+        remember_me: Se souvenir de moi
+        submit: Connexion
+
+# Profile
+profile:
+    show:
+        title: Profile
+        personal_info: Informations Personnelles
+        firstname: Prénom
+        lastname: Nom
+        username: Nom d'utilisateur
+        email: Adresse e-mail
+        profession: Profession
+        description: Description
+    edit:
+        title: Edition Profile
+        submit: Mettre à jour
+    flash:
+        updated: Le profil a été mis à jour
+
+# Password change
+change_password:
+    title: Changer Mot de Passe
+    submit: Modifier le mot de passe
+    flash:
+        success: Le mot de passe a été modifié
+
+# Registration
+registration:
+    title: Inscription Membre
+    check_email: 
+      title:   Activation de votre compte #Validation de votre adresse electronique
+      content: Un e-mail a été envoyé à l'adresse %email%. Il contient un lien d'activation sur lequel il vous faudra cliquer afin d'activer votre compte.
+    confirmed: 
+        title:   Inscription Terminée #Activation de votre compte
+        content: Félicitations %username%, votre compte est maintenant activé.
+    back: Retour à la page d'origine.
+    submit: Enregistrer
+    flash:
+        user_created: L'utilisateur a été créé avec succès
+    email:
+        subject: Bienvenue %username% sur loko-steeve.com !
+        message: |
+            Bonjour %username% !
+
+            Pour valider votre compte utilisateur, merci de vous rendre sur %confirmationUrl%
+
+            Cordialement,
+            L'équipe.
+
+# Password resetting
+resetting:
+    password_already_requested: 
+        title:  Demande de Réinitialisation du mot de passe déjà effectuée
+        content: Un nouveau mot de passe a déjà été demandé pour cet utilisateur dans les dernières 24 heures.
+    check_email: 
+        title: Consulter votre boite de messagerie
+        content: Un e-mail a été envoyé à l'adresse %email%. Il contient un lien sur lequel il vous faudra cliquer afin de réinitialiser votre mot de passe.
+    request:
+        title: Mot de passe oublié ?
+        invalid_username: Le nom d'utilisateur ou l'adresse e-mail "%username%" n'existe pas.
+        username: "Nom d'utilisateur ou adresse e-mail :"
+        submit: Réinitialiser le mot de passe
+    reset:
+        title: Réinitialisation du mot de passe
+        submit: Modifier le mot de passe
+    flash:
+        success: Le mot de passe a été réinitialisé avec succès
+    email:
+        subject: Réinitialisation de votre mot de passe
+        message: |
+            Bonjour %username% !
+
+            Pour réinitialiser votre mot de passe, merci de vous rendre sur %confirmationUrl%
+
+            Cordialement,
+            L'équipe.
+
+# Global strings
+layout:
+    logout: Déconnexion
+    login: Connexion
+    register: Inscription
+    logged_in_as: Connecté en tant que %username%
+
+# Form field labels
+form:
+    group_name: "Nom du groupe :"
+    username: "Nom d'utilisateur :"
+    nom: Nom
+    prenom: Prénom
+    email: "Adresse e-mail :"
+    role: Qui suis-je ?
+    profession: Profession    
+    description: Description
+    skype:  Skype
+    telephone: Téléphone
+    current_password: "Mot de passe actuel :"
+    password: "Mot de passe :"
+    password_confirmation: "Vérification :"
+    new_password: "Nouveau mot de passe :"
+    new_password_confirmation: "Vérification :"
+    locked: Bloqué ?
+    placeholder:
+        description: Quelques mots sur votre activité professionnelle ?

@@ -1,0 +1,7 @@
+parameters:
+#    app_generate_doctrine_crud.example.class: App\GenerateDoctrineCrudBundle\Example
+
+services:
+#    app_generate_doctrine_crud.example:
+#        class: %app_generate_doctrine_crud.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

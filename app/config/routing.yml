@@ -1,0 +1,19 @@
+app_portfolio:
+    resource: "@AppPortfolioBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app_blog:
+    resource: "@AppBlogBundle/Resources/config/routing.yml"
+    prefix:   /blog
+
+app_boutique:
+    resource: "@AppBoutiqueBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app_user:
+    resource: "@AppUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app_generate_doctrine_crud:
+    resource: "@AppGenerateDoctrineCrudBundle/Resources/config/routing.yml"
+    prefix:   /

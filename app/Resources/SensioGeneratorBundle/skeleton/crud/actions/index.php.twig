@@ -1,0 +1,42 @@
+
+    /**
+{% block phpdoc_method_header %}
+     * Lists all {{ entity }} entities.
+{% endblock phpdoc_method_header %}
+     *
+{% block phpdoc_method_annotations %}
+{% if 'annotation' == format %}
+     * @Route("/", name="{{ route_name_prefix }}")
+     * @Method("GET")
+     * @Template()
+{% endif %}
+{% endblock phpdoc_method_annotations %}
+     */
+{% block method_definition %}
+    public function indexAction($page)
+{% endblock method_definition %}
+    {
+{% block method_body %}
+        $em = $this->getDoctrine()->getManager();
+        //  On recupère toutes les entités
+        $nombreParPage = $this->container->getParameter('{{ entity | lower }}');         
+        $entities =   $em->getRepository('{{ bundle }}:{{ entity }}')->get{{ entity }}s($nombreParPage, $page);
+        //  Le nombre de page à afficher
+        $nb_pages = (count($entities) > 0) ? ceil(count($entities)/$nombreParPage) : 1;
+{% endblock method_body %}
+
+{% block method_return %}
+{% if 'annotation' == format %}
+        //  On affiche la vue
+        return array(
+            'entities' => $entities,
+            'page' => $page,
+            'nb_pages' => $nb_pages,
+        );
+{% else %}
+        return $this->render('{{ bundle }}:{{ entity|replace({'\\': '/'}) }}:index.html.twig', array(
+            'entities' => $entities,
+        ));
+{% endif %}
+{% endblock method_return %}
+    }

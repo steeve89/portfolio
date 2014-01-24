@@ -1,0 +1,171 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{# Form article #}
+{% block article_widget %}
+{% spaceless %}
+<fieldset>
+    <legend>
+        {% if form.identifier.vars.value is not defined %}
+            {{ 'article.new.title' | trans }}
+        {% else %}
+            {{ 'article.edit.title' | trans({'%titre%': form.identifier.vars.value }) }}
+        {%endif %}
+    </legend>
+    <div class="row-fluid rapport">        
+        {# Affichage du champ langue #}
+        <div class="control-group">
+            {{ form_label(form.langue, null, {'label_attr': {'class' : 'control-label' }}) }}
+            <div class="controls">        
+                {{ form_widget(form.langue) }}
+            </div>
+            {{ form_errors(form.langue) }}
+        </div>
+        {# Affichage du champ categorie #}
+        <div class="control-group">
+            {{ form_label(form.categories, null, {'label_attr': {'class' : 'control-label' }}) }}
+            <div class="controls">        
+                {{ form_widget(form.categories) }}
+            </div>
+            {{ form_errors(form.categories) }}
+        </div>
+        {# Affichage du champ titre #}
+        <div class="control-group">
+            {{ form_label(form.titre, null, {'label_attr': {'class' : 'control-label' }}) }}
+            <div class="controls">        
+                {{ form_widget(form.titre) }}
+            </div>
+            {{ form_errors(form.titre) }}
+        </div>
+        {# Affichage du champ extrait #}
+        <div class="control-group">
+            {{ form_label(form.extrait, null, {'label_attr': {'class' : 'control-label' }}) }}
+            <div class="controls">        
+                {{ form_widget(form.extrait, {'attr' : {'class' : 'span5'}}) }}
+            </div>
+            {{ form_errors(form.extrait) }}
+        </div>
+        {# Affichage du champ extrait #}
+        <div class="control-group">
+            {{ form_label(form.image, null, {'label_attr': {'class' : 'control-label' }}) }}
+            <div class="controls">        
+                {{ form_widget(form.image) }}
+            </div>
+            {{ form_errors(form.image) }}
+        </div>
+        {# Affichage du champ contenu #}
+        <div class="control-group">
+            {{ form_label(form.contenu, null, {'label_attr': {'class' : 'control-label' }}) }}
+            <div class="controls">        
+                {{ form_widget(form.contenu) }}
+            </div>
+            {{ form_errors(form.contenu) }}
+        </div>
+        {# Affichage du champ nom #}
+        <div class="control-group">
+            <div class="controls">
+                {{ form_widget(form.isActived, {'attr' : {'class' : 'checkbox'}}) }}
+                {{ form_label(form.isActived, null, {'label_attr': {'class' : 'checkbox inline' }}) }}
+            </div>
+            {{ form_errors(form.isActived) }}
+        </div>
+        <div class="form-actions">
+            {{ form_rest(form) }}
+        </div>         
+    </div>
+</fieldset>
+{% endspaceless %}
+{% endblock %}
+
+
+{# Form image #}
+{% block image_widget %}
+{% spaceless %}
+<div class="row-fluid">
+    <div class="span6">
+        {# Affichage du champ file #}
+        <div class="control-group">
+            {{ form_label(form.file, null, {'label_attr': {'class' : 'control-label' }}) }}
+            <div class="controls">        
+                {{ form_widget(form.file) }}
+            </div>
+            {{ form_errors(form.file) }}
+        </div>
+        <div class="control-group">
+            {{ form_label(form.alt, null, {'label_attr': {'class' : 'control-label' }}) }}
+            <div class="controls">        
+                {{ form_widget(form.alt) }}
+            </div>
+            {{ form_errors(form.alt) }}
+        </div>
+    </div>
+    {% if form.identifier.vars.value is defined and form.identifier.vars.value is not null %}
+    <div class="span6">        
+        <div>        
+            <img src="{{ asset( '/uploads/article/' ~ form.identifier.vars.value) }}" height="100" width="100"/>  
+        </div>        
+    </div>
+    {% endif %}
+    {{ form_rest(form) }}
+</div>
+{% endspaceless %}
+{% endblock %}
+
+{# Form categorie #}
+{% block categorie_widget %}
+{% spaceless %}
+<fieldset>
+    <legend>
+        {% if form.identifier.vars.value is not defined %}
+            {{ 'categorie.new.title' | trans }}
+        {% else %}
+            {{ 'categorie.edit.title' | trans({'%nom%': form.identifier.vars.value }) }}
+        {%endif %}
+    </legend>
+    <div class="row-fluid rapport"> 
+        {# Affichage du champ langue #}
+        <div class="control-group">
+            {{ form_label(form.langue, null, {'label_attr': {'class' : 'control-label' }}) }}
+            <div class="controls">        
+                {{ form_widget(form.langue) }}
+            </div>
+            {{ form_errors(form.langue) }}
+        </div>
+        {# Affichage du champ nom #}
+        <div class="control-group">
+            {{ form_label(form.nom, null, {'label_attr': {'class' : 'control-label' }}) }}
+            <div class="controls">        
+                {{ form_widget(form.nom) }}
+            </div>
+            {{ form_errors(form.nom) }}
+        </div>
+        {# Affichage du champ description #}
+        <div class="control-group">
+            {{ form_label(form.description, null, {'label_attr': {'class' : 'control-label' }}) }}
+            <div class="controls">        
+                {{ form_widget(form.description, {'attr' : {'class' : 'span5'}}) }}
+            </div>
+            {{ form_errors(form.description) }}
+        </div>
+        {# Affichage du champ langue #}
+        <div class="control-group">
+            {{ form_label(form.position, null, {'label_attr': {'class' : 'control-label' }}) }}
+            <div class="controls">        
+                {{ form_widget(form.position) }}
+            </div>
+            {{ form_errors(form.position) }}
+        </div>        
+        {# Affichage du champ nom #}
+        <div class="control-group">
+            <div class="controls">
+                {{ form_widget(form.isActived, {'attr' : {'class' : 'checkbox'}}) }}
+                {{ form_label(form.isActived, null, {'label_attr': {'class' : 'checkbox inline' }}) }}
+            </div>
+            {{ form_errors(form.isActived) }}
+        </div>
+        <div class="form-actions">
+            {{ form_rest(form) }}
+        </div>         
+    </div>
+</fieldset>
+{% endspaceless %}
+{% endblock %}

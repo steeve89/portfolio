@@ -1,0 +1,102 @@
+app_blog_homepage:
+    pattern:  /
+    defaults: { _controller: AppBlogBundle:Blog:index }
+
+#
+# MANAGE CATEGORIE
+#
+categorie:
+    pattern:  /admin/categorie/{page}/
+    defaults: { _controller: AppBlogBundle:Categorie:index, page: 1 }
+    requirements:
+        page: \d*
+
+categorie_new:
+    pattern:  /admin/categorie/new/
+    defaults: { _controller: AppBlogBundle:Categorie:new}
+    requirements:
+        _method: GET|POST
+
+categorie_edit:
+    pattern:  /admin/categorie/edit/{id}
+    defaults: { _controller: AppBlogBundle:Categorie:edit}
+    requirements:
+        _method: GET|PUT
+
+categorie_delete:
+    pattern:  /admin/categorie/delete/{id}
+    defaults: { _controller: AppBlogBundle:Categorie:delete }
+    requirements:
+        _method: DELETE
+
+categorie_show:
+    pattern:  /admin/categorie/show/{id}/
+    defaults: { _controller: AppBlogBundle:Categorie:show}
+    requirements:
+        _method: GET
+
+#
+# MANAGE ARTICLE
+#
+article:
+    pattern:  /admin/article/{page}/
+    defaults: { _controller: AppBlogBundle:Article:index, page: 1 }
+    requirements:
+        page: \d*
+
+article_new:
+    pattern:  /admin/article/new/
+    defaults: { _controller: AppBlogBundle:Article:new}
+    requirements:
+        _method: GET|POST
+
+article_edit:
+    pattern:  /admin/article/edit/{id}
+    defaults: { _controller: AppBlogBundle:Article:edit}
+    requirements:
+        _method: GET|PUT
+
+article_delete:
+    pattern:  /admin/article/delete/{id}
+    defaults: { _controller: AppBlogBundle:Article:delete }
+    requirements:
+        _method: DELETE
+
+article_show:
+    pattern:  /admin/article/show/{id}/
+    defaults: { _controller: AppBlogBundle:Article:show}
+    requirements:
+        _method: GET
+
+#
+# MANAGE COMMENTAIRE
+#
+commentaire:
+    pattern:  /commentaire/{page}/
+    defaults: { _controller: AppBlogBundle:Commentaire:index, page: 1 }
+    requirements:
+        page: \d*
+
+commentaire_new:
+    pattern:  /commentaire/new/
+    defaults: { _controller: AppBlogBundle:Commentaire:new}
+    requirements:
+        _method: GET|POST
+
+commentaire_edit:
+    pattern:  /commentaire/edit/{id}
+    defaults: { _controller: AppBlogBundle:Commentaire:edit}
+    requirements:
+        _method: GET|PUT
+
+commentaire_delete:
+    pattern:  /commentaire/delete/{id}
+    defaults: { _controller: AppBlogBundle:Commentaire:delete }
+    requirements:
+        _method: DELETE
+
+commentaire_show:
+    pattern:  /commentaire/show/{id}/
+    defaults: { _controller: AppBlogBundle:Commentaire:show}
+    requirements:
+        _method: GET

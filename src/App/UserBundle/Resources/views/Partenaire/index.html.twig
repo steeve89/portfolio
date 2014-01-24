@@ -1,0 +1,67 @@
+{% extends "AppUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block title %}{{ 'user.partenaire.index.title' | trans }} | {{ parent() }}{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+
+{% block header_title %}{{ 'user.partenaire.index.title' | trans }} | {{ parent() }}{% endblock %}
+
+{% block body %}
+<div class="main">
+    
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>{{ 'numero' | trans }}</th>
+                <th>{{ 'user.field.id'| trans }}</th> 
+                <th>{{ 'user.field.username'| trans }}</th>  
+                <th>{{ 'user.field.nom'| trans }}</th>  
+                <th>{{ 'user.field.prenom'| trans }}</th>                  
+                <th>{{ 'user.field.email'| trans }}</th>
+                <th>{{ 'user.field.projet'| trans }}</th>
+                <th>{{ 'user.field.locked'| trans }}</th>
+                <th>{{ 'actions.title' | trans }}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for key, entity in entities %}
+            <tr>
+                <td>{{ key + 1 }}</td>
+                <td><a href="{{ path('partenaire_show', { 'id': entity.id }) }}">{{ 'user.partenaire.prefix'| trans }}{{ entity.id }}</a></td>
+                <td>{{ entity.username }}</td>
+                <td>{{ entity.nom }}</td>
+                <td>{{ entity.prenom }}</td>
+                <td>{{ entity.email }}</td>
+                <td>{{ entity.projets | length }}</td>
+                <td>{% if entity.locked %}{{ 'user.choices.locked.1'| trans }}{% else %}{{ 'user.choices.locked.0'| trans }}{% endif %}</td>
+                <td>
+                    <ul class="inline">
+                        <li>
+                            <a class="btn" href="{{ path('partenaire_show', { 'id': entity.id }) }}"><i class="icon-th-list"></i> {{ 'actions.show' | trans }}</a>
+                        </li>
+                        <li>
+                            <a class="btn" href="{{ path('partenaire_edit', { 'id': entity.id }) }}"><i class="icon-edit"></i> {{ 'actions.edit' | trans }}</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td class="alert alert-info" colspan="9">{{ 'user.partenaire.index.unavailable'| trans }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul class="inline">
+        <li>
+            <a class="btn" href="{{ path('partenaire_new') }}">
+                {{ 'user.partenaire.index.new' | trans }}
+                <i class="icon-chevron-right"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+{% endblock %}

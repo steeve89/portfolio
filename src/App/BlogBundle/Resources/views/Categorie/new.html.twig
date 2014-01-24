@@ -1,0 +1,25 @@
+{% extends "AppUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block title %}{{ 'categorie.new.title' | trans }} | {{ parent() }}{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+
+{% block header_title %}{{ 'categorie.new.title' | trans }} | {{ parent() }}{% endblock %}
+
+{% block body -%}
+<div class="main">
+
+    {{ form(form) }}
+
+    <ul class="inline">
+        <li>
+            <a class="btn" href="{{ path('categorie') }}">
+                <i class="icon-chevron-left"></i>
+                {{ 'categorie.index.back' | trans }}
+            </a>
+        </li>
+    </ul>
+</div>
+{% endblock %}

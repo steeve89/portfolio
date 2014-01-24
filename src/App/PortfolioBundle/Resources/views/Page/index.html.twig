@@ -1,0 +1,74 @@
+{% extends "AppPortfolioBundle::layout.html.twig" %}
+
+{% block title %}{{ 'portfolio.accueil.titre' | trans }} | {{ parent() }}{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+
+{% block meta_identifier_url %}
+<meta name="identifier-url" content="{{ 'portfolio.accueil.identifier_url' | trans }}">
+{% endblock %}
+
+{% block header_title %}{{ 'portfolio.accueil.titre' | trans }}{% endblock %}
+
+{% block body %}
+<div class="row-fluid accueil text-center">
+    
+    <!-- Carousel -->
+    <div id="myCarousel" class="carousel slide">
+        <div class="carousel-inner">
+            <div class="item active">
+                <img src="/img/examples/slide-01.jpg" alt="">        
+            </div>
+            <div class="item">
+                <img src="/img/examples/slide-02.jpg" alt="">        
+            </div>
+            <div class="item">
+                <img src="/img/examples/slide-03.jpg" alt="">        
+            </div>
+        </div>
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+    </div><!-- /.carousel -->
+    <section>
+        <h1 class="text-left">{{ 'portfolio.accueil.section_1.titre' | trans }}</h1>
+        <div class="row-fluid wrap-well">
+            <article class="span4">
+                <h1>{{ 'portfolio.accueil.section_1.article_1.titre' | trans }}</h1>
+                <p class="text-left">{{ 'portfolio.accueil.section_1.article_1.paragraphe' | trans }}</p>
+                <p><a class="btn btn-primary" href="#">{{ 'site.article.lire_la_suite' | trans }} &raquo;</a></p>
+            </article>
+            <article class="span4">
+                <h1>{{ 'portfolio.accueil.section_1.article_2.titre' | trans }}</h1>
+                <p class="text-left">{{ 'portfolio.accueil.section_1.article_2.paragraphe' | trans }}</p>
+                <p><a class="btn btn-primary" href="#">{{ 'site.article.lire_la_suite' | trans }} &raquo;</a></p>
+            </article>
+            <article class="span4">
+                <h1>{{ 'portfolio.accueil.section_1.article_3.titre' | trans }}</h1>
+                <p class="text-left">{{ 'portfolio.accueil.section_1.article_3.paragraphe' | trans }}</p>
+                <p><a class="btn btn-primary" href="#">{{ 'site.article.lire_la_suite' | trans }} &raquo;</a></p>
+            </article>
+        </div>
+    </section>
+
+    <section>
+        <h1>{{ 'portfolio.accueil.section_2.titre' | trans }}</h1>
+        <div class="row-fluid wrap-well">
+            <article class="span4">
+                <h1>{{ 'portfolio.accueil.section_2.article_1.titre' | trans }}</h1>
+                <p class="text-left">{{ 'portfolio.accueil.section_2.article_1.paragraphe' | trans }}</p>
+                <p><a class="btn btn-primary" href="#">{{ 'site.article.lire_la_suite' | trans }} &raquo;</a></p>
+            </article>
+            <article class="span4">
+                <h1>{{ 'portfolio.accueil.section_2.article_2.titre' | trans }}</h1>
+                <p class="text-left">{{ 'portfolio.accueil.section_2.article_2.paragraphe' | trans }}</p>
+                <p><a class="btn btn-primary" href="#">{{ 'site.article.lire_la_suite' | trans }} &raquo;</a></p>
+            </article>
+            <article class="span4">
+                <h1>{{ 'portfolio.accueil.section_2.article_3.titre' | trans }}</h1>
+                <p class="text-left">{{ 'portfolio.accueil.section_2.article_3.paragraphe' | trans }}</p>
+                <p><a class="btn btn-primary" href="#">{{ 'site.article.lire_la_suite' | trans }} &raquo;</a></p>
+            </article>
+        </div>
+    </section>
+</div>
+{% endblock %}

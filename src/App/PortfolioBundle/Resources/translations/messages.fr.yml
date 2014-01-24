@@ -1,0 +1,151 @@
+## FICHIER DE TRADUCTION.
+site:
+    logo: LOKO-STEEVE.COM
+    title: LOKO STEEVE
+    entete:
+        langue:
+            fr: Français
+            en: English
+        menu_utilisateur:
+            compte: Mon compte
+            inscription: Inscription
+            connexion: Connexion
+            visioconference: Visioconférence
+            deconnexion: Déconnexion
+        menu:
+            portfolio:  Portfolio
+            blog:     Blog
+            boutique: Boutique
+        bienvenue: Bienvenue %nom% %prenom%
+    menu_reseau_social:
+        me_suivre: Me suivre sur
+        linkedin_profile: Linkedin Profile Loko Steeve
+        google_plus_profile: Google+ Profile Loko Steeve
+        twitter_profile:     Twitter Profile Loko Steeve
+    article:
+        lire_la_suite: Lire la suite
+    pied_de_page:
+        copyright: © Copyright 2014 loko-steeve.com
+
+# Les pages
+page:
+    publie_le: Publié le
+    par: par
+
+portfolio:
+    menu:
+        accueil:      Accueil
+        profile:      Profile
+        realisations: Réalisations
+        projets:      Projets
+        contact:      Demande de devis & Contact        
+    accueil:
+        titre: Portfolio Développeur Web Freelance
+        description: 
+        keywords: 
+        identifier_url: http://www.loko-steeve.com
+        section_1:
+            titre: BIENVENUE SUR MON PORTFOLIO PROFESSIONNEL
+            article_1:
+                titre: Qui suis-je?
+                paragraphe: Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
+            article_2:
+                titre: Partenaires
+                paragraphe: Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
+            article_3:
+                titre: Client
+                paragraphe: Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
+        section_2:
+            titre: Mes services
+            article_1:
+                titre: Développeur WordPress
+                paragraphe: Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
+            article_2:
+                titre: Développeur Symfony
+                paragraphe: Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
+            article_3:
+                titre: Développeur Facebook
+                paragraphe: Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
+    # Page profl
+    profil:
+        titre: Profil Développeur Web Freelance
+        section1:
+            titre: Informations Personnelles
+            contenu: |
+                    LOKO Steeve
+                    Né le 03 Juillet 1989
+                    Développeur Web Freelance
+                    Email: loko.steeve@yahoo.fr
+                    %skype%: loko.steeve
+        section2:
+            titre: Profil Développeur Web
+        section3:
+            titre: Profil Développeur WordPress
+        section4:
+            titre: Profil Développeur Symfony
+        section5:
+            titre: Profil Développeur Facebook
+    # Réalisations
+    realisations:
+        titre: Réalisations Développeur Web Freelance
+        section1:
+            titre: LIFESCHOOL.FR
+            contenu: >  
+                      Loren loren loren loren loren loren loren Loren loren loren loren loren loren 
+                      loren Loren loren loren loren loren loren loren Loren loren loren loren loren 
+                      loren loren Loren loren loren loren loren loren loren Loren loren loren loren 
+                      loren loren loren Loren loren loren loren loren loren loren Loren loren loren 
+                      loren loren loren loren Loren loren loren loren loren loren loren Loren loren 
+                      loren loren loren loren loren Loren loren loren loren loren loren loren Loren 
+                      loren loren loren
+        section2:
+            titre: LOKO-STEEVE.COM
+            contenu: >  
+                      Loren loren loren loren loren loren loren Loren loren loren loren loren loren 
+                      loren Loren loren loren loren loren loren loren Loren loren loren loren loren 
+                      loren loren Loren loren loren loren loren loren loren Loren loren loren loren 
+                      loren loren loren Loren loren loren loren loren loren loren Loren loren loren 
+                      loren loren loren loren Loren loren loren loren loren loren loren Loren loren 
+                      loren loren loren loren loren Loren loren loren loren loren loren loren Loren 
+                      loren loren loren
+        section3:
+            titre: DELETE FRIEND
+            contenu: >  
+                      Loren loren loren loren loren loren loren Loren loren loren loren loren loren 
+                      loren Loren loren loren loren loren loren loren Loren loren loren loren loren 
+                      loren loren Loren loren loren loren loren loren loren Loren loren loren loren 
+                      loren loren loren Loren loren loren loren loren loren loren Loren loren loren 
+                      loren loren loren loren Loren loren loren loren loren loren loren Loren loren 
+                      loren loren loren loren loren Loren loren loren loren loren loren loren Loren 
+                      loren loren loren
+        voir_site: Voir le site
+    # Projets
+    projets:
+        titre: Projets Développeur Web Freelance
+        section1:
+            titre: FREELANCE BENIN
+            contenu: >  
+                      Loren loren loren loren loren loren loren Loren loren loren loren loren loren 
+                      loren Loren loren loren loren loren loren loren Loren loren loren loren loren 
+                      loren loren Loren loren loren loren loren loren loren Loren loren loren loren 
+                      loren loren loren Loren loren loren loren loren loren loren Loren loren loren 
+                      loren loren loren loren Loren loren loren loren loren loren loren Loren loren 
+                      loren loren loren loren loren Loren loren loren loren loren loren loren Loren 
+                      loren loren loren
+        voir_site: Voir le site
+        github: Suivre sur Github
+        don: Faire un don
+    contact:
+        titre: Demande de Devis & Contact
+        form:
+            field:
+                nom_prenom: Nom & Prénom(s)
+                email:      Email
+                objet:      Objet
+                telephone:  Téléphone
+                message:    Message
+            mail_send: Votre message a bien été envoyé. Vous recevrez une réponse dans les 48h. Merci !
+            submit: Envoyer
+
+message:
+    notice: Mis à jour effectuée avec succès.

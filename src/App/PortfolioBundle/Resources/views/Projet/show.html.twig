@@ -1,0 +1,94 @@
+{% extends "AppUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block title %}{{ 'projet.show.title' | trans({'%title%': entity.titre }) }} | {{ parent() }}{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+
+{% block header_title %}{{ 'projet.show.title' | trans({'%title%': entity.titre }) }} | {{ parent() }}{% endblock %}
+
+{% block body -%}
+<div id="main">
+    <table class="table table-hover">
+        <tbody>            
+            <tr>
+                <th>{{'projet.field.id' | trans }}</th>
+                <td>{{ 'projet.prefix' | trans }}{{ entity.id }}</td>
+            </tr>            
+            <tr>
+                <th>{{'projet.field.titre'| trans }}</th>
+                <td>{{ entity.titre }}</td>
+            </tr>            
+            <tr>
+                <th>{{'projet.field.description'| trans }}</th>
+                <td>{{ entity.description }}</td>
+            </tr>         
+            <tr>
+                <th>{{'projet.field.dateButoir'| trans }}</th>
+                <td>{{ entity.dateButoir | localizeddate('full', 'none') }}</td>
+            </tr>
+            <tr>
+                <th>{{'projet.field.budget'| trans }}</th>
+                <td>{{ ('projet.choices.budget.' ~ entity.budget) | trans }}</td>
+            </tr>
+            <tr>
+                <th>{{'projet.field.status'| trans }}</th>
+                <td>{{ ('projet.choices.status.' ~ entity.status) | trans }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'projet.field.dateDeLivraison' | trans }}</th>
+                <td>{% if entity.dateDeLivraison %}{{ entity.dateDeLivraison | localizeddate('full', 'none') }}{% else %}{{ 'message.pending' | trans }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>{{ 'paiement.field.prixHorsTaxe' | trans }}</th>
+                <td>{% if entity.paiement is not null %}{{ entity.paiement.prixHorsTaxe }} {{ 'currency' | trans }}{% else %}{{ 'message.pending' | trans }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>{{ 'paiement.field.status' | trans }}</th>
+                <td>
+                    {% if entity.paiement is not null %}
+                        {% if entity.paiement.status == 1 %}
+                            {{ 'message.completed' | trans }}
+                        {% else %}
+                            {{ 'message.pending' | trans }}
+                        {% endif %}
+                    {% else %}
+                        {{ 'message.pending' | trans }}
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2"><h3>{{'projet.field.pieceJointe'| trans }}</h3></th>                
+            </tr>
+            {% for key, pieceJonte in entity.pieceJointes%}
+            <tr>
+                <th>{{'projet.field.pieceJointe'| trans }} {% if loop.length > 1 %}N°{{ key + 1 }}{% endif %}</th>
+                <td><a class="targetblank" href="{{ asset( pieceJonte.webPath ) }}">{{ pieceJonte.nom }}</a></td>
+            </tr>
+            {% else %}
+            <tr>
+                <th></th>
+                <td>{{ 'message.none' | trans }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <ul class="inline">
+        <li>
+            <a class="btn" href="{{ path('projet') }}">
+                <i class="icon-chevron-left"></i>
+                {{'projet.index.back'| trans }}
+            </a>
+        </li>
+        <li>
+            <a class="btn btn-primary" href="{{ path('projet_edit', { 'slug': entity.slug }) }}">
+                <i class="icon-edit icon-white"></i>
+                {{'actions.edit'| trans }}
+            </a>
+        </li>
+        <li>{{ form(delete_form) }}</li>
+    </ul>
+</div>
+{% endblock %}

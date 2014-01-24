@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="{{ app.request.locale }}">
+    <head>        
+        <title>{% block title %}{{ 'site.title' | trans }}{% endblock %}</title> 
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" lang="{{ app.request.locale }}" content="{% block description %}{% endblock %}"/>        
+        <meta name="keywords" lang="{{ app.request.locale }}" content="{% block keywords %}{% endblock %}"/>
+        <meta name="author" content="Steeve LOKO">
+        <meta name="copyright" content="loko-steeve.com">
+        {% block meta_identifier_url %}{% endblock %}                
+        {% block stylesheets %}
+            {%  stylesheets 
+                    '@bootstrap_css'
+                    '@AppPortfolioBundle/Resources/public/css/jquery-ui-1.10.0.custom.css'
+                    '@AppPortfolioBundle/Resources/public/css/portfolio.css'
+                    '@AppUserBundle/Resources/public/css/fos_user.css'
+                    '@AppBlogBundle/Resources/public/css/blog.css'
+                    '@AppBlogBundle/Resources/public/css/prettify.css'
+                    filter = 'cssrewrite'
+                    output = 'css/style.css'
+            %}
+                <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+            {% endstylesheets %}
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        
+    </head>
+    <body data-spy="scroll" data-target="#myNav">
+        <div class="row-fluid">            
+            <header>         
+                {% block header %}
+                {% endblock %}                
+                {% block navbar %}
+                <div class="navbar navbar-inverse navbar-fixed-top">                    
+                    <nav class="navbar-inner">
+                        <a class="brand" href="{{ path('app_portfolio_homepage') }}">{{ 'site.logo' | trans }}</a>
+                        <ul class="nav">
+                            <li><a title="{{ 'site.entete.menu.portfolio' | trans }}" href="{{ path('app_portfolio_homepage') }}">{{'site.entete.menu.portfolio' | trans}}</a></li>  
+                            <li><a title="{{ 'site.entete.menu.blog' | trans }}" href="{{ path('app_blog_homepage') }}">{{'site.entete.menu.blog' | trans}}</a></li>
+                            <li><a title="{{ 'site.entete.menu.boutique' | trans }}" href="{{ path('app_boutique_homepage') }}">{{'site.entete.menu.boutique' | trans}}</a></li>                            
+                        </ul>
+                        <ul class="nav pull-right">
+                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                            <li><a class="brand">{{ 'site.entete.bienvenue' | trans({ '%nom%': app.user.nom, '%prenom%': app.user.prenom}) }}</a></li>
+                            {% endif %}
+                            <li><a title="{{ 'site.entete.menu_utilisateur.compte' | trans }}" href="{{ path('fos_user_profile_show') }}"><i class="icon-user icon-white"></i> {{ 'site.entete.menu_utilisateur.compte' | trans }}</a></li>                                
+                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                            {#<li><a title="{{ 'site.entete.menu_utilisateur.visioconference' | trans }}" href="#">{{ 'site.entete.menu_utilisateur.visioconference' | trans }}</a></li>#}
+                            <li><a title="{{ 'site.entete.menu_utilisateur.deconnexion' | trans }}" href="{{ path('fos_user_security_logout') }}">{{ 'site.entete.menu_utilisateur.deconnexion' | trans }}</a></li>
+                            {% else %}
+                            <li><a title="{{ 'site.entete.menu_utilisateur.inscription' | trans }}" href="{{ path('fos_user_registration_register') }}">{{ 'site.entete.menu_utilisateur.inscription' | trans }}</a></li>
+                            <li><a title="{{ 'site.entete.menu_utilisateur.connexion' | trans }}" href="{{ path('fos_user_security_login') }}">{{ 'site.entete.menu_utilisateur.connexion' | trans }}</a></li>
+                            {% endif %}
+                            <li class="remove-padding-right"><a title="{{ 'site.entete.langue.fr' | trans }}" href="#"><img src="{{ asset('/img/fr.png') }}" alt="{{ 'site.entete.langue.fr' | trans }}"/></a></li>
+                            <li><a title="{{ 'site.entete.langue.en' | trans }}" href="#"><img src="{{ asset('/img/en.png') }}" alt="{{ 'site.entete.langue.en' | trans }}"/></a></li>
+                        </ul>
+                    </nav>
+                </div>
+                {% endblock %}
+
+                <div class="navbar">                    
+                    <nav class="navbar-inner submenu">
+                        {% block subnavbar %}
+                        {% endblock %}    
+                        {% block reseausocial %}
+                        <ul class="nav pull-right">
+                            <li><a class="brand" href="#">{{ 'site.menu_reseau_social.me_suivre' | trans }}</a></li>
+                            <li><a title="{{ 'site.menu_reseau_social.google_plus_profile' | trans }}" href="#"><img src="{{ asset('/img/googleplus.png') }}" alt="{{ 'site.menu_reseau_social.google_plus_profile' | trans }}" /></a></li>  
+                            <li><a title="{{ 'site.menu_reseau_social.linkedin_profile' | trans }}" href="#"><img src="{{ asset('/img/linkedin.png') }}" alt="{{ 'site.menu_reseau_social.twitter_profile' | trans }}" /></a></li>
+                            <li><a title="{{ 'site.menu_reseau_social.twitter_profile' | trans }}" href="#"><img src="{{ asset('/img/twitter.png') }}" alt="{{ 'site.menu_reseau_social.twitter_profile' | trans }}" /></a></li>
+                        </ul>             
+                        {% endblock %} 
+                    </nav>
+                </div>
+            </header>
+
+            {# On affiche ici les messages flash #}
+            {% for flashMessage in app.session.flashbag.get('notice') %}
+            <div class="container-fluid">
+                <div class="alert alert-success">
+                    {{ flashMessage }}
+                </div>
+            </div>
+            {% endfor %}
+            {% for flashMessage in app.session.flashbag.get('error') %}
+            <div class="container-fluid">
+                <div class="alert alert-error">
+                    {{ flashMessage }}
+                </div>
+            </div>
+            {% endfor %}
+
+            <div class="container-fluid">
+                {% block body %}{% endblock %}
+            </div>
+
+            <footer class="footer btn-inverse">
+                <p class="text-center">
+                    {{ 'site.pied_de_page.copyright' | trans }}
+                </p>
+            </footer>
+        </div>
+      
+        {% block javascripts %}
+            {% javascripts 
+                '@jquery' 
+                '@bootstrap_js'
+                '@AppPortfolioBundle/Resources/public/js/jquery-ui-1.10.0.custom.min.js' 
+                '@AppBlogBundle/Resources/public/js/prettify.js'
+                '@AppPortfolioBundle/Resources/public/js/javascript.js'
+                output='js/main.js' 
+                filter='' 
+            %}
+                <script type="text/javascript" src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+        {% endblock %}
+    </body>
+</html>

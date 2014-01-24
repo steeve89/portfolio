@@ -1,0 +1,9 @@
+parameters:
+    categorie:    10
+    article:      10
+    commentaire:  10
+
+services:
+#    app_blog.example:
+#        class: %app_blog.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

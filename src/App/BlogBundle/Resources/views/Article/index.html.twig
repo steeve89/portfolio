@@ -1,0 +1,86 @@
+{% extends "AppUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block title %}{{ 'article.index.title' | trans }} | {{ parent() }}{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+
+{% block header_title %}{{ 'article.index.title' | trans }} | {{ parent() }}{% endblock %}
+
+{% block body -%}
+<div class="main">
+    
+    <table class="table table-hover">
+        <thead>
+            <tr>  
+                <th>{{ 'numero' | trans }}</th>
+                <th>{{ 'article.field.id'| trans }}</th>  
+                <th>{{ 'article.field.titre'| trans }}</th>  
+                <th>{{ 'article.field.categories'| trans }}</th>                
+                <th>{{ 'article.field.commentaires'| trans }}</th>  
+                <th>{{ 'article.field.langue'| trans }}</th>  
+                <th>{{ 'article.field.isActived'| trans }}</th>
+                <th>{{ 'actions.title' | trans }}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for key, entity in entities %}
+            <tr>
+                <td>{{ key + 1 }}</td>
+                <td><a href="{{ path('article_show', { 'id': entity.id }) }}">{{ 'article.prefix'| trans }}{{ entity.id }}</a></td>
+                <td>{{ entity.titre }}</td>
+                <td>
+                    {% for key, categorie in entity.categories %}
+                        {% if key > 0 %}<br />{% endif %}
+                        {{ categorie }}
+                    {% endfor %}
+                </td>
+                <td>{{ entity.commentaires | length }}</td>
+                <td>{{ entity.langue }}</td>
+                <td>
+                    {% if entity.isActived == 1 %}
+                        {{ 'article.choices.isActived.1' | trans }}
+                    {% else %}
+                        {{ 'article.choices.isActived.1' | trans }}                            
+                    {% endif %}
+                </td>
+                <td>
+                <ul class="inline">
+                    <li>
+                        <a class="btn" href="{{ path('article_show', { 'id': entity.id }) }}"><i class="icon-th-list"></i> {{ 'actions.show' | trans }}</a>
+                    </li>
+                    <li>
+                        <a class="btn" href="{{ path('article_edit', { 'id': entity.id }) }}"><i class="icon-edit"></i> {{ 'actions.edit' | trans }}</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td class="alert alert-info" colspan="8">{{ 'article.index.unavailable'| trans }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    
+    <div class="pagination">
+        <ul>
+            {% for p in range(1, nb_pages) %}
+            <li{% if p == page %} class="active"{% endif %}>
+                <a href="{{ path('article', {'page': p }) }}">{{ p }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+    <ul class="inline">
+        <li>
+            <a class="btn" href="{{ path('article_new') }}">
+                {{ 'article.index.new' | trans }}
+                <i class="icon-chevron-right"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+{% endblock %}

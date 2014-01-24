@@ -1,0 +1,69 @@
+{% extends "AppUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block title %}{{ 'paiement.show.title' | trans({'%id%': entity.id }) }} | {{ parent() }}{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+
+{% block header_title %}{{ 'paiement.show.title' | trans({'%id%': entity.id }) }} | {{ parent() }}{% endblock %}
+
+{% block body -%}
+<div id="main">
+
+    <table class="table table-hover">
+        <tbody>            
+            <tr>
+                <th>{{ 'paiement.field.id'| trans }}</th>
+                <td>{{ 'paiement.prefix' | trans }}{{ entity.id }}</td>
+            </tr>           
+            <tr>
+                <th>{{ 'paiement.field.projet'| trans }}</th>
+                <td>{{ entity.projet }}</td>
+            </tr>           
+            <tr>
+                <th>{{ 'paiement.field.prixHorsTaxe'| trans }}</th>
+                <td>{{ entity.prixHorsTaxe }} {{ 'currency' | trans }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'paiement.field.date'| trans }}</th>
+                <td>{% if entity.date %}{{ entity.date|localizeddate('full', 'none') }}{% endif %}</td>
+            </tr>          
+            <tr>
+                <th>{{ 'paiement.field.details'| trans }}</th>
+                <td>{{ entity.details }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'paiement.field.status'| trans }}</th>
+                <td>
+                    {% if entity.status == 1 %}
+                        <div class="alert alert-success">
+                            {{ 'paiement.choices.status.1' | trans }}
+                        </div>
+                    {% else %}
+                        <div class="alert alert-danger">
+                            {{ 'paiement.choices.status.0' | trans }}
+                        </div>
+                    {% endif %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul class="inline">
+        <li>
+            <a class="btn" href="{{ path('paiement') }}">
+                <i class="icon-chevron-left"></i>
+                {{'paiement.index.back'| trans }}
+            </a>
+        </li>
+        <li>
+            <a class="btn btn-primary" href="{{ path('paiement_edit', { 'id': entity.id }) }}">
+                <i class="icon-edit icon-white"></i>
+                {{'actions.edit'| trans }}
+            </a>
+        </li>
+        <li>{{ form(delete_form) }}</li>
+    </ul>
+</div>
+{% endblock %}

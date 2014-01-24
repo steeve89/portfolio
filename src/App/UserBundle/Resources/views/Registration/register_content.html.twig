@@ -1,0 +1,11 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<form class="fos_user_registration_register form-horizontal well" action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST">
+    <fieldset>
+        <legend class="text-center">{{ 'registration.title'|trans }}</legend>
+        {{ form_widget(form) }}
+        <div class="form-action well text-center">
+            <input class="btn btn-primary" type="submit" value="{{ 'registration.submit'|trans }}" />
+        </div>
+    </fieldset>
+</form>

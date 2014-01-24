@@ -1,0 +1,75 @@
+
+    /**
+{% block phpdoc_method_header %}
+     * Displays a form to create a new {{ entity }} entity.
+{% endblock phpdoc_method_header %}
+     *
+{% block phpdoc_method_annotations %}
+{% if 'annotation' == format %}
+     * @Route("/new", name="{{ route_name_prefix }}_new")
+     * @Method("GET")
+     * @Template()
+{% endif %}
+{% endblock phpdoc_method_annotations %}
+     */
+{% block method_definition %}
+    public function newAction(Request $request)
+{% endblock method_definition %}
+    {
+{% block method_body %}
+        $entity = new {{ entity_class }}();
+        //  On déclare le formulaire de création de l'entité {{ entity_class }}
+        $form   = $this->createCreateForm($entity);
+        //  On gère la soumissoon du formulire
+        if( $request->getMethod() == 'POST')
+        {
+            $form->handleRequest($request);
+
+            if ($form->isValid()) {
+                //  On enregistre l'entité
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($entity);
+                $em->flush();
+                //  On redirige vers la page de visualisation de l'entité crée
+                return $this->redirect($this->generateUrl('{{ route_name_prefix }}_show', array('id' => $entity->getId())));
+            }
+        }
+{% endblock method_body %}
+
+{% block method_return %}
+{% if 'annotation' == format %}
+        //  On affiche la vue
+        return array(
+            'entity' => $entity,
+            'form'   => $form->createView(),
+        );
+{% else %}
+        return $this->render('{{ bundle }}:{{ entity|replace({'\\': '/'}) }}:new.html.twig', array(
+            'entity' => $entity,
+            'form'   => $form->createView(),
+        ));
+{% endif %}
+{% endblock method_return %}
+    }
+{% block form %}
+    /**
+    * Creates a form to create a {{ entity }} entity.
+    *
+    * @param {{ entity_class }} $entity The entity
+    *
+    * @return \Symfony\Component\Form\Form The form
+    */
+    private function createCreateForm({{ entity_class }} $entity)
+    {
+        //  On crée un formulaire de crétion de l'entité
+        $form = $this->createForm(new {{ entity_class }}Type(), $entity, array(
+            'action' => $this->generateUrl('{{ route_name_prefix }}_new'),
+            'method' => 'POST',
+            'attr' => array('class' => '{{ class.form }}'),
+        ));
+        //  On crée un formulaire pour la soumission du formulaire
+        $form->add('submit', 'submit', array('translation_domain' => 'FOSUserBundle', 'label' => 'actions.create', 'attr' => array( 'class' => '{{ class.bouton }}' )));
+        //  On retourne le formulaire
+        return $form;
+    }
+{% endblock form %}

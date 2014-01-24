@@ -1,0 +1,4 @@
+.fos_user_change_password, .fos_user_resetting_reset, .fos_user_resetting_request, #fos_user_security_login { width: 500px; margin: 0 auto; }
+.main { margin-bottom: 33px; min-height: 300px; }
+.main section h1 { margin: 0 0 33px; }
+#fos_user_profile_form_description, #user_description { height: 180px; }
