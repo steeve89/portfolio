@@ -45,6 +45,9 @@ services:
             - { name: kernel.event_listener, event: fos_user.registration.confirmed,   method: onUserRegistrationConfirmed }
             - { name: kernel.event_listener, event: app_portfolio.projet.post_projet,   method: onUserProjetPost }
             - { name: kernel.event_listener, event: app_portfolio.message.post_message,   method: onUserMessagePost }
+            - { name: kernel.event_listener, event: app_portfolio.paiement.post_paiement,   method: onUserPaiementPost }
+            - { name: kernel.event_listener, event: app_blog.commentaire.post_commentaire,   method: onUserCommentairePost }
+            - { name: kernel.event_listener, event: app_blog.article.post_article,   method: onUserArticlePost }
 
 
 

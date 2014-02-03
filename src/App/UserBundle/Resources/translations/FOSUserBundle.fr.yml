@@ -1,6 +1,40 @@
 numero: N°
 currency: euros
 
+# commentaire
+commentaire:
+    prefix: CMTOO 
+    field:
+        id:           identifiant
+        nom:          Nom
+        prenom:       Prénom
+        email:        Email
+        contenu:      Contenu
+        note:         Note
+        createdDate:  Date de Création        
+        isActived:    Actif ?
+        auteur:       Auteur
+        article:      Article
+    message:
+        write:  Ecrit le
+        update: Mis à jour le
+    choices:
+        isActived:
+            - NON
+            - OUI
+    index:
+        title: Liste des commentaires
+        new: Ajouter un commentaire
+        back: Retour à la liste des commentaires
+        unavailable: Aucun commentaire est disponible pour le moment.
+        add:  Un nouveau commentaire a été ajouté. En attente de modération. Merci !
+    new:
+        title:  Ajouter un commentaire
+    show:
+        title: Commentaire N°"%id%"
+    edit:
+        title: Edition Commentaire N°"%id%"
+
 # image
 image:
     field:
@@ -154,6 +188,7 @@ invoice:
         taxe:           Taxe
         totalHT:        Total HT
         totalTTC:       Net à Payer
+        remise:         Remise
     pdf:
         title:  loko-steeve.com-facture-INV00
     index:
@@ -222,6 +257,8 @@ projet:
         pieceJointe: Pieces Jointes
         file: Fichier
         isActived:  Actif ?
+        url: Url
+        remise: Remise
     choices:
         budget:
             - 0 à 500 euros
@@ -454,5 +491,6 @@ form:
     new_password: "Nouveau mot de passe :"
     new_password_confirmation: "Vérification :"
     locked: Bloqué ?
+    remise: Remise
     placeholder:
         description: Quelques mots sur votre activité professionnelle ?

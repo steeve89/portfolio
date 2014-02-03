@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the PortfolioBundle.
+ *
+ * (c) LOKO Steeve <loko.steeve@yahoo.fr>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace App\PortfolioBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -22,7 +31,7 @@ class Projet
     private $paiement;
     
     /**
-    * @ORM\OneToMany(targetEntity="App\PortfolioBundle\Entity\Message", mappedBy="projet", cascade={"persist"})
+    * @ORM\OneToMany(targetEntity="App\PortfolioBundle\Entity\Message", mappedBy="projet", cascade={"persist", "remove"})
     */
     private $messages;
     
@@ -97,6 +106,14 @@ class Projet
     /**
      * @var string
      *
+     * @ORM\Column(name="url", type="string", length=255, nullable=true)
+     * 
+     * @Assert\Length(min="5")
+     */
+    private $url;
+    /**
+     * @var string
+     *
      * @ORM\Column(name="code", type="string", length=16)
      */
     private $code;
@@ -129,13 +146,26 @@ class Projet
      * @var integer
      *
      * @ORM\Column(name="status", type="integer")
+     * 
+     * @Assert\NotBlank()
      */
     private $status;   
+        
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="remise", type="float")
+     * 
+     * @Assert\NotBlank()
+     */
+    private $remise;
         
     /**
      * @var boolean
      *
      * @ORM\Column(name="is_actived", type="boolean")
+     * 
+     * @Assert\NotBlank()
      */
     private $isActived;
 
@@ -240,6 +270,7 @@ class Projet
     {
         return $this->createdDate;
     }
+    
     /**
      * Constructor
      */
@@ -247,9 +278,15 @@ class Projet
     {
         $this->messages = new ArrayCollection();
         $this->pieceJointes = new ArrayCollection();
-        
-        $this->status = 0;
-        $this->code = time();
+        $this->remise = 0;
+    }
+    
+    /**
+     * toString
+     */
+    public function __toString()
+    {
+        return $this->titre;
     }
     
     /**
@@ -352,7 +389,7 @@ class Projet
      */
     public function setPieceJointes(ArrayCollection $pieceJointes)
     {
-        foreach ($pieceJointes as $pieceJointe) {
+        foreach ($pieceJointes as $key => $pieceJointe) {
             $pieceJointe->setProjet($this);
         }
         
@@ -366,7 +403,9 @@ class Projet
     public function onPrePersist()
     {
         $this->setCreatedDate(new \DateTime('now'));
-        
+        $this->setIsActived(true);
+        $this->setStatus(0);
+        $this->setCode(time());
     }
 
     /**
@@ -532,7 +571,7 @@ class Projet
     /**
      * Get status
      *
-     * @return integer 
+     * @return integer
      */
     public function getStatus()
     {
@@ -560,5 +599,28 @@ class Projet
     public function getPaiement()
     {
         return $this->paiement;
+    }
+
+    /**
+     * Set isActived
+     *
+     * @param boolean $isActived
+     * @return Projet
+     */
+    public function setIsActived($isActived)
+    {
+        $this->isActived = $isActived;
+    
+        return $this;
+    }
+
+    /**
+     * Get isActived
+     *
+     * @return boolean 
+     */
+    public function getIsActived()
+    {
+        return $this->isActived;
     }
 }

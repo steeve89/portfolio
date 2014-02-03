@@ -106,6 +106,14 @@ class Projet
     /**
      * @var string
      *
+     * @ORM\Column(name="url", type="string", length=255, nullable=true)
+     * 
+     * @Assert\Length(min="5")
+     */
+    private $url;
+    /**
+     * @var string
+     *
      * @ORM\Column(name="code", type="string", length=16)
      */
     private $code;
@@ -142,6 +150,15 @@ class Projet
      * @Assert\NotBlank()
      */
     private $status;   
+        
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="remise", type="float")
+     * 
+     * @Assert\NotBlank()
+     */
+    private $remise;
         
     /**
      * @var boolean
@@ -261,6 +278,7 @@ class Projet
     {
         $this->messages = new ArrayCollection();
         $this->pieceJointes = new ArrayCollection();
+        $this->remise = 0;
     }
     
     /**
@@ -604,5 +622,51 @@ class Projet
     public function getIsActived()
     {
         return $this->isActived;
+    }
+
+    /**
+     * Set url
+     *
+     * @param string $url
+     * @return Projet
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+    
+        return $this;
+    }
+
+    /**
+     * Get url
+     *
+     * @return string 
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+    /**
+     * Set remise
+     *
+     * @param float $remise
+     * @return Projet
+     */
+    public function setRemise($remise)
+    {
+        $this->remise = $remise;
+    
+        return $this;
+    }
+
+    /**
+     * Get remise
+     *
+     * @return float 
+     */
+    public function getRemise()
+    {
+        return $this->remise;
     }
 }

@@ -29,9 +29,9 @@
             </tr>
         </thead>
         <tbody>
-        {% for key, entity in entities %}
+        {% for entity in entities %}
             <tr>
-                <td>{{ key + 1 }}</td>
+                <td>{{ loop.index }}</td>
                 {# Si c'est un message de l'administrateur, on change l'arrière plan #}
                 <td {% if entity.user.roles[0] == "ROLE_ADMIN" or entity.user.roles[0] == "ROLE_SUPER_ADMIN"  %}class="alert alert-error"{% endif %}>                    
                     {# Si l'utilisateur courant est l'auteur du message, on affiche Moi #}

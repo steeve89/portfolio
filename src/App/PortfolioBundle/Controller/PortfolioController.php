@@ -74,6 +74,7 @@ class PortfolioController extends Controller
         //  On affiche la vue
         return $this->render('AppPortfolioBundle:Page:contact.html.twig', array( 'form' => $form->createView() ));
     }
+    
     /**
      * Page service Client
      * 

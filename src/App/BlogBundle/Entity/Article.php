@@ -254,6 +254,14 @@ class Article
     }
     
     /**
+     * toString
+     */
+    public function __toString()
+    {
+        return $this->getTitre();
+    }
+    
+    /**
      * Set user
      *
      * @param \App\UserBundle\Entity\User $user

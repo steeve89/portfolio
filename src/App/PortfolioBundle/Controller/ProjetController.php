@@ -81,6 +81,7 @@ class ProjetController extends Controller
                 //  On définie l'auteur du projet
                 $user = $this->getUser();
                 $projet->setUser($user);
+                $projet->setRemise($user->getRemise());
                 //  On enregstre le projet
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($projet);

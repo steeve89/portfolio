@@ -62,6 +62,7 @@ class UserType extends AbstractType
                 ->add('locked', 'checkbox', array('label' => 'form.locked', 'translation_domain' => 'FOSUserBundle', 'required' => false ))
                 ->add('telephone', 'text', array('label' => 'form.telephone', 'translation_domain' => 'FOSUserBundle', 'required' => false ))
                 ->add('skype', 'text', array('label' => 'form.skype', 'translation_domain' => 'FOSUserBundle', 'required' => false ))
+                ->add('remise', 'text', array('label' => 'form.remise', 'translation_domain' => 'FOSUserBundle' ))
                 //  Utilisé pour l'affichage des legends du formulaire client ou partenaire
                 ->add('typeUser','hidden', array('data' => $this->type, 'mapped' => false))
         ;

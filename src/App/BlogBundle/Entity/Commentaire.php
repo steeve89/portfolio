@@ -64,7 +64,7 @@ class Commentaire
      * @ORM\Column(name="email", type="string", length=100)
      * 
      * @Assert\NotBlank()
-     * @Assert\Length(min="5")
+     * @Assert\Email()
      */
     private $email;
 
@@ -86,7 +86,15 @@ class Commentaire
      * @Assert\NotBlank()
      */
     private $note;
-
+    
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="is_admin", type="boolean")
+     * 
+     */
+    private $isAdmin;
+    
     /**
      * @var \DateTime
      *
@@ -106,7 +114,6 @@ class Commentaire
      *
      * @ORM\Column(name="is_actived", type="boolean")
      * 
-     * @Assert\NotBlank()
      */
     private $isActived;
 
@@ -116,6 +123,7 @@ class Commentaire
     public function __construct()
     {
         $this->isActived = false;
+        $this->isAdmin = false;
     }
     
     /**
@@ -353,4 +361,26 @@ class Commentaire
         $this->setUpdatedDate(new \DateTime('now'));
     }
 
+    /**
+     * Set isAdmin
+     *
+     * @param boolean $isAdmin
+     * @return Commentaire
+     */
+    public function setIsAdmin($isAdmin)
+    {
+        $this->isAdmin = $isAdmin;
+    
+        return $this;
+    }
+
+    /**
+     * Get isAdmin
+     *
+     * @return boolean 
+     */
+    public function getIsAdmin()
+    {
+        return $this->isAdmin;
+    }
 }

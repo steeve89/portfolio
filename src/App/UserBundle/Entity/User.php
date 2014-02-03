@@ -102,7 +102,7 @@ class User extends BaseUser
      */
     private $telephone;
     
-        /**
+     /**
      * @var string
      *
      * @ORM\Column(name="skype", type="string", length=255, nullable=true)
@@ -110,6 +110,15 @@ class User extends BaseUser
      * @Assert\Length(min="3")
      */
     private $skype;
+    
+     /**
+     * @var float
+     *
+     * @ORM\Column(name="remise", type="float")
+     * 
+     * @Assert\NotBlank()
+     */
+    private $remise;
     
     /**
      * @var \DateTime
@@ -122,6 +131,7 @@ class User extends BaseUser
     {
         parent::__construct();
         $this->dateInscription = new \Datetime();
+        $this->remise = 0;
     }
 
     /**
@@ -425,5 +435,28 @@ class User extends BaseUser
     public function getSkype()
     {
         return $this->skype;
+    }
+
+    /**
+     * Set remise
+     *
+     * @param float $remise
+     * @return User
+     */
+    public function setRemise($remise)
+    {
+        $this->remise = $remise;
+    
+        return $this;
+    }
+
+    /**
+     * Get remise
+     *
+     * @return float 
+     */
+    public function getRemise()
+    {
+        return $this->remise;
     }
 }

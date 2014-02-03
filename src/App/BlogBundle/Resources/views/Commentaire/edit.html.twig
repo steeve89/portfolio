@@ -1,16 +1,27 @@
-{% extends '::base.html.twig' %}
+{% extends "AppUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block title %}{{ 'commentaire.edit.title' | trans({'%id%': entity.id }) }} | {{ parent() }}{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+
+{% block header_title %}{{ 'commentaire.edit.title' | trans({'%id%': entity.id }) }} | {{ parent() }}{% endblock %}
 
 {% block body -%}
-    <h1>Edition Commentaire</h1>
+<div class="main">
 
     {{ form(edit_form) }}
 
-        <ul class="inline">
-    <li>
-        <a class="btn" href="{{ path('commentaire') }}">
-            {{ 'commentaire.index.back' | trans }}
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    <ul class="inline">
+        <li>
+            <a class="btn" href="{{ path('commentaire') }}">
+                <i class="icon-chevron-left"></i>
+                {{ 'commentaire.index.back' | trans }}
+            </a>
+        </li>
+        <li>{{ form(delete_form) }}</li>
+    </ul>
+
+</div>
 {% endblock %}

@@ -1,0 +1,20 @@
+{% extends "AppPortfolioBundle::layout.html.twig" %}
+
+{% block title %}{{ 'site.erreur.titre' | trans({'%status_code%': status_code}) }}{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+
+{% block header_title %}{{ 'site.erreur.header_titre' | trans }}{% endblock %}
+
+{% block body %}
+<div class="row-fluid">  
+    
+    <article>        
+        <h1>{{ 'site.erreur.article.titre' | trans({'%status_code%': status_code, '%status_text%': status_text}) }}</h1>
+        <p>
+            {{ 'site.erreur.article.paragraphe' | trans({'%email%': webmaster_email}) }}
+        </p>       
+    </article>
+
+</div>
+{% endblock %}

@@ -47,7 +47,8 @@ body { position: relative; padding-top: 40px; }
 .piecejointe label.required { display: none; }
 .piecejointe .targetblank { margin-bottom: 10px; }
 .actions { width: 100px; }
-
+.bouton-partage li.middle { width: 55px; }
+.footer-texte { font-size: 24px; margin-bottom: 10px; }
 /***************/
 /** Textarea  **/
 /***************/

@@ -20,6 +20,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use App\PortfolioBundle\Entity\Paiement;
 use App\PortfolioBundle\Form\PaiementType;
 use App\PortfolioBundle\Entity\Projet;
+use App\PortfolioBundle\AppPortfolioEvents;
+use App\PortfolioBundle\Event\FilterPaiementEvent;
 use JMS\SecurityExtraBundle\Annotation\Secure;
 
 /**
@@ -79,6 +81,10 @@ class PaiementController extends Controller
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($paiement);
                 $em->flush();
+                // On crée l'évènement FilterPaiementEvent avec son argument
+                $event = new FilterPaiementEvent($paiement);
+                // On déclenche l'évènement
+                $this->get('event_dispatcher')->dispatch(AppPortfolioEvents::onPaiementPost, $event);
                 //  On redirige vers la page de visualisation de l'entité crée
                 return $this->redirect($this->generateUrl('paiement_show', array('id' => $paiement->getId())));
             }

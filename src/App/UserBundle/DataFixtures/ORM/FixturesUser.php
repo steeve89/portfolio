@@ -11,11 +11,12 @@
 
 namespace App\UserBundle\DataFixtures\ORM;
 
-use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\DataFixtures\AbstractFixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use App\UserBundle\Entity\User;
 
-class FixturesUser implements FixtureInterface
+class FixturesUser extends AbstractFixture implements OrderedFixtureInterface
 {
     public function load(ObjectManager $em)	// $manager = EntityManager
     {
@@ -29,6 +30,7 @@ class FixturesUser implements FixtureInterface
         $super_admn->setEmail('loko.steeve@yahoo.fr');
         $super_admn->setPlainPassword('admin');
         $super_admn->setRoles(array('ROLE_SUPER_ADMIN'));
+        $this->addReference('super-admin', $super_admn);
         //  On crée un partenaire pour les tests
         $partenaire = new User();
         $partenaire->setUsername('partenaire');
@@ -54,6 +56,14 @@ class FixturesUser implements FixtureInterface
         $em->persist($client);
         //  On déclenche l'neregistrement
         $em->flush();
+    }
+    
+    /**
+     * {@inheritDoc}
+     */
+    public function getOrder()
+    {
+        return 1; // l'ordre dans lequel les fichiers sont chargés
     }
 }
 ?>

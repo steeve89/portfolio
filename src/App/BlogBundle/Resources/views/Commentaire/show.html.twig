@@ -1,42 +1,70 @@
-{% extends '::base.html.twig' %}
+{% extends "AppUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block title %}{{ 'commentaire.show.title' | trans({'%id%': entity.id }) }} | {{ parent() }}{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+
+{% block header_title %}{{ 'commentaire.show.title' | trans({'%id%': entity.id }) }} | {{ parent() }}{% endblock %}
 
 {% block body -%}
-    <h1>Commentaire</h1>
+<div id="main">
 
     <table class="table table-hover">
-        <tbody>            <tr>
+        <tbody>            
+            <tr>
                 <th>{{ 'commentaire.field.id'| trans }}</th>
-                <td>{{ entity.id }}</td>
-            </tr>            <tr>
+                <td>{{ 'categorie.prefix'| trans }}{{ entity.id }}</td>
+            </tr>           
+            <tr>
                 <th>{{ 'commentaire.field.nom'| trans }}</th>
                 <td>{{ entity.nom }}</td>
-            </tr>            <tr>
+            </tr>            
+            <tr>
                 <th>{{ 'commentaire.field.prenom'| trans }}</th>
                 <td>{{ entity.prenom }}</td>
-            </tr>            <tr>
+            </tr>            
+            <tr>
                 <th>{{ 'commentaire.field.email'| trans }}</th>
                 <td>{{ entity.email }}</td>
-            </tr>            <tr>
+            </tr>            
+            <tr>
                 <th>{{ 'commentaire.field.contenu'| trans }}</th>
                 <td>{{ entity.contenu }}</td>
-            </tr>            <tr>
+            </tr>            
+            <tr>
                 <th>{{ 'commentaire.field.note'| trans }}</th>
                 <td>{{ entity.note }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'commentaire.field.isActived'| trans }}</th>
+                <td>
+                    {% if entity.isActived == 1 %}
+                        {{ 'commentaire.choices.isActived.1' | trans }}
+                    {% else %}
+                        {{ 'commentaire.choices.isActived.0' | trans }}                            
+                    {% endif %}
+                </td>
             </tr>
         </tbody>
     </table>
 
-        <ul class="inline">
-    <li>
-        <a class="btn" href="{{ path('commentaire') }}">
-            {{ 'commentaire.index.back' | trans }}
-        </a>
-    </li>
-    <li>
-        <a class="btn" href="{{ path('commentaire_edit', { 'id': entity.id }) }}">
-            {{ 'actions.edit' | trans }}
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    <ul class="inline">
+        <li>
+            <a class="btn" href="{{ path('commentaire') }}">
+                <i class="icon-chevron-left"></i>
+                {{ 'commentaire.index.back' | trans }}
+            </a>
+        </li>
+        <li>
+            <a class="btn btn-primary" href="{{ path('commentaire_edit', { 'id': entity.id }) }}">
+                <i class="icon-edit icon-white"></i>
+                {{ 'actions.edit' | trans }}
+            </a>
+        </li>
+        <li>{{ form(delete_form) }}</li>
+    </ul>
+    
+</div>
 {% endblock %}

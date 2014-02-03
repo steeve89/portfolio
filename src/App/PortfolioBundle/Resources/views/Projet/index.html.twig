@@ -20,7 +20,8 @@
                 {% endif %}     
                 <th>{{ 'projet.field.titre' | trans }}</th> 
                 <th>{{ 'projet.field.budget' | trans }}</th>
-                <th>{{ 'projet.field.dateButoir' | trans }}</th>    
+                <th>{{ 'projet.field.dateButoir' | trans }}</th>
+                <th>{{ 'projet.field.url' | trans }}</th>
                 <th>{{ 'projet.field.status'| trans }}</th>
                 <th>{{ 'projet.field.dateDeLivraison' | trans }}</th>
                 <th>{{ 'paiement.field.prixHorsTaxe' | trans }}</th>
@@ -32,9 +33,9 @@
             </tr>
         </thead>
         <tbody>
-        {% for key, entity in entities %}
+        {% for entity in entities %}
             <tr>
-                <td>{{ key + 1 }}</td>
+                <td>{{ loop.index }}</td>
                 <td><a href="{{ path('projet_show', { 'slug': entity.slug }) }}">{{ 'projet.prefix' | trans }}{{ entity.id }}</a></td>
                 {% if is_granted("ROLE_ADMIN") %}
                 <th>{{ entity.user.nom ~ ' ' ~ entity.user.prenom }}</th> 
@@ -42,6 +43,7 @@
                 <td>{{ entity.titre }}</td>
                 <td>{{ ('projet.choices.budget.' ~ entity.budget) | trans }}</td>
                 <td>{{ entity.dateButoir | localizeddate('full', 'none') }}</td>
+                <td>{% if entity.url %}<a class="targetblank" href="{{ entity.url }}">{{ entity.url }}</a>{% endif %}</td>
                 <td><div class="alert alert-info">{{ ('projet.choices.status.' ~ entity.status) | trans }}</div></td>
                 <td><div class="alert alert-info">{% if entity.dateDeLivraison %}{{ entity.dateDeLivraison | localizeddate('full', 'none') }}{% else %}{{ 'message.pending' | trans }}{% endif %}</div></td>
                 <td><div class="alert alert-info">{% if entity.paiement is not null %}{{ entity.paiement.prixHorsTaxe }} {{ 'currency' | trans }}{% else %}{{ 'message.pending' | trans }}{% endif %}</div></td>
@@ -70,7 +72,7 @@
                         </div>
                     {% else %}
                         <div class="alert alert-warning">
-                            {{ 'projet.choices.isActived.1' | trans }}
+                            {{ 'projet.choices.isActived.0' | trans }}
                         </div>                            
                     {% endif %}
                 </td>
@@ -96,7 +98,7 @@
             </tr>
         {% else %}
             <tr>
-                <td class="alert alert-info" colspan="{% if is_granted("ROLE_ADMIN") %}12{% else %}10{% endif %}">{{ 'projet.index.unavailable'| trans }}</td>
+                <td class="alert alert-info" colspan="{% if is_granted("ROLE_ADMIN") %}13{% else %}11{% endif %}">{{ 'projet.index.unavailable'| trans }}</td>
             </tr>
         {% endfor %}
         </tbody>
@@ -111,7 +113,7 @@
             {% endfor %}
         </ul>
     </div>
-    
+    {% if not is_granted("ROLE_ADMIN") %}
     <ul class="inline">
         <li>
             <a class="btn" href="{{ path('projet_new') }}">
@@ -120,5 +122,6 @@
             </a>
         </li>
     </ul>
+    {% endif %}
 </div>
 {% endblock %}

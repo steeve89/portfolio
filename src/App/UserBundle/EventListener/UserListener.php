@@ -16,6 +16,9 @@ use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 use FOS\UserBundle\Event\FilterUserResponseEvent;
 use App\PortfolioBundle\Event\FilterProjetEvent;
 use App\PortfolioBundle\Event\FilterMessageEvent;
+use App\PortfolioBundle\Event\FilterPaiementEvent;
+use App\BlogBundle\Event\FilterCommentaireEvent;
+use App\BlogBundle\Event\FilterArticleEvent;
 use App\UserBundle\Entity\UserLog;
 
 /**
@@ -99,6 +102,13 @@ class UserListener
         }    
     }
     
+    /**
+     * onUserProjetPost
+     * 
+     * Envoie un message à l'administrateur à chaque fois qu'un projet est créé
+     * 
+     * @param \App\PortfolioBundle\Event\FilterProjetEvent $event
+     */
     public function onUserProjetPost( FilterProjetEvent $event )
     {        
         //  On recupère le projet
@@ -131,9 +141,16 @@ class UserListener
         $this->sendMail($subject, $msg, $sender, $receiver);
     }
     
+    /**
+     * onUserMessagePost
+     * 
+     * Informel'administrateur ou l'auteur du projet, qu'un nouveau message est disponible dans le rapport du projet
+     * 
+     * @param \App\PortfolioBundle\Event\FilterMessageEvent $event
+     */
     public function onUserMessagePost( FilterMessageEvent $event )
     {        
-        //  On recupère le projet
+        //  On recupère le mesage
         $message = $event->getMessage();
         //  On recupère l'auteur du message
         $user = $message->getUser();
@@ -142,7 +159,7 @@ class UserListener
         $titre_projet = $projet->getTitre();
         //  On recupère le service router
         $router = $this->container->get('router');
-        //  On recupère l'url absolue pour visualiser le projet
+        //  On recupère l'url absolue pour visualiser le rapport sur le projet
         $url_rapport_projet = $router->generate('message', array('slug' => $projet->getSlug()), true);        
         //  Le sujet
         $subject = 'UN NOUVEAU MESSAGE POUR LE PROJET "'.$titre_projet.'" - LOKO-STEEVE.COM';            
@@ -175,6 +192,101 @@ class UserListener
         $this->sendMail($subject, $msg, $sender, $receiver);
     }
     
+    public function onUserPaiementPost( FilterPaiementEvent $event )
+    {        
+        //  On recupère le paiement
+        $paiement = $event->getPaiement();
+        //  On recupère le projet associé à ce paiement
+        $projet = $paiement->getProjet();
+        $titre_projet = $projet->getTitre();
+        //  On recupère l'auteur du projet
+        $user = $projet->getUser();
+        //  On recupère le service router
+        $router = $this->container->get('router');
+        //  On recupère l'url absolue pour visualiser le projet et sa facture
+        $url_projet = $router->generate('projet_show', array('slug' => $projet->getSlug()), true);
+        $url_facture_projet = $router->generate('invoice', array('slug' => $projet->getSlug()), true);
+        //  Le sujet
+        $subject = 'UN DEVIS EST DISPONIBLE POUR LE PROJET "'.$titre_projet.'" - LOKO-STEEVE.COM';            
+        //  Les infos de contact de l'administrateur
+        $webmaster_name = $this->container->getParameter('webmaster_name');
+        $webmaster_email = $this->container->getParameter('webmaster_email');    
+        $sender = array($webmaster_email => $webmaster_name);
+        //  L'auteur du mail
+        $auteur = $user->getNom().' '.$user->getPrenom();
+        $receiver = array($user->getEmail() => $auteur);        
+        //  On définit le message à envoyer au webmaster
+        $msg .= "Un devis est disponible pour vous: "."\r\n";
+        $msg .= "Titre du projet: ".$titre_projet."\r\n";
+        $msg .= 'Voir les détails sur le pojet : <a href="' . $url_projet . '">' . $url_projet . '</a>'."\r\n"."\r\n";
+        $msg .= 'Voir la facture : <a href="' . $url_facture_projet . '">' . $url_facture_projet . '</a>'."\r\n"."\r\n";
+        $msg .= "Cordialement,"."\r\n";
+        $msg .= "L'équipe."."\r\n"."\r\n";
+        $msg .= "Il s'agit d'un message automatique. Merci de ne pas y répondre.";
+        //  On envoit le mail
+        $this->sendMail($subject, $msg, $sender, $receiver);
+    }
+    
+    /**
+     * onUserCommentairePost
+     * 
+     * Informe l'administrateur qu'un nouveau commentaire est en attente de modération
+     * 
+     * @param \App\BlogBundle\Event\FilterCommentaireEvent $event
+     */
+    public function onUserCommentairePost( FilterCommentaireEvent $event )
+    {        
+        //  On recupère le commentaire
+        $commentaire = $event->getCommentaire();
+        //  Si le commentaire est actif, alors on envoie aucun message
+        if ( $commentaire->getIsActived() ) return;
+        //  On recupère le service router
+        $router = $this->container->get('router');
+        //  On recupère l'url absolue pour visualiser la liste des commentaires
+        $url_commentaires = $router->generate('commentaire');        
+        //  Le sujet
+        $subject = "UN NOUVEAU COMMENTAIRE EST DISPONIBLE - LOKO-STEEVE.COM";            
+        //  Le destinataire
+        $webmaster_name = $this->container->getParameter('webmaster_name');
+        $webmaster_email = $this->container->getParameter('webmaster_email');    
+        $receiver = array($webmaster_email => $webmaster_name);
+        //  L'auteur du mail
+        $auteur = $commentaire->getNom().' '.$commentaire->getPrenom();
+        $sender = array($commentaire->getEmail() => $auteur);
+        //  On définit le message à envoyer au webmaster
+        $msg = "Bonjour LOKO Steeve, "."\r\n"."\r\n";
+        $msg .= "Un nouveau commentaire est disponible sur le site: "."\r\n";
+        $msg .= "Auteur: ".$auteur."\r\n";
+        $msg .= 'Voir la liste des commentaires : <a href="' . $url_commentaires . '">' . $url_commentaires . '</a>'."\r\n"."\r\n";
+        $msg .= "Cordialement,"."\r\n";
+        $msg .= "L'équipe."."\r\n"."\r\n";
+        $msg .= "Il s'agit d'un message automatique. Merci de ne pas y repondre.";
+        //  On envoit le mail
+        $this->sendMail($subject, $msg, $sender, $receiver);
+    }
+    
+    /**
+     * onUserArticlePost
+     * 
+     * Informe qu'un article vient d'être créé
+     * 
+     * @param \App\BlogBundle\Event\FilterArticleEvent $event
+     */
+    public function onUserArticlePost( FilterArticleEvent $event )
+    {        
+        //  Instructions à exécuter orsqu'un article est publié
+    }
+    
+    /**
+     * sendMail
+     * 
+     * Permet d'envoie un message à un utilisateur
+     * 
+     * @param tring $subject
+     * @param string $body
+     * @param array $sender
+     * @param array $receiver
+     */
     public function sendMail( $subject, $body, $sender, $receiver )
     {        
         //  Récupération du service pour l'envoi du mail

@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the BlogBundle.
+ *
+ * (c) LOKO Steeve <loko.steeve@yahoo.fr>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace App\BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -55,7 +64,7 @@ class Commentaire
      * @ORM\Column(name="email", type="string", length=100)
      * 
      * @Assert\NotBlank()
-     * @Assert\Length(min="5")
+     * @Assert\Email()
      */
     private $email;
 
@@ -77,7 +86,15 @@ class Commentaire
      * @Assert\NotBlank()
      */
     private $note;
-
+    
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="is_admin", type="boolean")
+     * 
+     */
+    private $isAdmin;
+    
     /**
      * @var \DateTime
      *
@@ -97,9 +114,17 @@ class Commentaire
      *
      * @ORM\Column(name="is_actived", type="boolean")
      * 
-     * @Assert\NotBlank()
      */
     private $isActived;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->isActived = false;
+        $this->isAdmin = false;
+    }
     
     /**
      * Get id
@@ -247,5 +272,92 @@ class Commentaire
     public function getArticle()
     {
         return $this->article;
+    }
+
+    /**
+     * Set createdDate
+     *
+     * @param \DateTime $createdDate
+     * @return Commentaire
+     */
+    public function setCreatedDate($createdDate)
+    {
+        $this->createdDate = $createdDate;
+    
+        return $this;
+    }
+
+    /**
+     * Get createdDate
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedDate()
+    {
+        return $this->createdDate;
+    }
+
+    /**
+     * Set updatedDate
+     *
+     * @param \DateTime $updatedDate
+     * @return Commentaire
+     */
+    public function setUpdatedDate($updatedDate)
+    {
+        $this->updatedDate = $updatedDate;
+    
+        return $this;
+    }
+
+    /**
+     * Get updatedDate
+     *
+     * @return \DateTime 
+     */
+    public function getUpdatedDate()
+    {
+        return $this->updatedDate;
+    }
+
+    /**
+     * Set isActived
+     *
+     * @param boolean $isActived
+     * @return Commentaire
+     */
+    public function setIsActived($isActived)
+    {
+        $this->isActived = $isActived;
+    
+        return $this;
+    }
+
+    /**
+     * Get isActived
+     *
+     * @return boolean 
+     */
+    public function getIsActived()
+    {
+        return $this->isActived;
+    }
+    
+    /**
+    * Appeler avant la persistence d'un objet en base de donnée
+    * @ORM\PrePersist
+    */
+    public function onPrePersist()
+    {
+        $this->setCreatedDate(new \DateTime('now'));
+    }
+
+    /**
+    * Appeler avant la mise à jour d'un objet en base de donnée
+    * @ORM\PreUpdate
+    */
+    public function onPreUpdate()
+    {
+        $this->setUpdatedDate(new \DateTime('now'));
     }
 }

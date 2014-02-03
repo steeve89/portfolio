@@ -1,2 +1,33 @@
-## YAML Template.
----
+blog:
+    menu:
+        accueil: Accueil
+        contact:  Contact
+    accueil:
+        titre: Blog Développement Web
+        retour: Retour sur la page &laquo; accueil &raquo; du Blog
+        no_article: Aucun article est disponible sur le Blog pour le moment. Merci !
+    categorie:
+        titre: Tutoriels, trucs et astuces
+        voir_tous_articles_categorie: Voir tous les articles de cette catégorie
+        retour: Retour sur la page catégorie &laquo; %nom% &raquo; du Blog
+    article:
+        publier_le: Publié le
+        lire_la_suite: Lire la suite
+        commentaire:
+            titre: Commentaires
+    contact:
+        titre: Contact
+        paragraphe: Nous sommes à votre disposition pour toute demande d'information complémentaire.
+        form:
+            titre:  Formulaire de Contact
+    search:
+        titre: Résultat de la recherche du mot "%word%"
+        aucun_resultat: Aucun résultat trouvé pour le mot "%word%".
+    searchform:
+        titre:  Rechercher un article
+        field:  
+            search: Rechercher
+        placeholder: Rechercher...
+        submit: OK
+    don:
+        titre: Faire un don

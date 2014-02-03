@@ -69,6 +69,16 @@
             </div>
             {% endfor %}
             {% endif %}
+            {% if form.remise is defined %}
+            {# Affichage du champ remise #}
+            <div class="control-group">
+                {{ form_label(form.remise, null, {'label_attr': {'class' : 'control-label' }}) }}
+                <div class="controls">        
+                    {{ form_widget(form.remise) }}
+                </div>
+                {{ form_errors(form.remise) }}
+            </div>
+            {% endif %}
         </div>
         <div class="span7">
             {# Affichage du champ skype #}

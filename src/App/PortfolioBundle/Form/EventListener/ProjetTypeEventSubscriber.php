@@ -57,7 +57,25 @@ class ProjetTypeEventSubscriber implements EventSubscriberInterface
                             'projet.choices.status.1',
                             'projet.choices.status.2' )
                     )
-                );  
+                )
+                ->add('isActived', 'checkbox', array(
+                        'translation_domain' => 'FOSUserBundle', 
+                        'label' => 'projet.field.isActived', 
+                        'required' => false
+                    )
+                )
+                ->add('url', 'url', array(
+                        'translation_domain' => 'FOSUserBundle', 
+                        'label' => 'projet.field.url', 
+                        'required' => false
+                    )
+                )
+                ->add('remise', 'text', array(
+                        'translation_domain' => 'FOSUserBundle', 
+                        'label' => 'projet.field.remise'
+                    )
+                )
+                ;  
         }
         
     }

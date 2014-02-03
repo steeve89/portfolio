@@ -1,0 +1,60 @@
+{% extends "AppBlogBundle::layout.html.twig" %}
+
+{% block title %}{{ categorie.nom}} {{ 'blog.categorie.titre' | trans }}{% endblock %}
+{% block description %}{{ categorie.description}}{% endblock %}
+{% block keywords %}{% endblock %}
+
+{% block header_title %}{{ categorie.nom}} {{ 'blog.categorie.titre' | trans }}{% endblock %}
+
+{% block pubdate %}
+    <p>{{ 'page.publie_le' | trans }} <time datetime="{{ categorie.createdDate | date('Y-m-d H:i:s') }}" pubdate>{{ categorie.createdDate|localizeddate('full', 'none') }}</time> {{ 'page.par' | trans }} <a href="https://plus.google.com/100370336164704667929/">{{ webmaster_name }}</a></p>
+{% endblock %}
+
+{% block content %}
+<div class="row-fluid">
+    <div class="well">
+        <div class="collections-items">
+        {% for article in categorie.articles %}
+            <article class="span6 post {% if loop.index % 2 == 1 and loop.index > 1 %}marginLeft0{% endif %}">
+                <h1 class="text-center">{{ article.titre }}</h1>
+                {% if article.image %}
+                <figure>
+                    <img src="{{ asset(article.image.webPath) }}" alt="{{ article.image.alt }}" height="200" width="407"/>                                          
+                </figure>
+                {% endif %}                
+                <div class="extrait-article">
+                    {{ article.extrait }}...
+                </div>
+                <p class="date-article text-right">
+                    {{ 'blog.article.publier_le' | trans }}
+                    <time datetime="{{ article.createdDate | date('Y-m-d H:i:s') }}" pubdate>{{ article.createdDate|localizeddate('full', 'none') }}</time>
+                </p>
+                <div class="text-center marginTopBottom20">
+                    <a title="{{ 'blog.article.lire_la_suite' | trans }}" class="btn btn-primary" href="{{ path('app_blog_article', { 'categorie': categorie.slug, 'article': article.slug })}}">
+                        {{ 'blog.article.lire_la_suite' | trans }}
+                    </a>
+                </div>
+            </article>        
+            {% if loop.index % 2 == 0 %}<div class="clearfix"></div>{% endif %}
+        {% endfor %}
+        </div>
+        <div class="clearfix"></div>
+        <div id="page_navigation"></div>
+        <div class="clearfix"></div>
+    </div>
+    <ul class="pager">
+        <li class="previous">
+            <a title="{{ 'blog.accueil.retour' | trans | raw }}" href="{{ path('app_blog_homepage')}}">
+                &larr; {{ 'blog.accueil.retour' | trans | raw }}
+            </a>
+        </li>
+    </ul>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript">
+        var show_per_page = {{ categorie_article_par_page }};
+    </script>
+    {{ parent() }}
+{% endblock %}

@@ -1,5 +1,81 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
+{# Form commentaire #}
+{% block commentaire_widget %}
+{% spaceless %}
+<fieldset>
+    <legend>
+        {% if form.identifier.vars.value is not defined %}
+            {{ 'commentaire.new.title' | trans }}
+        {% else %}
+            {{ 'commentaire.edit.title' | trans({'%id%': form.identifier.vars.value }) }}
+        {%endif %}
+    </legend>
+    <div class="row-fluid rapport">   
+        {% if form.nom is defined %}
+        {# Affichage du champ nom #}
+        <div class="control-group">
+            {{ form_label(form.nom, null, {'label_attr': {'class' : 'control-label' }}) }}
+            <div class="controls">        
+                {{ form_widget(form.nom) }}
+            </div>
+            {{ form_errors(form.nom) }}
+        </div>
+        {% endif %}
+        {% if form.prenom is defined %}
+        {# Affichage du champ prenom #}
+        <div class="control-group">
+            {{ form_label(form.prenom, null, {'label_attr': {'class' : 'control-label' }}) }}
+            <div class="controls">        
+                {{ form_widget(form.prenom) }}
+            </div>
+            {{ form_errors(form.prenom) }}
+        </div>
+        {% endif %}
+        {% if form.email is defined %}
+        {# Affichage du champ email #}
+        <div class="control-group">
+            {{ form_label(form.email, null, {'label_attr': {'class' : 'control-label' }}) }}
+            <div class="controls">        
+                {{ form_widget(form.email) }}
+            </div>
+            {{ form_errors(form.email) }}
+        </div>
+        {% endif %}
+        {# Affichage du champ extrait #}
+        <div class="control-group">
+            {{ form_label(form.note, null, {'label_attr': {'class' : 'control-label' }}) }}
+            <div class="controls">        
+                {{ form_widget(form.note) }}
+            </div>
+            {{ form_errors(form.note) }}
+        </div>
+        {# Affichage du champ extrait #}
+        <div class="control-group">
+            {{ form_label(form.contenu, null, {'label_attr': {'class' : 'control-label' }}) }}
+            <div class="controls">        
+                {{ form_widget(form.contenu, {'attr' : {'class' : 'span5'}}) }}
+            </div>
+            {{ form_errors(form.contenu) }}
+        </div>     
+        {% if form.isActived is defined %}
+        {# Affichage du champ nom #}
+        <div class="control-group">
+            <div class="controls">
+                {{ form_widget(form.isActived, {'attr' : {'class' : 'checkbox'}}) }}
+                {{ form_label(form.isActived, null, {'label_attr': {'class' : 'checkbox inline' }}) }}
+            </div>
+            {{ form_errors(form.isActived) }}
+        </div>
+        {% endif %}
+        <div class="form-actions">
+            {{ form_rest(form) }}
+        </div>         
+    </div>
+</fieldset>
+{% endspaceless %}
+{% endblock %}
+
 {# Form article #}
 {% block article_widget %}
 {% spaceless %}
@@ -75,7 +151,6 @@
 </fieldset>
 {% endspaceless %}
 {% endblock %}
-
 
 {# Form image #}
 {% block image_widget %}

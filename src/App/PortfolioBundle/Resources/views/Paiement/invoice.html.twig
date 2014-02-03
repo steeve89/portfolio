@@ -26,7 +26,7 @@
                     <li><h2>{{ 'invoice.field.prestataire' | trans }}</h2></li>
                     <li>LOKO Steeve</li>
                     <li>Développeur Web Freelance</li>
-                    <li>{{ 'invoice.field.email' | trans }}: loko.steeve@yahoo.fr</li>
+                    <li>{{ 'invoice.field.email' | trans }}: {{ webmaster_email }}</li>
                     <li>{{ 'invoice.field.website' | trans }}: loko-steeve.com</li>
                 </ul>
             </div>
@@ -53,8 +53,15 @@
             <tr class="border-left">
                 <th colspan="4"></th>
                 <th colspan="1" class="border-left">{{ 'invoice.field.taxe'|trans }} (19.6%)</th>
-                <td colspan="1">{{ entity.paiement.taxe }} &euro;</td>
+                <td colspan="1">{{ entity.paiement.taxe }}</td>
             </tr>
+            {% if entity.remise > 0 %}
+            <tr class="border-left">
+                <th colspan="4"></th>
+                <th colspan="1" class="border-left">{{ 'invoice.field.remise'|trans }} ({{ entity.remise }}%)</th>
+                <td colspan="1">({{ entity.paiement.remise }})</td>
+            </tr>
+            {% endif %}
             <tr>
                 <th colspan="4"></th>
                 <th colspan="1" class="border-left border-top">{{ 'invoice.field.totalTTC'|trans }}</th>

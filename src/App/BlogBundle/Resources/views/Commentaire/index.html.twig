@@ -1,49 +1,71 @@
-{% extends '::base.html.twig' %}
+{% extends "AppUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block title %}{{ 'commentaire.index.title' | trans }} | {{ parent() }}{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+
+{% block header_title %}{{ 'commentaire.index.title' | trans }} | {{ parent() }}{% endblock %}
 
 {% block body -%}
-    <h1>Liste des Commentaires</h1>
-
+<div class="main">
+    
     <table class="table table-hover">
         <thead>
             <tr>  
-                    <th>{{ 'commentaire.field.id'| trans }}</th>  
-                    <th>{{ 'commentaire.field.nom'| trans }}</th>  
-                    <th>{{ 'commentaire.field.prenom'| trans }}</th>  
-                    <th>{{ 'commentaire.field.email'| trans }}</th>  
-                    <th>{{ 'commentaire.field.contenu'| trans }}</th>  
-                    <th>{{ 'commentaire.field.note'| trans }}</th>
+                <th>{{ 'numero' | trans }}</th>
+                <th>{{ 'commentaire.field.id'| trans }}</th>  
+                <th>{{ 'commentaire.field.auteur'| trans }}</th>
+                <th>{{ 'commentaire.field.email'| trans }}</th>
+                <th>{{ 'commentaire.field.note'| trans }}</th>
+                <th>{{ 'commentaire.field.isActived'| trans }}</th>
                 <th>{{ 'actions.title' | trans }}</th>
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('commentaire_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.nom }}</td>
-                <td>{{ entity.prenom }}</td>
+                <td>{{ loop.index }}</td>
+                <td><a href="{{ path('commentaire_show', { 'id': entity.id }) }}">{{ 'commentaire.prefix'| trans }}{{ entity.id }}</a></td>
+                <td>{{ entity.nom }} {{ entity.prenom }}</td>                
                 <td>{{ entity.email }}</td>
-                <td>{{ entity.contenu }}</td>
                 <td>{{ entity.note }}</td>
+                <td>
+                    {% if entity.isActived == 1 %}
+                        {{ 'commentaire.choices.isActived.1' | trans }}
+                    {% else %}
+                        {{ 'commentaire.choices.isActived.0' | trans }}                            
+                    {% endif %}
+                </td>
                 <td>
                 <ul class="inline">
                     <li>
-                        <a class="btn" href="{{ path('commentaire_show', { 'id': entity.id }) }}">{{ 'actions.show' | trans }}</a>
+                        <a class="btn" href="{{ path('commentaire_show', { 'id': entity.id }) }}"><i class="icon-th-list"></i> {{ 'actions.show' | trans }}</a>
                     </li>
                     <li>
-                        <a class="btn" href="{{ path('commentaire_edit', { 'id': entity.id }) }}">{{ 'actions.edit' | trans }}</a>
+                        <a class="btn" href="{{ path('commentaire_edit', { 'id': entity.id }) }}"><i class="icon-edit"></i> {{ 'actions.edit' | trans }}</a>
                     </li>
                 </ul>
                 </td>
             </tr>
+        {% else %}
+            <tr>
+                <td class="alert alert-info" colspan="7">{{ 'commentaire.index.unavailable'| trans }}</td>
+            </tr>
         {% endfor %}
         </tbody>
     </table>
-
-        <ul class="inline">
-        <li>
-            <a class="btn" href="{{ path('commentaire_new') }}">
-                {{ 'commentaire.index.new' | trans }}
-            </a>
-        </li>
-    </ul>
-    {% endblock %}
+    
+    <div class="pagination">
+        <ul>
+            {% for p in range(1, nb_pages) %}
+            <li{% if p == page %} class="active"{% endif %}>
+                <a href="{{ path('commentaire', {'page': p }) }}">{{ p }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+</div>
+{% endblock %}

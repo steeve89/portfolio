@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the BlogBundle.
+ *
+ * (c) LOKO Steeve <loko.steeve@yahoo.fr>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace App\BlogBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
@@ -8,7 +17,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use App\BlogBundle\Entity\Commentaire;
-use App\BlogBundle\Form\CommentaireType;
+use JMS\SecurityExtraBundle\Annotation\Secure;
 
 /**
  * Commentaire controller.
@@ -19,6 +28,8 @@ class CommentaireController extends Controller
 {
 
     /**
+     * @Secure(roles="ROLE_ADMIN")
+     * 
      * Lists all Commentaire entities.
      *
      * @Route("/", name="commentaire")
@@ -30,105 +41,52 @@ class CommentaireController extends Controller
         $em = $this->getDoctrine()->getManager();
         //  On recupère toutes les entités
         $nombreParPage = $this->container->getParameter('commentaire');         
-        $entities =   $em->getRepository('AppBlogBundle:Commentaire')->getCommentaires($nombreParPage, $page);
+        $commentaires =   $em->getRepository('AppBlogBundle:Commentaire')->getCommentaires($nombreParPage, $page);
         //  Le nombre de page à afficher
-        $nb_pages = (count($entities) > 0) ? ceil(count($entities)/$nombreParPage) : 1;
-
+        $nb_pages = (count($commentaires) > 0) ? ceil(count($commentaires)/$nombreParPage) : 1;
         //  On affiche la vue
         return array(
-            'entities' => $entities,
+            'entities' => $commentaires,
             'page' => $page,
             'nb_pages' => $nb_pages,
         );
     }
 
     /**
-     * Displays a form to create a new Commentaire entity.
-     *
-     * @Route("/new", name="commentaire_new")
-     * @Method("GET")
-     * @Template()
-     */
-    public function newAction(Request $request)
-    {
-        $entity = new Commentaire();
-        //  On déclare le formulaire de création de l'entité Commentaire
-        $form   = $this->createCreateForm($entity);
-        //  On gère la soumissoon du formulire
-        if( $request->getMethod() == 'POST')
-        {
-            $form->handleRequest($request);
-
-            if ($form->isValid()) {
-                //  On enregistre l'entité
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($entity);
-                $em->flush();
-                //  On redirige vers la page de visualisation de l'entité crée
-                return $this->redirect($this->generateUrl('commentaire_show', array('id' => $entity->getId())));
-            }
-        }
-
-        //  On affiche la vue
-        return array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        );
-    }
-    /**
-    * Creates a form to create a Commentaire entity.
-    *
-    * @param Commentaire $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
-    private function createCreateForm(Commentaire $entity)
-    {
-        //  On crée un formulaire de crétion de l'entité
-        $form = $this->createForm(new CommentaireType(), $entity, array(
-            'action' => $this->generateUrl('commentaire_new'),
-            'method' => 'POST',
-            'attr' => array('class' => 'form-horizontal well'),
-        ));
-        //  On crée un formulaire pour la soumission du formulaire
-        $form->add('submit', 'submit', array('translation_domain' => 'FOSUserBundle', 'label' => 'actions.create', 'attr' => array( 'class' => 'btn' )));
-        //  On retourne le formulaire
-        return $form;
-    }
-
-    /**
+     * @Secure(roles="ROLE_ADMIN")
+     * 
      * Finds and displays a Commentaire entity.
      *
      * @Route("/{id}", name="commentaire_show")
      * @Method("GET")
      * @Template()
      */
-    public function showAction(Commentaire $entity)
-    {
-        
+    public function showAction(Commentaire $commentaire)
+    {        
         //  On recupère le formulaire de suppression de l'entité
-        $deleteForm = $this->createDeleteForm($entity->getId());
-
+        $deleteForm = $this->createDeleteForm($commentaire->getId());
         //  On affiche la 
         return array(
-            'entity'      => $entity,
+            'entity'      => $commentaire,
             'delete_form' => $deleteForm->createView(),
         );
     }
 
     /**
+     * @Secure(roles="ROLE_ADMIN")
+     * 
      * Displays a form to edit an existing Commentaire entity.
      *
      * @Route("/{id}/edit", name="commentaire_edit")
      * @Method("GET")
      * @Template()
      */
-    public function editAction(Request $request, Commentaire $entity)
+    public function editAction(Request $request, Commentaire $commentaire)
     {
         $em = $this->getDoctrine()->getManager();
         //  On déclarre les formulaires de d'édition et de suppresion de l'entité Commentaire
-        $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($entity->getId());
+        $editForm = $this->createEditForm($commentaire);
+        $deleteForm = $this->createDeleteForm($commentaire->getId());
         //  On gère ici la soumission du formulaire d'édition
         if( $request->getMethod() == 'PUT')
         {
@@ -146,10 +104,9 @@ class CommentaireController extends Controller
                 return $this->redirect($this->generateUrl('commentaire'));
             }
         }
-
         //  On affiche la vue
         return array(
-            'entity'      => $entity,
+            'entity'      => $commentaire,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
@@ -158,42 +115,43 @@ class CommentaireController extends Controller
     /**
     * Creates a form to edit a Commentaire entity.
     *
-    * @param Commentaire $entity The entity
+    * @param Commentaire $commentaire The entity
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(Commentaire $entity)
+    private function createEditForm(Commentaire $commentaire)
     {
         //  On c rée le formulaire de mise à jour de l'entité
-        $form = $this->createForm(new CommentaireType(), $entity, array(
-            'action' => $this->generateUrl('commentaire_edit', array('id' => $entity->getId())),
+        $form = $this->createForm('commentaire', $commentaire, array(
+            'action' => $this->generateUrl('commentaire_edit', array('id' => $commentaire->getId())),
             'method' => 'PUT',
             'attr' => array('class' => 'form-horizontal well'),
         ));
         //  On crée un bouton pour la soumission du formulaire
-        $form->add('submit', 'submit', array('translation_domain' => 'FOSUserBundle', 'label' => 'actions.update', 'attr' => array( 'class' => 'btn' )));
+        $form->add('submit', 'submit', array('translation_domain' => 'FOSUserBundle', 'label' => 'actions.update', 'attr' => array( 'class' => 'btn btn-primary' )));
         //  On retourne le formulaire
         return $form;
     }
     /**
+     * @Secure(roles="ROLE_ADMIN")
+     * 
      * Deletes a Commentaire entity.
      *
      * @Route("/{id}", name="commentaire_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Commentaire $entity)
+    public function deleteAction(Request $request, Commentaire $commentaire)
     {
         //  On recupère le formulaire de suppression de l'entité
-        $form = $this->createDeleteForm($entity->getId());
+        $form = $this->createDeleteForm($commentaire->getId());
         $form->handleRequest($request);
         //  On vérifie que le formulaire est valide
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             //  On supprime l'entité
-            $em->remove($entity);
+            $em->remove($commentaire);
             $em->flush();
         }
-
         // On fait une redirection vers la page de liste de l'entité Commentaire  
         return $this->redirect($this->generateUrl('commentaire'));
     }
@@ -210,7 +168,7 @@ class CommentaireController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('commentaire_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('translation_domain' => 'FOSUserBundle', 'label' => 'actions.delete', 'attr' => array( 'class' => 'btn' )))
+            ->add('submit', 'submit', array('translation_domain' => 'FOSUserBundle', 'label' => 'actions.delete', 'attr' => array( 'class' => 'btn btn-danger' )))
             ->getForm()
         ;
     }

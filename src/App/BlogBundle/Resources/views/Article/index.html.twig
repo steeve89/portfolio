@@ -25,9 +25,9 @@
             </tr>
         </thead>
         <tbody>
-        {% for key, entity in entities %}
+        {% for entity in entities %}
             <tr>
-                <td>{{ key + 1 }}</td>
+                <td>{{ loop.index }}</td>
                 <td><a href="{{ path('article_show', { 'id': entity.id }) }}">{{ 'article.prefix'| trans }}{{ entity.id }}</a></td>
                 <td>{{ entity.titre }}</td>
                 <td>
@@ -42,7 +42,7 @@
                     {% if entity.isActived == 1 %}
                         {{ 'article.choices.isActived.1' | trans }}
                     {% else %}
-                        {{ 'article.choices.isActived.1' | trans }}                            
+                        {{ 'article.choices.isActived.0' | trans }}                            
                     {% endif %}
                 </td>
                 <td>

@@ -1,0 +1,14 @@
+{% block searchform_widget %}
+{% spaceless %}
+<div class="row-fluid text-center">
+    {# Affichage du champ order #}    
+    {{ form_label(form.search, null, {'label_attr': {'class' : 'hide' }}) }}
+    <div class="input-append">       
+        {{ form_widget(form.search) }}
+        <button type="submit" class="btn"><i class="icon-search"></i></button>        
+    </div>
+    {{ form_errors(form.search) }}
+    {{ form_rest(form) }} 
+</div>
+{% endspaceless %}
+{% endblock %}

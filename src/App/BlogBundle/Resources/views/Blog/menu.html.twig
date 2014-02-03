@@ -1,0 +1,7 @@
+{% for categorie in categories %}
+<li>
+    <a title="{{ categorie.nom }}" href="{{ path('app_blog_categorie', { 'categorie' : categorie.slug}) }}">
+        <i class="icon-book"></i> {{ categorie.nom }}
+    </a>
+</li>  
+{% endfor %}

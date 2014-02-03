@@ -1,15 +1,1 @@
-{% extends '::base.html.twig' %}
-
-{% block body -%}
-    <h1>Création Commentaire</h1>
-
-    {{ form(form) }}
-
-        <ul class="inline">
-    <li>
-        <a class="btn" href="{{ path('commentaire') }}">
-            {{ 'commentaire.index.back' | trans }}
-        </a>
-    </li>
-</ul>
-{% endblock %}
+{{ form(form) }}

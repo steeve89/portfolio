@@ -46,4 +46,34 @@ class ArticleRepository extends EntityRepository
         //  Enfin, on retourne l'objet Paginator correspondant à la requête construite
         return new Paginator($query);
     }
+    
+    public function getArticleBySlug($slug)
+    {        
+        //  On definie la requête
+        $query = $this->createQueryBuilder('a')
+                        ->select('a, c')
+                        ->leftJoin('a.commentaires', 'c')
+                        ->where('a.slug = :slug')
+                        ->andWhere('a.isActived = 1')   
+                        ->orWhere('c.isActived = 1')
+                        ->setParameter('slug', $slug)
+        ;
+        //  On retourne le résultat
+        return $query->getQuery()->getOneOrNullResult();
+    }
+    
+    public function getArticlesByWord($word)
+    {        
+        //  On definie la requête
+        $query =    $this->createQueryBuilder('a')   
+                    ->select('a, c')
+                    ->innerJoin('a.categories', 'c')
+                    ->where('a.titre LIKE :word')
+                    ->andWhere('a.isActived = 1')
+                    ->setParameter('word', "%$word%");      
+        //  On ordonne suivant la date de création
+        $query->orderBy('a.id', 'DESC');
+        //  On retourne le résultat
+        return $query->getQuery()->getResult();
+    }
 }

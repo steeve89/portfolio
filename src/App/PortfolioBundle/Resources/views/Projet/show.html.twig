@@ -61,9 +61,9 @@
             <tr>
                 <th colspan="2"><h3>{{'projet.field.pieceJointe'| trans }}</h3></th>                
             </tr>
-            {% for key, pieceJonte in entity.pieceJointes%}
+            {% for pieceJonte in entity.pieceJointes%}
             <tr>
-                <th>{{'projet.field.pieceJointe'| trans }} {% if loop.length > 1 %}N°{{ key + 1 }}{% endif %}</th>
+                <th>{{'projet.field.pieceJointe'| trans }} {% if loop.length > 1 %}N°{{ loop.index }}{% endif %}</th>
                 <td><a class="targetblank" href="{{ asset( pieceJonte.webPath ) }}">{{ pieceJonte.nom }}</a></td>
             </tr>
             {% else %}

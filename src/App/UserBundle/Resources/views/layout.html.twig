@@ -56,6 +56,10 @@
 </ul>
 {% endblock %}
 
-{% if is_granted("ROLE_SUPER_ADMIN") %}
+{# On cache le menu reseau social #}
+{% if is_granted("ROLE_ADMIN") %}
 {% block reseausocial %}{% endblock %} 
 {% endif %}
+
+{# On cache le bouton de partage #}
+{% block bouton_partage %}{% endblock %}

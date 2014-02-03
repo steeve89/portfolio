@@ -25,4 +25,15 @@ class AppPortfolioEvents
      * @var string
      */
     const onMessagePost = 'app_portfolio.message.post_message';
+    
+    /**
+     * L'évènement app_portfolio.paiement.post_paiement est lancé chaque fois qu'un
+     * devis est disponible pour un projet dans le système.
+     * Le « listener » de l'évènement reçoit une instance de
+     * App\PortfolioBundle\Event\FilterPaiementEvent
+     *
+     * @var string
+     */
+    const onPaiementPost = 'app_portfolio.paiement.post_paiement';
+    
 }

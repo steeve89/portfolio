@@ -38,7 +38,7 @@
                         <ul class="nav">
                             <li><a title="{{ 'site.entete.menu.portfolio' | trans }}" href="{{ path('app_portfolio_homepage') }}">{{'site.entete.menu.portfolio' | trans}}</a></li>  
                             <li><a title="{{ 'site.entete.menu.blog' | trans }}" href="{{ path('app_blog_homepage') }}">{{'site.entete.menu.blog' | trans}}</a></li>
-                            <li><a title="{{ 'site.entete.menu.boutique' | trans }}" href="{{ path('app_boutique_homepage') }}">{{'site.entete.menu.boutique' | trans}}</a></li>                            
+                            <li><a title="{{ 'site.entete.menu.boutique' | trans }}" href="{# path('app_boutique_homepage') #}#">{{'site.entete.menu.boutique' | trans}}</a></li>                            
                         </ul>
                         <ul class="nav pull-right">
                             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
@@ -66,9 +66,9 @@
                         {% block reseausocial %}
                         <ul class="nav pull-right">
                             <li><a class="brand" href="#">{{ 'site.menu_reseau_social.me_suivre' | trans }}</a></li>
-                            <li><a title="{{ 'site.menu_reseau_social.google_plus_profile' | trans }}" href="#"><img src="{{ asset('/img/googleplus.png') }}" alt="{{ 'site.menu_reseau_social.google_plus_profile' | trans }}" /></a></li>  
-                            <li><a title="{{ 'site.menu_reseau_social.linkedin_profile' | trans }}" href="#"><img src="{{ asset('/img/linkedin.png') }}" alt="{{ 'site.menu_reseau_social.twitter_profile' | trans }}" /></a></li>
-                            <li><a title="{{ 'site.menu_reseau_social.twitter_profile' | trans }}" href="#"><img src="{{ asset('/img/twitter.png') }}" alt="{{ 'site.menu_reseau_social.twitter_profile' | trans }}" /></a></li>
+                            <li><a title="{{ 'site.menu_reseau_social.google_plus_profile' | trans }}" href="https://plus.google.com/100370336164704667929/"><img src="{{ asset('/img/googleplus.png') }}" alt="{{ 'site.menu_reseau_social.google_plus_profile' | trans }}" /></a></li>  
+                            <li><a title="{{ 'site.menu_reseau_social.linkedin_profile' | trans }}" href="http://www.linkedin.com/pub/loko-steeve/2b/214/21a"><img src="{{ asset('/img/linkedin.png') }}" alt="{{ 'site.menu_reseau_social.twitter_profile' | trans }}" /></a></li>
+                            <li><a title="{{ 'site.menu_reseau_social.twitter_profile' | trans }}" href="https://twitter.com/loko_steeve"><img src="{{ asset('/img/twitter.png') }}" alt="{{ 'site.menu_reseau_social.twitter_profile' | trans }}" /></a></li>
                         </ul>             
                         {% endblock %} 
                     </nav>
@@ -79,6 +79,7 @@
             {% for flashMessage in app.session.flashbag.get('notice') %}
             <div class="container-fluid">
                 <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
                     {{ flashMessage }}
                 </div>
             </div>
@@ -86,6 +87,7 @@
             {% for flashMessage in app.session.flashbag.get('error') %}
             <div class="container-fluid">
                 <div class="alert alert-error">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
                     {{ flashMessage }}
                 </div>
             </div>
@@ -96,9 +98,25 @@
             </div>
 
             <footer class="footer btn-inverse">
-                <p class="text-center">
+                {% block bouton_partage %}
+                <div class="footer-texte">
+                    {{ 'site.pied_de_page.partager' | trans }}
+                </div>
+                <ul class="inline bouton-partage">
+                    <li>                        
+                        <div class="fb-like" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+                    </li>
+                    <li class="middle">
+                        <div class="g-plusone" data-size="medium"></div>
+                    </li>                 
+                    <li>
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en">Tweet</a>
+                    </li>
+                </ul>
+                {% endblock %}
+                <div class="text-center">
                     {{ 'site.pied_de_page.copyright' | trans }}
-                </p>
+                </div>
             </footer>
         </div>
       
@@ -109,11 +127,37 @@
                 '@AppPortfolioBundle/Resources/public/js/jquery-ui-1.10.0.custom.min.js' 
                 '@AppBlogBundle/Resources/public/js/prettify.js'
                 '@AppPortfolioBundle/Resources/public/js/javascript.js'
+                '@AppBlogBundle/Resources/public/js/blog.js'
                 output='js/main.js' 
                 filter='' 
             %}
                 <script type="text/javascript" src="{{ asset_url }}"></script>
             {% endjavascripts %}
         {% endblock %}
+        <div id="fb-root"></div>
+        {# Facebook Script #}
+        <script type="text/javascript">
+            (function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/fr_FR/all.js#xfbml=1&appId=257588001025952";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>
+        {# google+ Script #}
+        <script type="text/javascript">
+            window.___gcfg = {lang: '{{ app.request.locale }}'};
+
+            (function() {
+              var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+              po.src = 'https://apis.google.com/js/platform.js';
+              var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+            })();
+        </script>
+        {# Tweeter Script #}
+        <script type="text/javascript">
+            !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+        </script>
     </body>
 </html>

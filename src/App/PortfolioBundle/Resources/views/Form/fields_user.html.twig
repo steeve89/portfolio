@@ -176,8 +176,28 @@
             {{ form_errors(form.dateDeLivraison) }}
         </div>
         {% endif %}
+        {% if form.url is defined %}
+        {# Affichage du champ url #}
+        <div class="control-group">
+            {{ form_label(form.url, null, {'label_attr': {'class' : 'control-label' }}) }}
+            <div class="controls">        
+                {{ form_widget(form.url) }}
+            </div>
+            {{ form_errors(form.url) }}
+        </div>
+        {% endif %}
+        {% if form.remise is defined %}
+        {# Affichage du champ remise #}
+        <div class="control-group">
+            {{ form_label(form.remise, null, {'label_attr': {'class' : 'control-label' }}) }}
+            <div class="controls">        
+                {{ form_widget(form.remise) }}
+            </div>
+            {{ form_errors(form.remise) }}
+        </div>
+        {% endif %}
         {% if form.status is defined %}
-        {# Affichage du champ dateDeLivraison #}
+        {# Affichage du champ status #}
         <div class="control-group">
             {{ form_label(form.status, null, {'label_attr': {'class' : 'control-label' }}) }}
             <div class="controls">        
@@ -195,6 +215,16 @@
                 </li>
             {% endfor %}
         </ul>
+        {% if form.isActived is defined %}
+        {# Affichage du champ nom #}
+        <div class="control-group">
+            <div class="controls">
+                {{ form_widget(form.isActived, {'attr' : {'class' : 'checkbox'}}) }}
+                {{ form_label(form.isActived, null, {'label_attr': {'class' : 'checkbox inline' }}) }}
+            </div>
+            {{ form_errors(form.isActived) }}
+        </div>
+        {% endif %}
         <div class="form-actions">
             {{ form_rest(form) }}
         </div>         

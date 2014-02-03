@@ -26,6 +26,16 @@ site:
         lire_la_suite: Lire la suite
     pied_de_page:
         copyright: © Copyright 2014 loko-steeve.com
+        partager: "Partager avec mes amis:"
+    erreur:
+        titre: Erreur %status_code%
+        header_titre: Oops! Une erreur est intervenue
+        article:
+            titre:  Le serveur a retourné "%status_code% %status_text%"
+            paragraphe: > 
+                          Quelque chose est cassé. S'il vous plaît envoyez-nous un mail à [%email%] en 
+                          nous disant ce que vous faisiez lorsque cette erreur s'est produite. Nous allons y 
+                          remédier dès que possible. Désolé pour la gêne occasionnée.
 
 # Les pages
 page:

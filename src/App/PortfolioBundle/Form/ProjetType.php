@@ -17,6 +17,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Security\Core\SecurityContext;
 use App\PortfolioBundle\Form\EventListener\ProjetTypeEventSubscriber;
 use App\PortfolioBundle\Form\PieceJointeType;
+use Symfony\Component\Validator\Constraints\Choice;
 
 class ProjetType extends AbstractType
 {
@@ -43,9 +44,17 @@ class ProjetType extends AbstractType
                         'translation_domain' => 'FOSUserBundle', 
                         'label' => 'projet.field.budget', 
                         'choices' => array( 
-                            'projet.choices.budget.0', 'projet.choices.budget.1', 
-                            'projet.choices.budget.2', 'projet.choices.budget.3', 
-                            'projet.choices.budget.4' )
+                            '0' => 'projet.choices.budget.0', '1' => 'projet.choices.budget.1', 
+                            '2' => 'projet.choices.budget.2', '3' => 'projet.choices.budget.3', 
+                            '4' => 'projet.choices.budget.4' ),
+                        'constraints' => new Choice( array( 
+                                    'choices' => array(
+                                        '0', '1',
+                                        '2', '3',
+                                        '4'
+                                    )
+                                )
+                            )
                     )
                 )
                 ->add('dateButoir','date', array(

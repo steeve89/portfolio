@@ -43,7 +43,7 @@ class Paiement
     /**
      * @var float
      *
-     * @ORM\Column(name="montant", type="float", nullable=true)
+     * @ORM\Column(name="montant", type="float")
      * 
      * @Assert\NotBlank()
      */
@@ -212,12 +212,22 @@ class Paiement
     }
     
     /**
+     * Get Taxe
+     * 
+     * @return float
+     */
+    public function getRemise()
+    {
+        return $this->getPrixHorsTaxe() * $this->getProjet()->getRemise();
+    }
+    
+    /**
      * Get Montant TTC de l facture
      * 
      * @return float
      */
     public function getTotal()
     {
-        return $this->getPrixHorsTaxe() * 1.196;
+        return $this->getPrixHorsTaxe() + $this->getTaxe() - $this->getRemise();
     }
 }

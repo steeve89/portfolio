@@ -1,0 +1,57 @@
+{% extends "AppBlogBundle::layout.html.twig" %}
+
+{% block title %}{{ 'blog.search.titre' | trans({'%word%': word}) }} | {{ 'blog.accueil.titre' | trans }}{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+
+{% block header_title %}{{ 'blog.search.titre' | trans({'%word%': word}) }}{% endblock %}
+
+{% block content %}
+<div class="row-fluid">
+    <div class="well">
+        <div class="collections-items">
+        {% for article in articles %}
+            <article class="span6 post {% if loop.index % 2 == 1 and loop.index > 1 %}marginLeft0{% endif %}">
+                <h1 class="text-center">{{ article.titre }}</h1>
+                {% if article.image %}
+                <figure>
+                    <img src="{{ asset(article.image.webPath) }}" alt="{{ article.image.alt }}" height="200" width="407"/>                                          
+                </figure>
+                {% endif %}                
+                <div class="extrait-article">
+                    {{ article.extrait }}...
+                </div>
+                <p class="date-article text-right">
+                    {{ 'blog.article.publier_le' | trans }}
+                    <time datetime="{{ article.createdDate | date('Y-m-d H:i:s') }}" pubdate>{{ article.createdDate|localizeddate('full', 'none') }}</time>
+                </p>
+                <div class="text-center marginTopBottom20">
+                    <a title="{{ 'blog.article.lire_la_suite' | trans }}" class="btn btn-primary" href="{{ path('app_blog_article', { 'categorie': article.categories[0].slug, 'article': article.slug })}}">
+                        {{ 'blog.article.lire_la_suite' | trans }}
+                    </a>
+                </div>
+            </article>        
+            {% if loop.index % 2 == 0 %}<div class="clearfix"></div>{% endif %}
+        {% else %}
+            <p class="alert alert-error">
+                {{ 'blog.search.aucun_resultat' | trans({'%word%': word}) }}
+            </p>
+        {% endfor %}
+        </div>
+        <div class="clearfix"></div>
+        <div id="page_navigation"></div>
+        <div class="clearfix"></div>
+    </div>
+    <section>
+        <h1 class="text-center">{{ 'blog.searchform.titre' | trans }}</h1>
+        {{ form(form) }}
+    </section>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript">
+        var show_per_page = {{ categorie_article_par_page }};
+    </script>
+    {{ parent() }}
+{% endblock %}

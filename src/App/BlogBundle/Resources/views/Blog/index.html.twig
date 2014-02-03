@@ -1,1 +1,53 @@
-BLOG
+{% extends "AppBlogBundle::layout.html.twig" %}
+
+{% block title %}{{ 'blog.accueil.titre' | trans }}{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+
+{% block header_title %}{{ 'blog.accueil.titre' | trans }}{% endblock %}
+
+{% block content %}
+{% for categorie in categories %}
+<section class="category">
+    <h1 class="text-center btn-primary title {% if loop.index == 1 %}marginTop0{% endif %}">{{ categorie.nom }} {{ 'blog.categorie.titre' | trans }}</h1>
+    <div class="row-fluid">
+        <div class="well">
+        {% for article in articles[loop.index0] %}
+            <article class="span6 post {% if loop.index % 2 == 1 and loop.index > 1 %}marginLeft0{% endif %}">
+                <h1 class="text-center">{{ article.titre }}</h1>
+                {% if article.image %}
+                <figure>
+                    <img src="{{ asset(article.image.webPath) }}" alt="{{ article.image.alt }}" height="200" width="407"/>                                          
+                </figure>
+                {% endif %}                
+                <div class="extrait-article">
+                    {{ article.extrait }}...
+                </div>
+                <p class="date-article text-right">
+                    {{ 'blog.article.publier_le' | trans }}
+                    <time datetime="{{ article.createdDate | date('Y-m-d H:i:s') }}" pubdate>{{ article.createdDate|localizeddate('full', 'none') }}</time>
+                </p>
+                <div class="text-center marginTopBottom20">
+                    <a title="{{ 'blog.article.lire_la_suite' | trans }}" class="btn btn-primary" href="{{ path('app_blog_article', { 'categorie': categorie.slug, 'article': article.slug })}}">
+                        {{ 'blog.article.lire_la_suite' | trans }}
+                    </a>
+                </div>
+            </article>        
+        {% endfor %}
+            <div class="clearfix"></div>
+            <ul class="pager">
+                <li class="next">
+                    <a title="{{ 'blog.categorie.voir_tous_articles_categorie' | trans }}" href="{{ path('app_blog_categorie', { 'categorie': categorie.slug })}}">
+                        {{ 'blog.categorie.voir_tous_articles_categorie' | trans }} &rarr;
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+{% else %}
+<p>
+    {{ 'blog.accueil.no_article' | trans }}
+</p>
+{% endfor %}
+{% endblock %}

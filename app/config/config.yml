@@ -26,6 +26,10 @@ framework:
 twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
+    globals:
+        categorie_article_par_page: %categorie_article_par_page%
+        webmaster_email: %webmaster_email%
+        webmaster_name: %webmaster_name%
     form:
         resources:
             - "AppPortfolioBundle:Form:form_div_layout.html.twig"

@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the PortfolioBundle.
+ *
+ * (c) LOKO Steeve <loko.steeve@yahoo.fr>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace App\PortfolioBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -34,9 +43,9 @@ class Paiement
     /**
      * @var float
      *
-     * @ORM\Column(name="montant", type="float", nullable=true)
+     * @ORM\Column(name="montant", type="float")
      * 
-     * @Assert\Type(type="float")
+     * @Assert\NotBlank()
      */
     private $prixHorsTaxe;
 
@@ -45,7 +54,7 @@ class Paiement
      *
      * @ORM\Column(name="date", type="datetime", nullable=true)
      * 
-     * @Assert\Type(type="float")
+     * @Assert\Datetime()
      */
     private $date;
     
@@ -167,5 +176,58 @@ class Paiement
     public function getProjet()
     {
         return $this->projet;
+    }
+
+    /**
+     * Set details
+     *
+     * @param string $details
+     * @return Paiement
+     */
+    public function setDetails($details)
+    {
+        $this->details = $details;
+    
+        return $this;
+    }
+
+    /**
+     * Get details
+     *
+     * @return string 
+     */
+    public function getDetails()
+    {
+        return $this->details;
+    }
+    
+    /**
+     * Get Taxe
+     * 
+     * @return float
+     */
+    public function getTaxe()
+    {
+        return $this->getPrixHorsTaxe() * 0.196;
+    }
+    
+    /**
+     * Get Taxe
+     * 
+     * @return float
+     */
+    public function getRemise()
+    {
+        return $this->getPrixHorsTaxe() * $this->getProjet()->getRemise();
+    }
+    
+    /**
+     * Get Montant TTC de l facture
+     * 
+     * @return float
+     */
+    public function getTotal()
+    {
+        return $this->getPrixHorsTaxe() + $this->getTaxe() - $this->getRemise();
     }
 }

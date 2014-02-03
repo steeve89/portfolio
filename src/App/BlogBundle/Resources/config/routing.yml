@@ -1,36 +1,50 @@
 app_blog_homepage:
     pattern:  /
     defaults: { _controller: AppBlogBundle:Blog:index }
+    requirements:
+        _method: GET
 
+app_blog_contact:
+    pattern:  /contact/
+    defaults: { _controller: AppBlogBundle:Blog:contact }
+    requirements:
+        _method: GET|POST
+
+app_blog_rechercher:
+    pattern:  /rechercher/
+    defaults: { _controller: AppBlogBundle:Blog:search }
+    requirements:
+        _method: GET|POST
 #
 # MANAGE CATEGORIE
 #
 categorie:
-    pattern:  /admin/categorie/{page}/
+    pattern:  /categorie/{page}/
     defaults: { _controller: AppBlogBundle:Categorie:index, page: 1 }
     requirements:
         page: \d*
+        _method: GET
 
 categorie_new:
-    pattern:  /admin/categorie/new/
+    pattern:  /categorie/new/
     defaults: { _controller: AppBlogBundle:Categorie:new}
     requirements:
         _method: GET|POST
 
 categorie_edit:
-    pattern:  /admin/categorie/edit/{id}
+    pattern:  /categorie/edit/{id}
     defaults: { _controller: AppBlogBundle:Categorie:edit}
     requirements:
         _method: GET|PUT
 
 categorie_delete:
-    pattern:  /admin/categorie/delete/{id}
+    pattern:  /categorie/delete/{id}
     defaults: { _controller: AppBlogBundle:Categorie:delete }
     requirements:
         _method: DELETE
 
 categorie_show:
-    pattern:  /admin/categorie/show/{id}/
+    pattern:  /categorie/show/{id}/
     defaults: { _controller: AppBlogBundle:Categorie:show}
     requirements:
         _method: GET
@@ -39,31 +53,32 @@ categorie_show:
 # MANAGE ARTICLE
 #
 article:
-    pattern:  /admin/article/{page}/
+    pattern:  /article/{page}/
     defaults: { _controller: AppBlogBundle:Article:index, page: 1 }
     requirements:
         page: \d*
+        _method: GET
 
 article_new:
-    pattern:  /admin/article/new/
+    pattern:  /article/new/
     defaults: { _controller: AppBlogBundle:Article:new}
     requirements:
         _method: GET|POST
 
 article_edit:
-    pattern:  /admin/article/edit/{id}
+    pattern:  /article/edit/{id}
     defaults: { _controller: AppBlogBundle:Article:edit}
     requirements:
         _method: GET|PUT
 
 article_delete:
-    pattern:  /admin/article/delete/{id}
+    pattern:  /article/delete/{id}
     defaults: { _controller: AppBlogBundle:Article:delete }
     requirements:
         _method: DELETE
 
 article_show:
-    pattern:  /admin/article/show/{id}/
+    pattern:  /article/show/{id}/
     defaults: { _controller: AppBlogBundle:Article:show}
     requirements:
         _method: GET
@@ -76,12 +91,7 @@ commentaire:
     defaults: { _controller: AppBlogBundle:Commentaire:index, page: 1 }
     requirements:
         page: \d*
-
-commentaire_new:
-    pattern:  /commentaire/new/
-    defaults: { _controller: AppBlogBundle:Commentaire:new}
-    requirements:
-        _method: GET|POST
+        _method: GET
 
 commentaire_edit:
     pattern:  /commentaire/edit/{id}
@@ -100,3 +110,19 @@ commentaire_show:
     defaults: { _controller: AppBlogBundle:Commentaire:show}
     requirements:
         _method: GET
+
+#
+# Affichage categorie et article blog
+#
+app_blog_categorie:
+    pattern:  /{categorie}/
+    defaults: { _controller: AppBlogBundle:Blog:categorie }
+    requirements:
+        _method: GET
+
+app_blog_article:
+    pattern:  /{categorie}/{article}/
+    defaults: { _controller: AppBlogBundle:Blog:article }
+    requirements:
+        _method: GET|POST
+        

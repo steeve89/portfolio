@@ -18,6 +18,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use App\BlogBundle\Entity\Article;
 use App\BlogBundle\Form\ArticleType;
+use App\BlogBundle\AppBlogEvents;
+use App\BlogBundle\Event\FilterArticleEvent;
 use JMS\SecurityExtraBundle\Annotation\Secure;
 
 /**
@@ -79,6 +81,10 @@ class ArticleController extends Controller
                 $article->setUser($this->getUser());
                 $em->persist($article);
                 $em->flush();
+                // On crée l'évènement FilterMessageEvent avec son 2 argument
+                $event = new FilterArticleEvent($article);
+                // On déclenche l'évènement
+                $this->get('event_dispatcher')->dispatch(AppBlogEvents::onArticlePost, $event);
                 //  On redirige vers la page de visualisation de l'entité crée
                 return $this->redirect($this->generateUrl('article_show', array('id' => $article->getId())));
             }

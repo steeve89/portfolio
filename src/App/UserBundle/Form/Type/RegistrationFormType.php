@@ -34,15 +34,34 @@ class RegistrationFormType extends RegistrationBaseFormType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nom', 'text', array('label' => 'form.nom', 'translation_domain' => 'FOSUserBundle'))
-            ->add('prenom', 'text', array('label' => 'form.prenom', 'translation_domain' => 'FOSUserBundle'))
-            ->add('email', 'email', array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle',
-                                    'constraints' => array( new NotBlank(), new Email())
-            ))
-            ->add('username', null, array(  'label' => 'form.username', 'translation_domain' => 'FOSUserBundle', 
-                                            'constraints' => array( new NotBlank(), new Length( array( 'min' => 4)) )
-            ))
-            ->add('profession', 'text', array('label' => 'form.profession', 'translation_domain' => 'FOSUserBundle', 'required' => false))
+            ->add('nom', 'text', array(
+                    'label' => 'form.nom', 
+                    'translation_domain' => 'FOSUserBundle'
+                )
+            )
+            ->add('prenom', 'text', array(
+                    'label' => 'form.prenom', 
+                    'translation_domain' => 'FOSUserBundle'
+                )
+            )
+            ->add('email', 'email', array(
+                    'label' => 'form.email', 
+                    'translation_domain' => 'FOSUserBundle',
+                    'constraints' => array( new NotBlank(), new Email())
+                )
+            )
+            ->add('username', null, array(  
+                    'label' => 'form.username', 
+                    'translation_domain' => 'FOSUserBundle', 
+                    'constraints' => array( new NotBlank(), new Length( array( 'min' => 4)) )
+                )
+            )
+            ->add('profession', 'text', array(
+                    'label' => 'form.profession', 
+                    'translation_domain' => 'FOSUserBundle', 
+                    'required' => false
+                )
+            )
             ->add('plainPassword', 'repeated', array(
                 'type' => 'password',
                 'options' => array('translation_domain' => 'FOSUserBundle'),
@@ -51,7 +70,9 @@ class RegistrationFormType extends RegistrationBaseFormType
                 'invalid_message' => 'fos_user.password.mismatch',
                 'constraints' => array( new NotBlank(), new Length( array( 'min' => 6)) )
             ))        
-            ->add('roles', 'choice', array('label' => 'form.role', 'translation_domain' => 'FOSUserBundle',
+            ->add('roles', 'choice', array(
+                'label' => 'form.role', 
+                'translation_domain' => 'FOSUserBundle',
                 'choices' => array(
                                 'client' => 'Client', 
                                 'partenaire' => 'Partenaire'

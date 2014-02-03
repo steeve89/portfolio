@@ -12,6 +12,7 @@
 namespace App\BlogBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 
 /**
  * CommentaireRepository
@@ -21,4 +22,21 @@ use Doctrine\ORM\EntityRepository;
  */
 class CommentaireRepository extends EntityRepository
 {
+    public function getCommentaires($nombreParPage, $page)
+    {
+        //  On vérifie que la page n'est pas inférieur à 1
+        if ($page < 1) {
+            throw new \InvalidArgumentException('The argument $page can not be less than one ( value : "'.$page.'" ).');
+        }
+        //  On definie la requête
+        $query = $this->createQueryBuilder('a');
+        //  On recupère la requête
+        $query->orderBy('a.id', 'DESC')->getQuery();
+        //  On définit l'address à partir duquel commencer la liste
+        $query->setFirstResult( ($page-1) * $nombreParPage )
+        //  Ainsi que le nombre d'address à afficher
+        ->setMaxResults($nombreParPage);
+        //  Enfin, on retourne l'objet Paginator correspondant à la requête construite
+        return new Paginator($query);
+    }
 }

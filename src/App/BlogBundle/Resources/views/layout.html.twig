@@ -1,0 +1,38 @@
+{% extends "::base.html.twig" %}
+{% block header %}
+<div class="entete-portfolio btn-primary">    
+    <h1>{% block header_title %}{% endblock %}</h1>
+    {% block pubdate %}
+    <p>{{ 'page.publie_le' | trans }} <time datetime="2013-12-15" pubdate>{{ '2013-12-15'|localizeddate('full', 'none') }}</time> {{ 'page.par' | trans }} <a href="https://plus.google.com/100370336164704667929/">{{ webmaster_name }}</a></p>
+    {% endblock %}
+</div>
+{% endblock %}
+
+{% block subnavbar %}
+<ul class="nav">
+    <li>
+        <a title="{{ 'blog.menu.accueil' | trans }}" href="{{ path('app_blog_homepage') }}">
+            <i class="icon-home"></i> {{'blog.menu.accueil' | trans}}
+        </a>
+    </li>  
+    {{ render(controller("AppBlogBundle:Blog:menu")) }}
+    <li>
+        <a title="{{ 'blog.menu.contact' | trans }}" href="{{ path('app_blog_contact') }}">
+            <i class="icon-envelope"></i> {{'blog.menu.contact' | trans}}
+        </a>
+    </li>
+</ul>
+{% endblock %}
+
+{% block body %}
+<div class="row-fluid">
+    <div class="span9">
+        {% block content %}{% endblock %}
+    </div>
+    <div class="span3">
+        {% block sidebar %}
+            {{ render(controller("AppBlogBundle:Blog:sidebar")) }}
+        {% endblock %}
+    </div>
+</div>
+{% endblock %}

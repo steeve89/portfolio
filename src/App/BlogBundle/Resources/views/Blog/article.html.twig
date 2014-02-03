@@ -1,0 +1,56 @@
+{% extends "AppBlogBundle::layout.html.twig" %}
+
+{% block title %}{{ article.titre }} | {{ categorie.nom }}{% endblock %}
+{% block description %}{{ article.extrait }}{% endblock %}
+{% block keywords %}{% endblock %}
+
+{% block header_title %}{{ article.titre }} | {{ categorie.nom }}{% endblock %}
+
+{% block pubdate %}
+    <p>{{ 'page.publie_le' | trans }} <time datetime="{{ article.createdDate | date('Y-m-d H:i:s') }}" pubdate>{{ article.createdDate|localizeddate('full', 'none') }}</time> {{ 'page.par' | trans }} <a href="https://plus.google.com/100370336164704667929/">{{ webmaster_name }}</a></p>
+{% endblock %}
+
+{% block content %}
+<div class="row-fluid">
+    <article class="single">
+        <header>
+            <h1 class="btn-primary text-center title marginTop0">{{ article.titre }}</h1>
+        </header>
+        <div class="well">            
+            <div class="content-article">
+                {{ article.contenu | raw }}
+            </div>                   
+            <div class="clearfix"></div>
+        </div>
+        <footer>
+            <ul class="pager">
+                <li class="previous">
+                    <a title="{{ 'blog.accueil.retour' | trans | raw }}" href="{{ path('app_blog_homepage')}}">
+                        &larr; {{ 'blog.accueil.retour' | trans | raw }}
+                    </a>
+                </li>
+                <li class="next">
+                    <a title="{{ 'blog.categorie.retour' | trans({'%nom%': categorie.nom}) | raw }}" href="{{ path('app_blog_categorie', { 'categorie': categorie.slug })}}">
+                        {{ 'blog.categorie.retour' | trans({'%nom%': categorie.nom}) | raw }} &rarr;
+                    </a>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+            {% if article.commentaires is not empty%}
+            <h2 class="text-center">{{ 'blog.article.commentaire.titre' | trans }}</h2>
+            <ul class="unstyled commentaires">
+                {% for commentaire in article.commentaires %}
+                <li class="well commentaire {% if commentaire.isAdmin == 1 %}alert-danger{% endif %}">
+                    <h3 class="commentaire-auteur">{{ commentaire.nom ~ ' ' ~ commentaire.prenom}}</h3>
+                    <div class="commentaire-contenu">
+                        {{ commentaire.contenu }}
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {% include "AppBlogBundle:Commentaire:new.html.twig" %}
+        </footer>        
+    </article>
+</div>
+{% endblock %}

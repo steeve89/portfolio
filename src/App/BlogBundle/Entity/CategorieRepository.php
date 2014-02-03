@@ -22,24 +22,15 @@ use Doctrine\ORM\Tools\Pagination\Paginator;
  */
 class CategorieRepository extends EntityRepository
 {
-    public function getCategories($nombreParPage, $page, $langue = null)
+    public function getCategories($nombreParPage, $page)
     {
         //  On vérifie que la page n'est pas inférieur à 1
         if ($page < 1) {
             throw new \InvalidArgumentException('The argument $page can not be less than one ( value : "'.$page.'" ).');
         }
         //  On definie la requête
-        $query = $this->createQueryBuilder('a');
-        //  Si la langue est définie, on recupère la liste des categories de cette langue
-        //  ordonnées selon leur position
-        if($langue):
-            $query =    $query->where('a.langue = :langue')
-                        ->andWhere('a.isActived = 1')
-                        ->orderBy('a.position', 'ASC')
-                        ->setParameter('langue', $langue);
-        else:
-            $query->orderBy('a.id', 'DESC');
-        endif;
+        $query =   $this->createQueryBuilder('a')
+                        ->orderBy('a.nom', 'ASC');       
         //  On recupère la requête
         $query->getQuery();
         //  On définit l'address à partir duquel commencer la liste
@@ -48,5 +39,38 @@ class CategorieRepository extends EntityRepository
         ->setMaxResults($nombreParPage);
         //  Enfin, on retourne l'objet Paginator correspondant à la requête construite
         return new Paginator($query);
+    }
+    
+    public function getBlogCategories($langue)
+    {        
+        //  On definie la requête
+        $query = $this->createQueryBuilder('c')
+                        ->select('c, a')
+                        ->innerJoin('c.articles', 'a')
+                        ->where('c.langue = :langue')
+                        ->andWhere('c.isActived = 1')   
+                        ->andWhere('a.isActived = 1')   
+                        ->setParameter('langue', $langue)                        
+                        ->addOrderBy('c.position', 'ASC')
+                        ->addOrderBy('a.id', 'DESC')
+        ;
+        //  On retourne le résultat
+        return $query->getQuery()->getResult();
+    }
+    
+    public function getCategorie($slug)
+    {        
+        //  On definie la requête
+        $query = $this->createQueryBuilder('c')
+                        ->select('c, a')
+                        ->innerJoin('c.articles', 'a')
+                        ->where('c.slug = :slug')
+                        ->andWhere('c.isActived = 1')   
+                        ->andWhere('a.isActived = 1')   
+                        ->setParameter('slug', $slug)                        
+                        ->orderBy('a.id', 'DESC')
+        ;
+        //  On retourne le résultat
+        return $query->getQuery()->getOneOrNullResult();
     }
 }
