@@ -4,7 +4,10 @@ blog:
         contact:  Contact
     accueil:
         titre: Blog Développement Web
-        retour: Retour sur la page &laquo; accueil &raquo; du Blog
+        description: > 
+                    Blog sur la programmation web et plus particulièrement sur les systèmes de gestion de contenu 
+                    (CMS); les Framework CSS, JavaScript et PHP ; les API Facebook, Tweeter, Google ; etc.
+        retour: Retour sur la page &laquo; Accueil &raquo; du Blog
         no_article: Aucun article est disponible sur le Blog pour le moment. Merci !
     categorie:
         titre: Tutoriels, trucs et astuces
@@ -17,6 +20,7 @@ blog:
             titre: Commentaires
     contact:
         titre: Contact
+        description: Nous sommes à votre disposition pour toute demande de partenariat, échange d'article, publication d'article de sponsorigue ou pour tout renseignement.
         paragraphe: Nous sommes à votre disposition pour toute demande d'information complémentaire.
         form:
             titre:  Formulaire de Contact

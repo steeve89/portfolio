@@ -17,7 +17,7 @@
     <li class="divider-vertical"></li>
     <li><a class="brand" href="#">{{ 'user.menu.portfolio' | trans }}</a></li>
     <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" title="{{ 'user.menu.user.title' | trans }}" href="#">
+        <a class="dropdown-toggle" title="{{ 'user.menu.user.title' | trans }}" href="#">
             <i class="icon-user"></i> {{'user.menu.user.title' | trans}} <b class="caret"></b>
         </a>
         <ul class="dropdown-menu">
@@ -43,7 +43,7 @@
     <li><a title="{{ 'user.menu.commentaire' | trans }}" href="{{ path('commentaire') }}"><i class="icon-comment"></i> {{'user.menu.commentaire' | trans}}</a></li>
     {% endif %}
     {# Partie destinée à la gestion du boutique #}
-    {% if is_granted("ROLE_ADMIN") %}
+    {% if is_granted("ROLE_PARTENAIRE") %}
     <li class="divider-vertical"></li>
     <li><a class="brand" href="#">{{ 'user.menu.boutique' | trans }}</a></li>
     <li><a title="{{ 'user.menu.produit' | trans }}" href="#"><i class="icon-book"></i> {{'user.menu.produit' | trans}}</a></li>
@@ -63,3 +63,6 @@
 
 {# On cache le bouton de partage #}
 {% block bouton_partage %}{% endblock %}
+
+{# Javascript reseau social #}
+{% block javascripts_reseau_social %}{% endblock %}

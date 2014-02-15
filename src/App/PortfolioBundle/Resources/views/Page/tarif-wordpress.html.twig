@@ -1,0 +1,284 @@
+{% extends "AppPortfolioBundle::layout.html.twig" %}
+
+{% block title %}{{ 'portfolio.tarif_wordpress.titre' | trans }} | {{ parent() }}{% endblock %}
+{% block description %}{{ 'portfolio.tarif_wordpress.description' | trans }}{% endblock %}
+{% block keywords %}{% endblock %}
+
+{% block header_title %}{{ 'portfolio.tarif_wordpress.titre' | trans }}{% endblock %}
+
+{% block class_body %}data-spy="scroll" data-target="#myNav"{% endblock %}
+
+{% block body %}
+<div class="row-fluid page">
+    <div class="span3" id="myNav">
+        <ul class="nav nav-list nav-stacked" data-spy="affix" data-offset-top="190">
+            <li><a href="#section1"><i class="icon-chevron-right"></i> {{ 'portfolio.tarif_wordpress.tarif.europe.titre' | trans }}</a></li>
+            <li><a href="#section2"><i class="icon-chevron-right"></i> {{ 'portfolio.tarif_wordpress.tarif.afrique.titre' | trans }}</a></li>
+        </ul>
+    </div>
+    <div class="span9">
+        <div class="page-right">
+            
+            <p>{{ 'portfolio.tarif_wordpress.introduction' | trans }}</p>
+            
+            <div id="section1" class="section-page">
+                <h2>{{ 'portfolio.tarif_wordpress.tarif.europe.titre' | trans }}</h2>
+                <div class="section-page-content">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>{{ 'portfolio.tarif_wordpress.designation.titre' | trans }}</th>
+                                <th>{{ 'portfolio.tarif_wordpress.duree' | trans }}</th>
+                                <th>{{ 'portfolio.tarif_wordpress.tarif.titre' | trans }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <ul class="unstyled">
+                                        <li>
+                                            {{ 'portfolio.tarif_wordpress.designation.ligne7.texte1' | trans }}
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td>5</td>
+                                <td>200 {{ 'portfolio.tarif_wordpress.tarif.europe.devis' | trans }}</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <ul class="unstyled">
+                                        <li>
+                                            {{ 'portfolio.tarif_wordpress.designation.ligne1.texte1' | trans }}
+                                        </li>
+                                        <li>
+                                            {{ 'portfolio.tarif_wordpress.designation.ligne1.texte2' | trans }}                                            
+                                        </li>
+                                        <li>
+                                            {{ 'portfolio.tarif_wordpress.designation.ligne1.texte3' | trans }}
+                                            <ul>
+                                                {% for i in 0..1%}
+                                                <li>{{ ('portfolio.tarif_wordpress.designation.ligne1.liste1.' ~ i) | trans }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            {{ 'portfolio.tarif_wordpress.designation.ligne1.texte4' | trans }}
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td>5</td>
+                                <td>200 {{ 'portfolio.tarif_wordpress.tarif.europe.devis' | trans }}</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <ul class="unstyled">
+                                        <li>
+                                            {{ 'portfolio.tarif_wordpress.designation.ligne2.texte1' | trans }}
+                                            <ul>
+                                                {% for i in 0..1 %}
+                                                <li>{{ ('portfolio.tarif_wordpress.designation.ligne2.liste1.' ~ i) | trans }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td>10</td>
+                                <td>200 {{ 'portfolio.tarif_wordpress.tarif.europe.devis' | trans }}</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <ul class="unstyled">
+                                        <li>
+                                            {{ 'portfolio.tarif_wordpress.designation.ligne3.texte1' | trans }}
+                                            <ul>
+                                                {% for i in 0..1 %}
+                                                <li>{{ ('portfolio.tarif_wordpress.designation.ligne3.liste1.' ~ i) | trans }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td>5</td>
+                                <td>200 {{ 'portfolio.tarif_wordpress.tarif.europe.devis' | trans }}</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <ul class="unstyled">
+                                        <li>
+                                            {{ 'portfolio.tarif_wordpress.designation.ligne4.texte1' | trans }}
+                                            <ul>
+                                                {% for i in 0..5 %}
+                                                <li>{{ ('portfolio.tarif_wordpress.designation.ligne4.liste1.' ~ i) | trans }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td>10</td>
+                                <td>200 {{ 'portfolio.tarif_wordpress.tarif.europe.devis' | trans }}</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <ul class="unstyled">
+                                        <li>
+                                            {{ 'portfolio.tarif_wordpress.designation.ligne5.texte1' | trans }}
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td>10 à 20</td>
+                                <td>{{ 'portfolio.tarif_wordpress.a_partir_de' | trans }} 200 {{ 'portfolio.tarif_wordpress.tarif.europe.devis' | trans }}</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <ul class="unstyled">
+                                        <li>
+                                            {{ 'portfolio.tarif_wordpress.designation.ligne6.texte1' | trans }}
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td>5 à 20</td>
+                                <td>{{ 'portfolio.tarif_wordpress.a_partir_de' | trans }} 200 {{ 'portfolio.tarif_wordpress.tarif.europe.devis' | trans }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <p>
+                        <strong>{{ 'portfolio.tarif_wordpress.note.titre' | trans }}</strong>:
+                        {{ 'portfolio.tarif_wordpress.note.contenu' | trans }}
+                    </p>
+                    
+                </div>
+            </div>
+            
+            <div id="section2" class="section-page">
+                <h2>{{ 'portfolio.tarif_wordpress.tarif.afrique.titre' | trans }}</h2>
+                <div class="section-page-content">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>{{ 'portfolio.tarif_wordpress.designation.titre' | trans }}</th>
+                                <th>{{ 'portfolio.tarif_wordpress.duree' | trans }}</th>
+                                <th>{{ 'portfolio.tarif_wordpress.tarif.titre' | trans }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <ul class="unstyled">
+                                        <li>
+                                            {{ 'portfolio.tarif_wordpress.designation.ligne7.texte1' | trans }}
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td>5</td>
+                                <td>100 000 {{ 'portfolio.tarif_wordpress.tarif.afrique.devis' | trans }}</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <ul class="unstyled">
+                                        <li>
+                                            {{ 'portfolio.tarif_wordpress.designation.ligne1.texte1' | trans }}
+                                        </li>
+                                        <li>
+                                            {{ 'portfolio.tarif_wordpress.designation.ligne1.texte2' | trans }}
+                                        </li>
+                                        <li>
+                                            {{ 'portfolio.tarif_wordpress.designation.ligne1.texte3' | trans }}
+                                            <ul>
+                                                {% for i in 0..1%}
+                                                <li>{{ ('portfolio.tarif_wordpress.designation.ligne1.liste1.' ~ i) | trans }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            {{ 'portfolio.tarif_wordpress.designation.ligne1.texte4' | trans }}
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td>5</td>
+                                <td>100 000 {{ 'portfolio.tarif_wordpress.tarif.afrique.devis' | trans }}</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <ul class="unstyled">
+                                        <li>
+                                            {{ 'portfolio.tarif_wordpress.designation.ligne2.texte1' | trans }}
+                                            <ul>
+                                                {% for i in 0..1 %}
+                                                <li>{{ ('portfolio.tarif_wordpress.designation.ligne2.liste1.' ~ i) | trans }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td>10</td>
+                                <td>100 000 {{ 'portfolio.tarif_wordpress.tarif.afrique.devis' | trans }}</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <ul class="unstyled">
+                                        <li>
+                                            {{ 'portfolio.tarif_wordpress.designation.ligne3.texte1' | trans }}
+                                            <ul>
+                                                {% for i in 0..1 %}
+                                                <li>{{ ('portfolio.tarif_wordpress.designation.ligne3.liste1.' ~ i) | trans }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td>5</td>
+                                <td>75 000 {{ 'portfolio.tarif_wordpress.tarif.afrique.devis' | trans }}</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <ul class="unstyled">
+                                        <li>
+                                            {{ 'portfolio.tarif_wordpress.designation.ligne4.texte1' | trans }}
+                                            <ul>
+                                                {% for i in 0..5 %}
+                                                <li>{{ ('portfolio.tarif_wordpress.designation.ligne4.liste1.' ~ i) | trans }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td>10</td>
+                                <td>100 000 {{ 'portfolio.tarif_wordpress.tarif.afrique.devis' | trans }}</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <ul class="unstyled">
+                                        <li>
+                                            {{ 'portfolio.tarif_wordpress.designation.ligne5.texte1' | trans }}
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td>10 à 20</td>
+                                <td>{{ 'portfolio.tarif_wordpress.a_partir_de' | trans }} 100 000 {{ 'portfolio.tarif_wordpress.tarif.afrique.devis' | trans }}</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <ul class="unstyled">
+                                        <li>
+                                            {{ 'portfolio.tarif_wordpress.designation.ligne6.texte1' | trans }}
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td>5 à 20</td>
+                                <td>{{ 'portfolio.tarif_wordpress.a_partir_de' | trans }} 100 000 {{ 'portfolio.tarif_wordpress.tarif.afrique.devis' | trans }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                        
+                    <p>
+                        <strong>{{ 'portfolio.tarif_wordpress.note.titre' | trans }}</strong>:
+                        {{ 'portfolio.tarif_wordpress.note.contenu' | trans }}
+                    </p>
+                    
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

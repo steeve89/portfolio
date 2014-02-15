@@ -3,7 +3,7 @@
 <div class="entete-portfolio btn-primary">    
     <h1>{% block header_title %}{% endblock %}</h1>
     {% block pubdate %}
-    <p>{{ 'page.publie_le' | trans }} <time datetime="2014-01-05" pubdate>{{ '2013-12-15'|localizeddate('full', 'none') }}</time> {{ 'page.par' | trans }} <a href="https://plus.google.com/100370336164704667929/">{{ webmaster_name }}</a></p>
+    <p>{{ 'page.publie_le' | trans }} <time datetime="2014-01-01">{{ '2014-01-01'|localizeddate('full', 'none') }}</time> {{ 'page.par' | trans }} <a href="https://plus.google.com/100370336164704667929/">{{ webmaster_name }}</a></p>
     {% endblock %}
 </div>
 {% endblock %}
@@ -14,6 +14,28 @@
     <li><a title="{{ 'portfolio.menu.profile' | trans }}" href="{{ path('app_portfolio_profile') }}"><i class="icon-user"></i> {{'portfolio.menu.profile' | trans}}</a></li>
     <li><a title="{{ 'portfolio.menu.realisations' | trans }}" href="{{ path('app_portfolio_realisatons') }}"><i class="icon-th-list"></i> {{'portfolio.menu.realisations' | trans}}</a></li>
     <li><a title="{{ 'portfolio.menu.projets' | trans }}" href="{{ path('app_portfolio_projets') }}"><i class="icon-briefcase"></i> {{'portfolio.menu.projets' | trans}}</a></li>
+    <li class="dropdown">
+        <a class="dropdown-toggle" title="{{ 'portfolio.menu.comment_ca_marche.titre' | trans }}" href="#">
+            <i class="icon-info-sign"></i> {{'portfolio.menu.comment_ca_marche.titre' | trans}} <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li><a title="{{ 'portfolio.menu.comment_ca_marche.client' | trans }}" href="{{ path('comment_ca_marche_client') }}">{{ 'portfolio.menu.comment_ca_marche.client' | trans }}</a></li>
+            <li class="divider"></li>
+            <li><a title="{{'portfolio.menu.comment_ca_marche.partenaire'|trans}}" href="{{ path('comment_ca_marche_partenaire') }}">{{'portfolio.menu.comment_ca_marche.partenaire'|trans}}</a></li>
+        </ul>
+    </li>
+    <li class="dropdown">
+        <a class="dropdown-toggle" title="{{ 'portfolio.menu.tarif.titre' | trans }}" href="#">
+            <i class="icon-info-sign"></i> {{'portfolio.menu.tarif.titre' | trans}} <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li><a title="{{ 'portfolio.menu.tarif.wordpress' | trans }}" href="{{ path('tarif_site_wordpress') }}">{{ 'portfolio.menu.tarif.wordpress' | trans }}</a></li>
+            <li class="divider"></li>
+            <li><a title="{{'portfolio.menu.tarif.symfony'|trans}}" href="{{ path('tarif_site_symfony') }}">{{'portfolio.menu.tarif.symfony'|trans}}</a></li>
+            <li class="divider"></li>
+            <li><a title="{{'portfolio.menu.tarif.facebook'|trans}}" href="{{ path('tarif_site_facebook') }}">{{'portfolio.menu.tarif.facebook'|trans}}</a></li>
+        </ul>
+    </li>
     <li><a title="{{ 'portfolio.menu.contact' | trans }}" href="{{ path('app_portfolio_contact') }}"><i class="icon-envelope"></i> {{'portfolio.menu.contact' | trans}}</a></li>
 </ul>
 {% endblock %}

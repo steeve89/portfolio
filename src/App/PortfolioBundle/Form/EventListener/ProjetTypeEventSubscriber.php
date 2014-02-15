@@ -40,7 +40,7 @@ class ProjetTypeEventSubscriber implements EventSubscriberInterface
         if (!$projet || null === $projet->getId()) {
             $form->add('titre', 'text', array('translation_domain' => 'FOSUserBundle', 'label' => 'projet.field.titre', ));
         } else {
-            $form->add('titre', 'hidden');
+            $form->add('identifier', 'hidden', array('data' => $projet->getTitre(), 'mapped' => false));
         }
         //  S'il s'agit d'un administrateur alors on ajoute de nouveau champs
         if ($this->securityContext->isGranted('ROLE_ADMIN')){

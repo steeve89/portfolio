@@ -14,6 +14,8 @@ body { position: relative; padding-top: 40px; }
 .navbar .submenu .brand { font-size: 24px; line-height: 32px; }
 .entete-portfolio { padding: 40px 20px;  }
 .entete-portfolio h1 { padding: 0; margin: 0; color: white; font-size: 40px;}
+.navbar .submenu .dropdown-toggle .caret { margin-top: 15px; }
+.logo { border: 0 none; margin-left: 15px; margin-bottom: 2px; width: 20px; height: 20px; }
 /* CONTENU */
 .container-fluid { padding: 0 33px; }
 .accueil { margin-bottom: 33px; }
@@ -21,7 +23,10 @@ body { position: relative; padding-top: 40px; }
 .accueil article { padding: 0 20px 20px; }
 .accueil article h1, .page h1 { font-size: 20px; border-bottom: 2px solid #e3e3e3; }
 .page .span9 { margin-left: 20px; }
-.accueil .service { border-bottom: 2px solid #e3e3e3; margin: 0 2%; width: 96%; margin-bottom: 0; }
+.entete-portfolio p a { color: white; }
+/*.accueil .service { border-bottom: 2px solid #e3e3e3; margin: 0 2%; width: 96%; margin-bottom: 0; }*/
+.accueil .bienvenue article p.text-left { height: 120px; }
+.accueil .service article p.text-left { height: 160px; }
 #myCarousel .item, #myCarousel img { height: 320px; width: 100%; }
 .footer { padding: 20px; }
 .fos_user { max-width: 1000px; margin: 0 auto;}
@@ -48,7 +53,14 @@ body { position: relative; padding-top: 40px; }
 .piecejointe .targetblank { margin-bottom: 10px; }
 .actions { width: 100px; }
 .bouton-partage li.middle { width: 55px; }
+.bouton-partage li { display: table-cell; vertical-align: top;  }
 .footer-texte { font-size: 24px; margin-bottom: 10px; }
+.texte-presentation { padding: 20px 0; }
+.padding10 { padding: 10px; }
+.page-right { padding: 0 20px; }
+.section-page { padding-top: 33px; }
+.margin20 { margin: 20px; }
+.no-border { border: 0 none; }
 /***************/
 /** Textarea  **/
 /***************/

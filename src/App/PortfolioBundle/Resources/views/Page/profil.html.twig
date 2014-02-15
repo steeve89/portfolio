@@ -1,7 +1,7 @@
 {% extends "AppPortfolioBundle::layout.html.twig" %}
 
 {% block title %}{{ 'portfolio.profil.titre' | trans }} | {{ parent() }}{% endblock %}
-{% block description %}{% endblock %}
+{% block description %}{{ 'portfolio.profil.description' | trans }}{% endblock %}
 {% block keywords %}{% endblock %}
 
 {% block header_title %}{{ 'portfolio.profil.titre' | trans }}{% endblock %}
@@ -12,7 +12,7 @@
         <section>
             <h1>{{ 'portfolio.profil.section1.titre' | trans }}</h1>
             <figure>
-                <img src="{{ asset('/img/icon-user.png') }}" alt="" />
+                <img src="{{ asset('/img/loko-steeve.jpg') }}" alt="" width="133" height="200"/>
             </figure>
             <address>{{ 'portfolio.profil.section1.contenu' | trans({ '%skype%' : '<img src="' ~ asset('/img/skype_icon.png')~'" alt="" />'}) | raw | nl2br }}</address>
         </section>
@@ -20,18 +20,38 @@
     <div class="span8 wrap-right">
         <section>
             <h1>{{ 'portfolio.profil.section2.titre' | trans }}</h1>
+            <p>{{ 'portfolio.profil.section2.paragraphe' | trans }}</p>
+            <ul>
+                {% for i in 0..5%}
+                <li>{{ ('portfolio.profil.section2.liste.' ~ i) | trans }}</li>
+                {% endfor %}
+            </ul>
         </section>
 
         <section>
             <h1>{{ 'portfolio.profil.section3.titre' | trans }}</h1>
+            <p>{{ 'portfolio.profil.section3.paragraphe1' | trans }}</p>
+            <p>{{ 'portfolio.profil.section3.paragraphe2' | trans }}</p>
         </section>
 
         <section>
             <h1>{{ 'portfolio.profil.section4.titre' | trans }}</h1>
+            <p>{{ 'portfolio.profil.section4.paragraphe1' | trans }}</p>
+            <p>{{ 'portfolio.profil.section4.paragraphe2' | trans }}</p>
+            <ul>
+                {% for i in 0..1%}
+                <li>{{ ('portfolio.profil.section4.liste.' ~ i) | trans }}</li>
+                {% endfor %}
+            </ul>
         </section>
-
+        
         <section>
             <h1>{{ 'portfolio.profil.section5.titre' | trans }}</h1>
+            <p>{{ 'portfolio.profil.section5.paragraphe1' | trans }}</p>
+            <p>{{ 'portfolio.profil.section5.paragraphe2' | trans }}</p>
+            <ul>
+                <li>{{ 'portfolio.profil.section5.liste.0' | trans }}</li>
+            </ul>
         </section>
     </div>
 </div>

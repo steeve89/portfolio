@@ -1,6 +1,6 @@
 ## FICHIER DE TRADUCTION.
 site:
-    logo: LOKO-STEEVE.COM
+    logo: LOKO-STEEVE.COM BETA
     title: LOKO STEEVE
     entete:
         langue:
@@ -48,105 +48,430 @@ portfolio:
         profile:      Profile
         realisations: Réalisations
         projets:      Projets
-        contact:      Demande de devis & Contact        
+        contact:      Demande de devis & Contact       
+        comment_ca_marche: Comment ça marche ?
+        client: Client
+        partenaire: Partenaire
+        comment_ca_marche:
+            titre: Comment ça marche?
+            client: Client
+            partenaire: Partenaire
+        tarif:
+            titre: Tarif
+            wordpress: WordPress
+            symfony: Symfony
+            facebook: Facebook
     accueil:
         titre: Portfolio Développeur Web Freelance
-        description: 
+        description: > 
+                      Portfolio de LOKO steeve, prestataire en développement de site WordPress, 
+                      Symfony et Application Facebook. Visitez mon portfolio et n’hésitez surtout pas à me contacter.
         keywords: 
         identifier_url: http://www.loko-steeve.com
         section_1:
             titre: BIENVENUE SUR MON PORTFOLIO PROFESSIONNEL
             article_1:
                 titre: Qui suis-je?
-                paragraphe: Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
+                paragraphe: > 
+                            Je me nomme Steeve LOKO, Développeur Web Freelance, Spécialiste WordPress, Symfony et 
+                            Application Facebook. Je serais honorer de pouvoir conduire votre Projet Web avec tout 
+                            le sérieux et tout le professionnalisme nécessaire à sa réussite. N’hésitez surtout pas 
+                            à me contacter.
             article_2:
-                titre: Partenaires
-                paragraphe: Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
+                titre: Partenaire
+                paragraphe: > 
+                            Vous êtes une entreprise, une agence, un professionnel du web, un porteur de projet à la 
+                            recherche d’un partenaire sérieux et efficace pour collaborer ou gérer vos projets web ? 
+                            Vous êtes au bon endroit.
             article_3:
                 titre: Client
-                paragraphe: Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
+                paragraphe: >  
+                            Vous êtes un particulier, une entreprise à la recherche d’un prestataire sérieux et 
+                            efficace pour mener à bien votre projet web dans un délai précis? Vous êtes au bon endroit.
         section_2:
             titre: Mes services
             article_1:
-                titre: Développeur WordPress
-                paragraphe: Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
+                titre: Développement WordPress
+                paragraphe: >
+                            WordPress est un Système de Gestion de Contenu (SGC ou CMS en Anglais) qui permet de créer 
+                            et configurer rapidement un site internet. Il s’agit d’un logiciel gratuit et très  facile 
+                            à manipuler grâce à un panneau d’administration intuitif et conviviale. Très pratique pour 
+                            créer un site vitrines ou un blog.
             article_2:
-                titre: Développeur Symfony
-                paragraphe: Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
+                titre: Développement Symfony
+                paragraphe: > 
+                            Symfony est un Framework PHP qui fournit un cadre de base pour tout développement de site 
+                            web. Ses composants internes garantissent sécurité et performance pour tout projet web. 
+                            Il est conseillé pour les gros projets qui  nécessitent des besoins spécifiques et où 
+                            plusieurs développeurs peuvent intervenir simultanément. Grâce à son architecture, il facilite la maintenance et l’évolution d’un site web.
             article_3:
-                titre: Développeur Facebook
-                paragraphe: Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
+                titre: Développement Facebook
+                paragraphe: > 
+                            Facebook est le réseau social le plus populaire du monde et une source de croissance pour 
+                            toute entreprise qui a des ambitions régionales ou internationales. Créer une page Facebook 
+                            pour promouvoir votre activité ; interagir ou partager les bons plans avec vos clients. 
+                            Les applications Facebook vous donne plus de visibilité et de nouveaux clients à travers 
+                            des jeux concours très appréciés par les Facebookers.
     # Page profl
     profil:
         titre: Profil Développeur Web Freelance
+        description: > 
+                      LOKO Steeve: Développeur Web Freelance, Spécialiste WordPress, Symfony et Application Facebook. 
+                      Mon Profil est à votre disposition pour tout besoin d’informations complémentaires.
         section1:
             titre: Informations Personnelles
             contenu: |
                     LOKO Steeve
-                    Né le 03 Juillet 1989
                     Développeur Web Freelance
-                    Email: loko.steeve@yahoo.fr
+                    Email: contact@loko-steeve.com
                     %skype%: loko.steeve
         section2:
-            titre: Profil Développeur Web
+            titre: Développeur Web
+            paragraphe: > 
+                        Création de sites Web professionnels, respectant les standards web avec un très bon niveau 
+                        de référencement.
+            liste:
+                - "Langages: HTML5, CSS3, JavaScript, Ajax, PHP & MySQL."
+                - "Framework CSS: Bootstrap de Twitter."
+                - "Librairies JavaScript: jQuery, jQuery UI, Bootstrap, Bootstrap UI, Undescore."
+                - "Framework  JavaScript: Backbone."
+                - "Framework PHP: Symfony."
+                - "Système de gestion de contenu (CMS): WordPress."
         section3:
-            titre: Profil Développeur WordPress
+            titre: Développeur WordPress
+            paragraphe1: Création, modification de thème et plugin WordPress.
+            paragraphe2: Plus de trois (03) années d’expériences dans le développement de site WordPress.
         section4:
-            titre: Profil Développeur Symfony
+            titre: Développeur Symfony
+            paragraphe1: Création de site web à l’aide du Framework Symfony 2.
+            paragraphe2: Plus de trois (03) années d’expériences dans le développement de site web avec Symfony.
+            liste:
+                - "Technologie : Doctrine, MVC, DRY, YAML, TWIG, CONSOLE, ..."
+                - "Logiciel de gestion de versions : Git."           
         section5:
-            titre: Profil Développeur Facebook
+            titre: Développeur Facebook
+            paragraphe1: Création, modification de page et application Facebook.
+            paragraphe2: Plus de trois (03) années d’expériences dans la création de page et Applcation Facebook
+            liste:
+                - "Utilisation des API JavaScript et PHP SDK."
     # Réalisations
     realisations:
         titre: Réalisations Développeur Web Freelance
+        description: > 
+                      Consulter la liste de mes réalisations, les sites ou applications web, les projets web sur 
+                      lesquels j’ai travaillé ou contribué. Je serais ravi d’avoir des retours concernant ces projets 
+                      web.
+        tag: Tag(s)
         section1:
-            titre: LIFESCHOOL.FR
-            contenu: >  
-                      Loren loren loren loren loren loren loren Loren loren loren loren loren loren 
-                      loren Loren loren loren loren loren loren loren Loren loren loren loren loren 
-                      loren loren Loren loren loren loren loren loren loren Loren loren loren loren 
-                      loren loren loren Loren loren loren loren loren loren loren Loren loren loren 
-                      loren loren loren loren Loren loren loren loren loren loren loren Loren loren 
-                      loren loren loren loren loren Loren loren loren loren loren loren loren Loren 
-                      loren loren loren
-        section2:
             titre: LOKO-STEEVE.COM
+            contenu: >    
+                      Portfolio Développeur Web Freelance, Blog sur le développement web, Boutique e-Commerce pour 
+                      la vente de produits (maquette PSD de site web, thème et plugins WordPress, ste vitrine, etc.)
+            tag:  Symfony 2, Bootstrap de Twitter.
+        section2:
+            titre: STIVOYAGES.COM
             contenu: >  
-                      Loren loren loren loren loren loren loren Loren loren loren loren loren loren 
-                      loren Loren loren loren loren loren loren loren Loren loren loren loren loren 
-                      loren loren Loren loren loren loren loren loren loren Loren loren loren loren 
-                      loren loren loren Loren loren loren loren loren loren loren Loren loren loren 
-                      loren loren loren loren Loren loren loren loren loren loren loren Loren loren 
-                      loren loren loren loren loren Loren loren loren loren loren loren loren Loren 
-                      loren loren loren
+                      Découvrez toute l’actualité des croisières maritimes et fluviales dans le monde et dénichez 
+                      les meilleures promotions pour partir en mer à moindre coût.
+            tag: > 
+                  Installation et configuration site WordPress, Installation et configuration du thème iFeature (Pas 
+                  d’intégration de Design), Création plugin Croisière pour gérer flux programme d’affiliation.
         section3:
-            titre: DELETE FRIEND
-            contenu: >  
-                      Loren loren loren loren loren loren loren Loren loren loren loren loren loren 
-                      loren Loren loren loren loren loren loren loren Loren loren loren loren loren 
-                      loren loren Loren loren loren loren loren loren loren Loren loren loren loren 
-                      loren loren loren Loren loren loren loren loren loren loren Loren loren loren 
-                      loren loren loren loren Loren loren loren loren loren loren loren Loren loren 
-                      loren loren loren loren loren Loren loren loren loren loren loren loren Loren 
-                      loren loren loren
+            titre: LOKO-STEEVE.HOSTEI.COM
+            contenu: Ancienne version du site loko-steeve.com
+            tag: Création charte graphique, Intégration web, Développement PHP&MySQL.
+        section4:
+            titre: DELETE FRIENDS
+            contenu: Application Facebook de suppression d’amis sur Facebook.
+            tag:  API PHP de Facebook.
         voir_site: Voir le site
+
     # Projets
     projets:
-        titre: Projets Développeur Web Freelance
+        titre: Mes projets web
+        description: > 
+                      Découvrez la liste de mes projets web personnels en cours ou à venir. Vous pouvez suivre ou 
+                      participer à l’évolution d’un ou plusieurs projets. Merci !
         section1:
-            titre: FREELANCE BENIN
+            titre: PORFOLIO
             contenu: >  
-                      Loren loren loren loren loren loren loren Loren loren loren loren loren loren 
-                      loren Loren loren loren loren loren loren loren Loren loren loren loren loren 
-                      loren loren Loren loren loren loren loren loren loren Loren loren loren loren 
-                      loren loren loren Loren loren loren loren loren loren loren Loren loren loren 
-                      loren loren loren loren Loren loren loren loren loren loren loren Loren loren 
-                      loren loren loren loren loren Loren loren loren loren loren loren loren Loren 
-                      loren loren loren
+                      Site web développé avec le Framework Symfony qui offre des fonctionnalités novatrices pour tout 
+                      professionnel du web. Il offre la possibilité de gérer vos clients à travers une interface web 
+                      intuitif et conviviale, donner un rapport régulier sur l’avancement des projets de vos clients, 
+                      recevoir le paiement de votre prestation. Vous disposez également d’un blog pour publier des 
+                      articles sur des sujets divers(programmation web, infographie, etc..). Une boutique e-Commerce 
+                      est également à votre disposition pour vendre vos produits sur le web.
+        section2:
+            titre: FREELANCE
+            contenu: >  
+                      Site Web de mise en relation prestataire et porteur de projet. Il permet à un particulier ou 
+                      une entreprise de trouver rapidement et efficacement un professionnel pour conduire à terme
+                      son projet web (rédaction de contenu, création de charte graphique, création de logiciel, création
+                      de site web, etc.). Une interface admin pour gérer au mieux les utilisateurs et les projets.
         voir_site: Voir le site
         github: Suivre sur Github
         don: Faire un don
+        a_venir: Bientôt
+    #client
+    client:
+        titre: Comment ça marche - Client
+        description: > 
+                      Vous êtes un particulier, une entreprise à la recherche d’un prestataire sérieux et efficace pour 
+                      mener à bien votre projet web dans un délai précis? Vous êtes au bon endroit.
+        introduction: > 
+                        Vous êtes un particulier, une entreprise à la recherche d’un prestataire sérieux et efficace pour 
+                        mener à bien votre projet web dans un délai précis? Vous êtes au bon endroit.
+        section1:
+            titre: Qui sommes-nous ?
+            paragraphe1: >
+                          loko-steeve.com est le site web professionnel de LOKO Steeve, un prestataire en développement 
+                          de site et application web. Ce site web est une plateforme web d’un nouveau genre, qui permet 
+                          de mettre en relation le prestataire et ses clients.
+            lien1: Profil du prestataire
+            paragraphe2: En tant que client, vous avez la possibilité de
+            liste1:
+                - Soumettre votre Projet Web ;
+                -	Avoir un devis sous 48H ;
+                - Avoir un rapport régulier sur l’avancement de votre projet ;
+                -	Voir l’avancement de votre projet web (http://votreprojet.loko-steeve.com)
+                -	Avoir une facture pour la prestation ;
+                -	Choisir le mode de règlement (virement bancaire, PayPal) ;
+                -	Payer uniquement si vous êtes satisfait du travail.
+        section2:
+            titre: Soumettre votre Projet Web
+            paragraphe1:
+                ligne1: Pour soumettre un projet, vous devez tout d’abord vous inscrire et validez votre inscription
+                lien1:  Inscription
+                ligne2: Ensuite, il faut vous connecter à l’espace client grâce à votre email et mot de passe
+                lien2:  Mon compte
+                ligne3: Enfin, dans le menu utilisateur, cliquez sur projet
+            paragraphe2: Puis cliquez sur le bouton soumettre un projet.
+        section3: 
+            titre: Avoir un devis pour mon projet web
+            paragraphe1: A chaque fois que vous soumettez votre projet web, vous avez un devis sous 48H.
+            paragraphe2: Pour négocier un devis, vous avez la possibilité de contacter le service client (service client)  ou nous ajouter sur Skype (loko.steeve). 
+        section4: 
+            titre: Avoir un rapport régulier sur l’avancement de mon projet web
+            paragraphe1: >
+                          L’un des principes de cette plateforme est de vous offrir la possibilité d’avoir des rapports 
+                          réguliers sur l’avancement de votre projet web. De plus, vous recevez immédiatement un message
+                          dans votre boite de messagerie (Yahoo, Hotmail, etc.) à chaque fois qu’un nouveau rapport est 
+                          disponible pour votre projet.
+        section5: 
+            titre: Voir l’avancement de votre projet web
+            paragraphe1: >
+                          Pour chaque projet web, nous mettons à votre disposition un sous domaine pour visualiser 
+                          l’avancement de votre projet web.
+            exemple: "Ex: http://votreprojet.loko-steeve.com" 
+        section6: 
+            titre: Avoir une facture pour la prestation
+            paragraphe1: > 
+                          Une fois que vous recevez votre devis, vous disposez en même temps d’une facture pour votre 
+                          projet. Pour consulter cette facture, cliquez sur le bouton facture qui se trouve juste 
+                          devant votre projet.
+        section7: 
+            titre: Choisir le mode de règlement de la facture
+            paragraphe1: Pour le moment, nous ne disposons que de deux modes de règlement de votre facture
+            liste1:
+                - Le paiement par virement bancaire
+                -	Le paiement par Paypal
+            paragraphe2: >
+                          Vous aurez toujours le choix d’opter pour le mode de règlement qui vous convient le mieux. 
+                          Cependant, nous vous conseillons, un virement bancaire qui a l’avantage de nous causer aucun 
+                          tord avec un système de paiement en ligne.
+            paragraphe3: > 
+                          Pour procéder au paiement de votre facture, il suffit de cliquer sur le bouton « payer » qui 
+                          se trouve juste en bas de votre facture.
+        section8:
+            titre: Payer uniquement si vous êtes satisfait du travail
+            paragraphe1: >
+                          Nous travaillons sur le principe d’un cahier des charges, établis par le client et/ou le 
+                          prestataire. Ce cahier des charges contient les différentes fonctionnalités à développer 
+                          par le prestataire. C’est sur la base de ce document que votre site ou application web sera 
+                          développé.
+            paragraphe2: > 
+                          Nous attirons donc votre attention sur l’importance de ce document et de son contenu. Il vous 
+                          reviendra ensuite de valider le développement de votre projet web en tenant compte du contenu 
+                          de ce  document.
+            paragraphe3: > 
+                          Nous tenons également à vous signaler que vous ne payez que si vous êtes satisfait de notre 
+                          travail. Néanmoins, il est important que vous soyez solvable. 
+        remerciement: |
+                        Merci.
+                        Steeve LOKO
+    partenaire:
+        titre: Comment ça marche - Partenaire
+        description: > 
+                      Vous êtes une entreprise, une agence, un professionnel du web, un porteur de projet à la 
+                      recherche d’un partenaire sérieux et efficace pour collaborer ou gérer vos projets web ? 
+                      Vous êtes au bon endroit.
+        introduction:
+            paragraphe1: > 
+                          Vous êtes une entreprise, une agence, un professionnel du web, un porteur de projet à la 
+                          recherche d’un partenaire sérieux et efficace pour collaborer ou gérer vos projets web ? 
+                          Vous êtes au bon endroit.                          
+            paragraphe2: > 
+                          En tant que partenaire, vous êtes avant tout un de nos clients. Comme tous 
+                          nos clients, vous avez donc la possibilité de :
+            liste1:
+                -	Soumettre votre Projet Web
+                -	Avoir un devis sous 48H
+                -	Avoir un rapport régulier sur l’avancement de votre projet
+                -	Voir l’avancement de votre projet web (http://votreprojet.loko-steeve.com)
+                -	Avoir une facture pour la prestation
+                -	Choisir le mode de règlement (virement bancaire, PayPal)
+                -	Payer uniquement si vous êtes satisfait du travail
+            en_savoir_plus: En savoir plus
+            paragraphe3: En outre, vous disposez d’autres avantages tel que
+            liste2:
+                -	Une remise de 10 à 20% sur vos projet web ;
+                -	La possibilité de vendre et de recevoir de l’argent sur chaque produit vendu sur cette plateforme.
+        section1:
+            titre: Bénéficier d’une remise sur mes projets
+            paragraphe1: > 
+                          Après avoir soumis plus de cinq (05) projets, vous bénéficiez d’une remise de 10%. Puis 20% 
+                          à partir de dix (10) projets.
+        section2:
+            titre: Vendre mes produits et recevoir de l’argent
+            paragraphe1: > 
+                          Vous êtes par exemple un web designer ou un développeur web et vous désirez vendre des 
+                          maquettes de site web, des thèmes ou plugins WordPress, … ; c’est simple, il suffit de vous 
+                          inscrire (inscription) et d’accéder à votre compte personnel: Mon compte. Dans le menu 
+                          utilisateur, cliquez sur produit.
+            paragraphe2: Puis cliquez sur le bouton vendre un produit.
+            paragraphe3: > 
+                          Une fois votre produit validé, il sera immédiatement disponible ) la vente dans notre 
+                          boutique. Vous disposez également d’un rapport sur les commandes de vos produits ainsi que 
+                          de la rémunération qui vous ait dû. Le paiement se fera mensuellement  avec un montant 
+                          minimum de 50 euros.
+            vendre_produit: Vendre un produit
+        remerciement: |
+                        Merci.
+                        Steeve LOKO
+    # Tarif WordPress
+    tarif_wordpress:
+        titre: Tarif Site WordPress
+        description: > 
+                      Découvrez nos tarifs pour la création de site WordPress. Nous sommes spécialisé dans la création 
+                      de thème et de plugins WordPress.
+        introduction: > 
+                      Découvrez nos tarifs pour la création de site WordPress. Nous sommes spécialisé dans la création 
+                      de thème et de plugins WordPress.
+        designation:
+            titre:  Désignation  
+            ligne1: 
+                texte1: Installation, configuration site WordPress
+                texte2: Installation, configuration et modification d'un thème gratuit                
+                texte3: Installation et configuration extension WordPress
+                liste1:
+                    -	Akismet + clé d’activation
+                    -	Fonction de partage sur les réseaux sociaux (Facebook, Twitter et Google+)
+                texte4: Création Page Contact                
+            ligne2:
+                texte1: Intégration de la charte graphique
+                liste1: 
+                    -	Intégration d’une maquette PSD
+                    -	Adaptation du thème aux mobiles suivant leurs résolutions (smartphones et tablettes)
+            ligne3:
+                texte1: Site multi-langage
+                liste1: 
+                    -	Achat extension WPML (75$)
+                    -	Modification du thème pour la prise en compte des langues
+            ligne4:
+                texte1: Référencement naturel S.E.O
+                liste1: 
+                    -	Mise en place de Google analytics
+                    - Installation et configuration de All In One SEO
+                    -	Définition des titres, descriptions, keyword, tags de chaque page
+                    -	Inscription dans les annuaires
+                    -	Recherche de partenaire
+                    - Recommandation S.E.O
+            ligne5:
+                texte1: Création de thème WordPress
+            ligne6:
+                texte1: Création de plugin WordPress
+            ligne7:
+                texte1: Création Charte Graphique
+        a_partir_de:  A partir de
+        tarif: 
+            titre: Tarif HT
+            europe: 
+                titre: Tarif Europe
+                devis: euros
+            afrique: 
+                titre: Tarif Afrique
+                devis: FCFA
+        duree: Durée en Jour(j)
+        note:
+            titre: Note
+            contenu: Chacune de ces offres est optionnelle. Une réduction de 10 à 20% à partir de trois(03) options choisies. Merci !
+    # Tarif Symfony
+    tarif_symfony:
+        titre: Tarif Site Symfony
+        description: > 
+                      Découvrez nos tarifs pour la création de site avec Symfony. Nous sommes spécialisé dans la création 
+                      d'application web avec le Framework PHP Symfony.
+        introduction: > 
+                      Découvrez nos tarifs pour la création de site avec Symfony. Nous sommes spécialisé dans la création 
+                      d'application web avec le Framework PHP Symfony.
+        designation:
+            titre:  Désignation  
+            ligne1: 
+                texte1: Création de site avec symfony
+                liste1:
+                    - Développement des fonctionnalités
+                    - Intégration charte graphique
+        tarif: 
+            titre: Tarif HT
+            europe: 
+                titre: Tarif Europe
+                devis: euros
+            afrique: 
+                titre: Tarif Afrique
+                devis: FCFA
+        duree: Durée en Jour(j)
+    # Tarif Symfony
+    tarif_facebook:
+        titre: Tarif Page ou Application Facebook
+        description: > 
+                      Découvrez nos tarifs pour la création de page et application Facebook. Nous sommes spécialisé dans la création 
+                      d'application Facebook.
+        introduction: > 
+                      Découvrez nos tarifs pour la création de page et application Facebook. Nous sommes spécialisé dans la création 
+                      d'application Facebook.
+        designation:
+            titre:  Désignation  
+            ligne1: 
+                texte1: Création et configuration de la page Facebook
+                liste1:
+                    - Paramétrage
+                    - Création page d'accueil fan et non fan
+            ligne2: 
+                texte1: Création jeux concours pour augmenter nombre de fans
+                liste1:
+                    - Développement du jeux concours
+                    - Maintenance et correction de bug
+            ligne3: 
+                texte1: Création Application Facebook
+        tarif: 
+            titre: Tarif HT
+            europe: 
+                titre: Tarif Europe
+                devis: euros
+            afrique: 
+                titre: Tarif Afrique
+                devis: FCFA
+        duree: Durée en Jour(j)
+        a_partir_de:  A partir de
+    # Contact
     contact:
         titre: Demande de Devis & Contact
+        description: > 
+                      Besoin d’un devis pour votre projet web ? N’hésitez surtout pas à nous contacter. Nous vous ferons 
+                      parvenir un devis sous 48H. Nous sommes à votre service pour toute demande d'informations complémentaires.
+        paragraphe: >
+                     Besoin d’un prestataire pour mener à bien votre projet web? N’hésitez pas à nous contacter. 
+                     Votre devis sous 48H.
         form:
             field:
                 nom_prenom: Nom & Prénom(s)
@@ -155,6 +480,7 @@ portfolio:
                 telephone:  Téléphone
                 message:    Message
             mail_send: Votre message a bien été envoyé. Vous recevrez une réponse dans les 48h. Merci !
+            mail_send_well: Votre message a bien été envoyé !
             submit: Envoyer
 
 message:

@@ -218,7 +218,7 @@ class Paiement
      */
     public function getRemise()
     {
-        return $this->getPrixHorsTaxe() * $this->getProjet()->getRemise();
+        return $this->getPrixHorsTaxe() * $this->getProjet()->getRemise() / 100;
     }
     
     /**

@@ -22,6 +22,32 @@ app_portfolio_service_client:
     pattern:  /service-client/
     defaults: { _controller: AppPortfolioBundle:Portfolio:serviceClient }
 
+app_portfolio_contact_client:
+    pattern:  /contact-client/{id}/
+    defaults: { _controller: AppPortfolioBundle:Portfolio:contactClient }
+    requirements:
+        id: \d*
+
+comment_ca_marche_client:
+    pattern:  /comment-ca-marche/client/
+    defaults: { _controller: AppPortfolioBundle:Portfolio:client }
+
+comment_ca_marche_partenaire:
+    pattern:  /comment-ca-marche/partenaire/
+    defaults: { _controller: AppPortfolioBundle:Portfolio:partenaire }
+
+tarif_site_wordpress:
+    pattern:  /tarif-wordpress/
+    defaults: { _controller: AppPortfolioBundle:Portfolio:tarifWordPress }
+
+tarif_site_symfony:
+    pattern:  /tarif-symfony/
+    defaults: { _controller: AppPortfolioBundle:Portfolio:tarifSymfony }
+
+tarif_site_facebook:
+    pattern:  /tarif-facebook/
+    defaults: { _controller: AppPortfolioBundle:Portfolio:tarifFacebook }
+
 #
 # ROOT PROJET #
 #

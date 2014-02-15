@@ -125,14 +125,14 @@
 {% spaceless %}
 <fieldset>
     <legend>
-        {% if form.titre.vars.value is empty %}
+        {% if form.identifier.vars.value is not defined %}
             {{ 'projet.new.title' | trans }}
         {% else %}
-            {{ 'projet.edit.title' | trans({'%title%': form.titre.vars.value }) }}
+            {{ 'projet.edit.title' | trans({'%title%': form.identifier.vars.value }) }}
         {%endif %}
     </legend>
     <div class="row-fluid projet">
-        {% if form.titre.vars.value is empty %}
+        {% if form.titre.vars.value is defined %}
         {# Affichage du champ titre #}
         <div class="control-group">
             {{ form_label(form.titre, null, {'label_attr': {'class' : 'control-label' }}) }}

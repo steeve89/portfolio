@@ -16,3 +16,4 @@ parameters:
 
     webmaster_email: email@exemple.fr
     webmaster_name:  Admin
+    categorie_article_par_page: 10

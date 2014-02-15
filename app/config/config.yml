@@ -55,6 +55,10 @@ assetic:
             file: %kernel.root_dir%/../vendor/leafo/lessphp/lessc.inc.php
             apply_to: "\.less$"
         cssrewrite: ~
+        #yui_js:
+            #jar: %kernel.root_dir%/Resources/java/yuicompressor.jar
+        #yui_css:
+            #jar: %kernel.root_dir%/Resources/java/yuicompressor.jar
     assets:            
         img_bootstrap_glyphicons_black:
             inputs:
@@ -67,10 +71,10 @@ assetic:
             output: "img/glyphicons-halflings-white.png"
         bootstrap_css:
             inputs:
-                #- %kernel.root_dir%/../vendor/twitter/bootstrap/less/bootstrap.less
-                #- %kernel.root_dir%/../vendor/twitter/bootstrap/less/responsive.less
-                - %kernel.root_dir%/../vendor/twitter/bootstrap/docs/assets/css/bootstrap.css
-                - %kernel.root_dir%/../vendor/twitter/bootstrap/docs/assets/css/bootstrap-responsive.css
+                - %kernel.root_dir%/../vendor/twitter/bootstrap/less/bootstrap.less
+                - %kernel.root_dir%/../vendor/twitter/bootstrap/less/responsive.less
+                #- %kernel.root_dir%/../vendor/twitter/bootstrap/docs/assets/css/bootstrap.css
+                #- %kernel.root_dir%/../vendor/twitter/bootstrap/docs/assets/css/bootstrap-responsive.css
             filters:
                 - lessphp
                 - cssrewrite

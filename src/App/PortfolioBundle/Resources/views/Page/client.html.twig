@@ -1,0 +1,171 @@
+{% extends "AppPortfolioBundle::layout.html.twig" %}
+
+{% block title %}{{ 'portfolio.client.titre' | trans }} | {{ parent() }}{% endblock %}
+{% block description %}{{ 'portfolio.client.description' | trans }}{% endblock %}
+{% block keywords %}{% endblock %}
+
+{% block header_title %}{{ 'portfolio.client.titre' | trans }}{% endblock %}
+
+{% block class_body %}data-spy="scroll" data-target="#myNav"{% endblock %}
+
+{% block body %}
+<div class="row-fluid page">
+    <div class="span3" id="myNav">
+        <ul class="nav nav-list nav-stacked" data-spy="affix" data-offset-top="190">
+            <li><a href="#section1"><i class="icon-chevron-right"></i> {{ 'portfolio.client.section1.titre' | trans }}</a></li>
+            <li><a href="#section2"><i class="icon-chevron-right"></i> {{ 'portfolio.client.section2.titre' | trans }}</a></li>
+            <li><a href="#section3"><i class="icon-chevron-right"></i> {{ 'portfolio.client.section3.titre' | trans }}</a></li>
+            <li><a href="#section4"><i class="icon-chevron-right"></i> {{ 'portfolio.client.section4.titre' | trans }}</a></li>
+            <li><a href="#section5"><i class="icon-chevron-right"></i> {{ 'portfolio.client.section5.titre' | trans }}</a></li>
+            <li><a href="#section6"><i class="icon-chevron-right"></i> {{ 'portfolio.client.section6.titre' | trans }}</a></li>
+            <li><a href="#section7"><i class="icon-chevron-right"></i> {{ 'portfolio.client.section7.titre' | trans }}</a></li>
+            <li><a href="#section8"><i class="icon-chevron-right"></i> {{ 'portfolio.client.section8.titre' | trans }}</a></li>
+        </ul>
+    </div>
+    <div class="span9">
+        <div class="page-right">
+            
+            <p>{{ 'portfolio.client.introduction' | trans }}</p>
+            
+            <div id="section1" class="section-page">
+                <h2>{{ 'portfolio.client.section1.titre' | trans }}</h2>
+                <div class="section-page-content">
+                    <p>
+                        {{ 'portfolio.client.section1.paragraphe1' | trans }}
+                    </p>
+                    <p>
+                        <a title="{{ 'portfolio.client.section1.lien1' | trans }}" href="{{ path('app_portfolio_profile') }}">
+                            {{ 'portfolio.client.section1.lien1' | trans }}
+                        </a>
+                    </p>
+                    <p>
+                        {{ 'portfolio.client.section1.paragraphe2' | trans }}:
+                    </p>
+                    <ul>
+                        {% for i in 0..6%}
+                        <li>{{ ('portfolio.client.section1.liste1.' ~ i) | trans }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            
+            <div id="section2" class="section-page">
+                <h2>{{ 'portfolio.client.section2.titre' | trans }}</h2>
+                <div class="section-page-content">
+                    <p>
+                        {{ 'portfolio.client.section2.paragraphe1.ligne1' | trans }}:
+                        <a title="{{ 'portfolio.client.section2.paragraphe1.lien1' | trans }}" href="{{ path('fos_user_registration_register') }}">
+                            {{ 'portfolio.client.section2.paragraphe1.lien1' | trans }}
+                        </a>.
+                        {{ 'portfolio.client.section2.paragraphe1.ligne2' | trans }}:
+                        <a title="{{ 'portfolio.client.section2.paragraphe1.lien2' | trans }}" href="{{ path('fos_user_profile_show') }}">
+                            {{ 'portfolio.client.section2.paragraphe1.lien2' | trans }}
+                        </a>.
+                        {{ 'portfolio.client.section2.paragraphe1.ligne3' | trans }}:
+                    </p>
+                    <figure>
+                        <img src="{{ asset('/img/menu-user-'~ app.request.locale ~ '.jpg') }}" alt=""/>
+                    </figure>
+                    <p>
+                        {{ 'portfolio.client.section2.paragraphe2' | trans }}:
+                    </p>
+                    <figure>
+                        <img src="{{ asset('/img/soumettre-projet-'~ app.request.locale ~ '.jpg') }}" alt=""/>
+                    </figure>
+                </div>
+            </div>
+            
+            <div  id="section3" class="section-page">
+                <h2>{{ 'portfolio.client.section3.titre' | trans }}</h2>
+                <div class="section-page-content">
+                    <p>
+                        {{ 'portfolio.client.section3.paragraphe1' | trans }}                        
+                    </p>
+                    <p>
+                        {{ 'portfolio.client.section3.paragraphe2' | trans }}:
+                    </p>
+                    <figure>
+                        <img src="{{ asset('/img/menu-user-'~ app.request.locale ~ '.jpg') }}" alt=""/>
+                    </figure>
+                </div>
+            </div>
+            
+            <div id="section4" class="section-page">
+                <h2>{{ 'portfolio.client.section4.titre' | trans }}</h2>
+                <div class="section-page-content">
+                    <p>
+                        {{ 'portfolio.client.section4.paragraphe1' | trans }}                        
+                    </p>
+                </div>
+            </div>
+            
+            <div id="section5" class="section-page">
+                <h2>{{ 'portfolio.client.section5.titre' | trans }}</h2>
+                <div class="section-page-content">
+                    <p>
+                        {{ 'portfolio.client.section5.paragraphe1' | trans }}                        
+                    </p>
+                    <p>
+                        {{ 'portfolio.client.section5.exemple' | trans }}                        
+                    </p>
+                </div>
+            </div>
+            
+            <div id="section6" class="section-page">
+                <h2>{{ 'portfolio.client.section6.titre' | trans }}</h2>
+                <div class="section-page-content">
+                    <p>
+                        {{ 'portfolio.client.section6.paragraphe1' | trans }}                        
+                    </p>
+                    <figure>
+                        <img src="{{ asset('/img/projet-facture-'~ app.request.locale ~ '.jpg') }}" alt=""/>
+                    </figure>
+                </div>
+            </div>
+            
+            <div id="section7" class="section-page">
+                <h2>{{ 'portfolio.client.section7.titre' | trans }}</h2>
+                <div class="section-page-content">
+                    <p>
+                        {{ 'portfolio.client.section7.paragraphe1' | trans }}                        
+                    </p>
+                    <ul>
+                        {% for i in 0..1 %}
+                        <li>{{ ('portfolio.client.section7.liste1.' ~ i) | trans }}</li>
+                        {% endfor %}
+                    </ul>
+                    <p>
+                        {{ 'portfolio.client.section7.paragraphe2' | trans }}                        
+                    </p>
+                    <p>
+                        {{ 'portfolio.client.section7.paragraphe3' | trans }}                        
+                    </p>
+                    <figure>
+                        <img src="{{ asset('/img/facture-paiement-'~ app.request.locale ~ '.jpg') }}" alt=""/>
+                    </figure>
+                </div>
+            </div>
+            
+            <div id="section8" class="section-page">
+                <h2>{{ 'portfolio.client.section8.titre' | trans }}</h2>
+                <div class="section-page-content">
+                    <p>
+                        {{ 'portfolio.client.section8.paragraphe1' | trans }}                        
+                    </p>
+                    <p>
+                        {{ 'portfolio.client.section8.paragraphe2' | trans }}                        
+                    </p>
+                    <p>
+                        {{ 'portfolio.client.section8.paragraphe3' | trans }}                        
+                    </p>
+                </div>
+            </div>
+            
+            <p>
+                {{ 'portfolio.client.remerciement' | trans | nl2br }} 
+            </p>
+            
+        </div>
+    </div>
+</div>
+{% endblock %}

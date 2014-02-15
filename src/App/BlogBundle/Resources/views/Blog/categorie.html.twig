@@ -7,7 +7,7 @@
 {% block header_title %}{{ categorie.nom}} {{ 'blog.categorie.titre' | trans }}{% endblock %}
 
 {% block pubdate %}
-    <p>{{ 'page.publie_le' | trans }} <time datetime="{{ categorie.createdDate | date('Y-m-d H:i:s') }}" pubdate>{{ categorie.createdDate|localizeddate('full', 'none') }}</time> {{ 'page.par' | trans }} <a href="https://plus.google.com/100370336164704667929/">{{ webmaster_name }}</a></p>
+    <p>{{ 'page.publie_le' | trans }} <time datetime="{{ categorie.createdDate | date('Y-m-d H:i:s') }}">{{ categorie.createdDate|localizeddate('full', 'none') }}</time> {{ 'page.par' | trans }} <a href="https://plus.google.com/100370336164704667929/">{{ webmaster_name }}</a></p>
 {% endblock %}
 
 {% block content %}

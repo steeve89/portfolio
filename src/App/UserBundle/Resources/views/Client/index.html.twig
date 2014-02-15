@@ -44,6 +44,9 @@
                         <li>
                             <a class="btn" href="{{ path('client_edit', { 'id': entity.id }) }}"><i class="icon-edit"></i> {{ 'actions.edit' | trans }}</a>
                         </li>
+                        <li>
+                            <a class="btn" href="{{ path('app_portfolio_contact_client', { 'id': entity.id }) }}"><i class="icon-envelope"></i> {{ 'actions.contact' | trans }}</a>
+                        </li>
                     </ul>
                 </td>
             </tr>

@@ -1,3 +1,10 @@
+/* 
+    Document   : fos_user
+    Created on : 6 oct. 2013, 13:03:10
+    Author     : Steeve LOKO <loko.steeve@yahoo.fr>
+    Description:
+        Style CSS du bundle UserBundle.
+*/
 .fos_user_change_password, .fos_user_resetting_reset, .fos_user_resetting_request, #fos_user_security_login { width: 500px; margin: 0 auto; }
 .main { margin-bottom: 33px; min-height: 300px; }
 .main section h1 { margin: 0 0 33px; }

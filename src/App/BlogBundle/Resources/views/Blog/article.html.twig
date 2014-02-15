@@ -7,7 +7,7 @@
 {% block header_title %}{{ article.titre }} | {{ categorie.nom }}{% endblock %}
 
 {% block pubdate %}
-    <p>{{ 'page.publie_le' | trans }} <time datetime="{{ article.createdDate | date('Y-m-d H:i:s') }}" pubdate>{{ article.createdDate|localizeddate('full', 'none') }}</time> {{ 'page.par' | trans }} <a href="https://plus.google.com/100370336164704667929/">{{ webmaster_name }}</a></p>
+    <p>{{ 'page.publie_le' | trans }} <time datetime="{{ article.createdDate | date('Y-m-d H:i:s') }}">{{ article.createdDate|localizeddate('full', 'none') }}</time> {{ 'page.par' | trans }} <a href="https://plus.google.com/100370336164704667929/">{{ webmaster_name }}</a></p>
 {% endblock %}
 
 {% block content %}
@@ -40,12 +40,14 @@
             <h2 class="text-center">{{ 'blog.article.commentaire.titre' | trans }}</h2>
             <ul class="unstyled commentaires">
                 {% for commentaire in article.commentaires %}
-                <li class="well commentaire {% if commentaire.isAdmin == 1 %}alert-danger{% endif %}">
-                    <h3 class="commentaire-auteur">{{ commentaire.nom ~ ' ' ~ commentaire.prenom}}</h3>
-                    <div class="commentaire-contenu">
-                        {{ commentaire.contenu }}
-                    </div>
-                </li>
+                    {% if commentaire.isActived == 1 %}
+                    <li class="well commentaire {% if commentaire.isAdmin == 1 %}alert-danger{% endif %}">
+                        <h3 class="commentaire-auteur">{{ commentaire.nom ~ ' ' ~ commentaire.prenom}}</h3>
+                        <div class="commentaire-contenu">
+                            {{ commentaire.contenu }}
+                        </div>
+                    </li>
+                    {% endif %}
                 {% endfor %}
             </ul>
             {% endif %}

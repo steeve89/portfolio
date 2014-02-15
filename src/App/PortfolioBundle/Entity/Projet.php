@@ -147,7 +147,6 @@ class Projet
      *
      * @ORM\Column(name="status", type="integer")
      * 
-     * @Assert\NotBlank()
      */
     private $status;   
         
@@ -165,7 +164,6 @@ class Projet
      *
      * @ORM\Column(name="is_actived", type="boolean")
      * 
-     * @Assert\NotBlank()
      */
     private $isActived;
 

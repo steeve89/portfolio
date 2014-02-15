@@ -1,42 +1,86 @@
 {% extends "AppPortfolioBundle::layout.html.twig" %}
 
 {% block title %}{{ 'portfolio.projets.titre' | trans }} | {{ parent() }}{% endblock %}
-{% block description %}{% endblock %}
+{% block description %}{{ 'portfolio.projets.description' | trans }}{% endblock %}
 {% block keywords %}{% endblock %}
 
 {% block header_title %}{{ 'portfolio.projets.titre' | trans }}{% endblock %}
+
+{% block class_body %}data-spy="scroll" data-target="#myNav"{% endblock %}
 
 {% block body %}
 <div class="row-fluid page">
     <div class="span3" id="myNav">
         <ul class="nav nav-list nav-stacked" data-spy="affix" data-offset-top="190">
-            <li><a href="#freelance-benin"><i class="icon-chevron-right"></i> {{ 'portfolio.projets.section1.titre' | trans }}</a></li>
+            <li><a href="#portfolio"><i class="icon-chevron-right"></i> {{ 'portfolio.projets.section1.titre' | trans }}</a></li>
+            <li><a href="#freelance-benin"><i class="icon-chevron-right"></i> {{ 'portfolio.projets.section2.titre' | trans }}</a></li>
         </ul>
     </div>
     <div class="span9 wrap-right">
-        <section id="freelance-benin">
+        <section id="portfolio">
             <h1>{{ 'portfolio.projets.section1.titre' | trans }}</h1>
             <div class="row-fluid">
                 <div class="span6">
                     <figure>
-                        <img src="{{ asset('/img/app-delete-friends.jpg') }}" alt="" />
+                        <img src="{{ asset('/img/portfolio-mini.jpg') }}" alt="" />
                     </figure>
                 </div>
                 <div class="span6">
-                    <p>
+                    <p class="texte-presentation">
                         {{ 'portfolio.projets.section1.contenu' | trans }}
                     </p>
-                    <p class="text-center">
-                        <a class="btn btn-success targetblank" href="#">
-                            {{ 'portfolio.projets.github' | trans }}
-                        </a>
-                        <a class="btn btn-primary targetblank" href="#">
-                            {{ 'portfolio.projets.voir_site' | trans }}
-                        </a>
-                        <a class="btn btn-danger" href="#">
-                            {{ 'portfolio.projets.don' | trans }}
-                        </a>
+                    <div class="text-center">
+                        <ul class="inline">
+                            <li>
+                                <a class="btn btn-success targetblank" href="https://github.com/steeve89/portfolio">
+                                    {{ 'portfolio.projets.github' | trans }}
+                                </a>
+                            </li>
+                            <li>
+                                <a class="btn btn-primary targetblank" href="http://www.loko-steeve.com">
+                                    {{ 'portfolio.projets.voir_site' | trans }}
+                                </a>
+                            </li>
+                            <li>
+                                <form class="padding10 form-horizontal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                                    <input type="hidden" name="cmd" value="_donations">
+                                    <input type="hidden" name="business" value="{{ webmaster_email }}">
+                                    <input type="hidden" name="lc" value="FR">
+                                    <input type="hidden" name="item_name" value="Soutenir Projet Portfolio">
+                                    <input type="hidden" name="no_note" value="0">
+                                    <input type="hidden" name="currency_code" value="EUR">
+                                    <input type="hidden" name="bn" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHostedGuest">
+                                    <input type="image" src="https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_donateCC_LG.gif" class="no-border" name="submit" alt="PayPal - la solution de paiement en ligne la plus simple et la plus sécurisée !">
+                                    <img alt="" class="no-border" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" width="1" height="1">
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="freelance-benin">
+            <h1>{{ 'portfolio.projets.section2.titre' | trans }}</h1>
+            <div class="row-fluid">
+                <div class="span6">
+                    <figure>
+                        <img src="{{ asset('/img/image-blank.jpg') }}" alt="" />
+                    </figure>
+                </div>
+                <div class="span6">
+                    <p class="texte-presentation">
+                        {{ 'portfolio.projets.section2.contenu' | trans }}
                     </p>
+                    <div class="text-center">
+                        <ul class="inline">
+                            <li>
+                                <a class="btn btn-info" href="#">
+                                    {{ 'portfolio.projets.a_venir' | trans }}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>

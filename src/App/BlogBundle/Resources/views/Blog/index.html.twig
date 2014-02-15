@@ -1,7 +1,7 @@
 {% extends "AppBlogBundle::layout.html.twig" %}
 
 {% block title %}{{ 'blog.accueil.titre' | trans }}{% endblock %}
-{% block description %}{% endblock %}
+{% block description %}{{ 'blog.accueil.description' | trans }}{% endblock %}
 {% block keywords %}{% endblock %}
 
 {% block header_title %}{{ 'blog.accueil.titre' | trans }}{% endblock %}
@@ -25,7 +25,7 @@
                 </div>
                 <p class="date-article text-right">
                     {{ 'blog.article.publier_le' | trans }}
-                    <time datetime="{{ article.createdDate | date('Y-m-d H:i:s') }}" pubdate>{{ article.createdDate|localizeddate('full', 'none') }}</time>
+                    <time datetime="{{ article.createdDate | date('Y-m-d H:i:s') }}">{{ article.createdDate|localizeddate('full', 'none') }}</time>
                 </p>
                 <div class="text-center marginTopBottom20">
                     <a title="{{ 'blog.article.lire_la_suite' | trans }}" class="btn btn-primary" href="{{ path('app_blog_article', { 'categorie': categorie.slug, 'article': article.slug })}}">

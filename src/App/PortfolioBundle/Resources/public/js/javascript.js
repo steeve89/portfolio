@@ -3,7 +3,7 @@
     $(function(){
 
         var $window = $(window);
-                        
+        
         //function replace targetblank for valid w3c
         $('a.targetblank').on('click', function() {
              window.open($(this).attr('href'));
@@ -24,6 +24,15 @@
             inline: true
         });
         
+        // Dropdowns  via JavaScript
+        if ($('.dropdown-toggle').size()) $('.dropdown-toggle').dropdown();
+        
+        // ScrollSpy 
+        //if ($('#myNav').size()) $('#myNav').scrollspy();
+        
+        // Carousel
+        $('.carousel').carousel();
+
         /* Formulaire imbriqués */
         // Récupère le div qui contient la collection de tags
         var collectionHolder = $('ul.collections');

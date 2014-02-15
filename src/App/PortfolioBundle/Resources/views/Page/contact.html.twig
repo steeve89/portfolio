@@ -1,13 +1,16 @@
 {% extends "AppPortfolioBundle::layout.html.twig" %}
 
 {% block title %}{{ 'portfolio.contact.titre' | trans }} | {{ parent() }}{% endblock %}
-{% block description %}{% endblock %}
+{% block description %}{{ 'portfolio.contact.description' | trans }}{% endblock %}
 {% block keywords %}{% endblock %}
 
 {% block header_title %}{{ 'portfolio.contact.titre' | trans }}{% endblock %}
 
 {% block body %}
 <div class="row-fluid">
+    <p class="well well-header">
+        {{ 'portfolio.contact.paragraphe' | trans }}
+    </p>
     <form class="form-horizontal well" id="contactform" action="" method="post" {{ form_enctype(form) }}>
         <fieldset>
             <legend>{{ 'portfolio.contact.titre' | trans }}</legend>

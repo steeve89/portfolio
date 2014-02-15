@@ -137,7 +137,7 @@ class PaiementController extends Controller
     }
     
     /**
-     * @Secure(roles="ROLE_ADMIN")
+     * @Secure(roles="ROLE_CLIENT")
      * 
      * Make Paiement By Wire Transfert
      *

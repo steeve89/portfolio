@@ -50,11 +50,14 @@ class ContactHandler
         $webmaster_name = $this->container->getParameter('webmaster_name');
         $webmaster_email = $this->container->getParameter('webmaster_email');
         //  Création de l'e-mail : le service mailer utilise SwiftMailer, donc nous créons une instance de Swift_Message
+        $msg = "Bonjour $webmaster_name, <br /><br />".nl2br($data["message"]);
+        if ($data["telephone"]) $msg .= '<br /> Telephone: '.$data["telephone"];
+        //  On crée une instance de swiff message
         $message = \Swift_Message::newInstance()
         ->setSubject($data["objet"])
         ->setFrom( array( $data["email"] => $data["nom"] ) )
         ->setTo( array( $webmaster_email => $webmaster_name ) )
-        ->setBody( nl2br($data["message"]).'<br /> Telephone: '.$data["telephone"] )
+        ->setBody( $msg )
         ->setContentType( 'text/html' );
         // Retour au service mailer, nous utilisons sa méthode « send()» pour envoyer notre $message
         $mailer->send($message);        

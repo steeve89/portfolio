@@ -1,35 +1,42 @@
 {% extends "AppPortfolioBundle::layout.html.twig" %}
 
 {% block title %}{{ 'portfolio.realisations.titre' | trans }} | {{ parent() }}{% endblock %}
-{% block description %}{% endblock %}
+{% block description %}{{ 'portfolio.realisations.description' | trans }}{% endblock %}
 {% block keywords %}{% endblock %}
 
 {% block header_title %}{{ 'portfolio.realisations.titre' | trans }}{% endblock %}
+
+{% block class_body %}data-spy="scroll" data-target="#myNav"{% endblock %}
 
 {% block body %}
 <div class="row-fluid page">
     <div class="span3" id="myNav">
         <ul class="nav nav-list nav-stacked" data-spy="affix" data-offset-top="190">
-            <li><a href="#lifeschool-fr"><i class="icon-chevron-right"></i> {{ 'portfolio.realisations.section1.titre' | trans }}</a></li>
-            <li><a href="#loko-steeve-com"><i class="icon-chevron-right"></i> {{ 'portfolio.realisations.section2.titre' | trans }}</a></li>
-            <li><a href="#delete-friend"><i class="icon-chevron-right"></i> {{ 'portfolio.realisations.section3.titre' | trans }}</a></li>
+            <li><a href="#loko-steeve-com"><i class="icon-chevron-right"></i> {{ 'portfolio.realisations.section1.titre' | trans }}</a></li>
+            <li><a href="#stivoyages-com"><i class="icon-chevron-right"></i> {{ 'portfolio.realisations.section2.titre' | trans }}</a></li>
+            <li><a href="#loko-steeve-hostei-com"><i class="icon-chevron-right"></i> {{ 'portfolio.realisations.section3.titre' | trans }}</a></li>
+            <li><a href="#delete-friend"><i class="icon-chevron-right"></i> {{ 'portfolio.realisations.section4.titre' | trans }}</a></li>
         </ul>
     </div>
     <div class="span9 wrap-right">
-        <section id="lifeschool-fr">
+        <section id="loko-steeve-com">
             <h1>{{ 'portfolio.realisations.section1.titre' | trans }}</h1>
             <div class="row-fluid">
                 <div class="span6">
                     <figure>
-                        <img src="{{ asset('/img/app-delete-friends.jpg') }}" alt="" />
+                        <img src="{{ asset('/img/portfolio-mini.jpg') }}" alt="" />
                     </figure>
                 </div>
                 <div class="span6">
-                    <p>
+                    <p class="texte-presentation">
                         {{ 'portfolio.realisations.section1.contenu' | trans }}
                     </p>
+                    <p>
+                        <strong>{{ 'portfolio.realisations.tag' | trans }}</strong>:
+                        {{ 'portfolio.realisations.section1.tag' | trans }}
+                    </p>
                     <p class="text-center">
-                        <a class="btn btn-primary targetblank" href="#">
+                        <a class="btn btn-primary targetblank" href="http://www.loko-steeve.com">
                             {{ 'portfolio.realisations.voir_site' | trans }}
                         </a>
                     </p>
@@ -37,20 +44,49 @@
             </div>
         </section>
         
-        <section id="loko-steeve-com">
+        <section id="stivoyages-com">
             <h1>{{ 'portfolio.realisations.section2.titre' | trans }}</h1>
             <div class="row-fluid">
                 <div class="span6">
                     <figure>
-                        <img src="{{ asset('/img/app-delete-friends.jpg') }}" alt="" />
+                        <img src="{{ asset('/img/stivoyages-mini.jpg') }}" alt="" />
                     </figure>
                 </div>
                 <div class="span6">
-                    <p>
+                    <p class="texte-presentation">
                         {{ 'portfolio.realisations.section2.contenu' | trans }}
                     </p>
+                    <p>
+                        <strong>{{ 'portfolio.realisations.tag' | trans }}</strong>:
+                        {{ 'portfolio.realisations.section2.tag' | trans }}
+                    </p>
                     <p class="text-center">
-                        <a class="btn btn-primary targetblank" href="#">
+                        <a class="btn btn-primary targetblank" href="http://www.stivoyages.com">
+                            {{ 'portfolio.realisations.voir_site' | trans }}
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="loko-steeve-hostei-com">
+            <h1>{{ 'portfolio.realisations.section3.titre' | trans }}</h1>
+            <div class="row-fluid">
+                <div class="span6">
+                    <figure>
+                        <img src="{{ asset('/img/portfolio-v2-mni.jpg') }}" alt="" />
+                    </figure>
+                </div>
+                <div class="span6">
+                    <p class="texte-presentation">
+                        {{ 'portfolio.realisations.section3.contenu' | trans }}
+                    </p>
+                    <p>
+                        <strong>{{ 'portfolio.realisations.tag' | trans }}</strong>:
+                        {{ 'portfolio.realisations.section3.tag' | trans }}
+                    </p>
+                    <p class="text-center">
+                        <a class="btn btn-primary targetblank" href="http://www.loko-steeve.hostei.com">
                             {{ 'portfolio.realisations.voir_site' | trans }}
                         </a>
                     </p>
@@ -59,7 +95,7 @@
         </section>
         
         <section id="delete-friend">
-            <h1>{{ 'portfolio.realisations.section3.titre' | trans }}</h1>
+            <h1>{{ 'portfolio.realisations.section4.titre' | trans }}</h1>
             <div class="row-fluid">
                 <div class="span6">
                     <figure>
@@ -67,11 +103,15 @@
                     </figure>
                 </div>
                 <div class="span6">
+                    <p class="texte-presentation">
+                        {{ 'portfolio.realisations.section4.contenu' | trans }}
+                    </p>
                     <p>
-                        {{ 'portfolio.realisations.section3.contenu' | trans }}
+                        <strong>{{ 'portfolio.realisations.tag' | trans }}</strong>:
+                        {{ 'portfolio.realisations.section4.tag' | trans }}
                     </p>
                     <p class="text-center">
-                        <a class="btn btn-primary targetblank" href="#">
+                        <a class="btn btn-primary targetblank" href="http://apps.facebook.com/delete-friend/">
                             {{ 'portfolio.realisations.voir_site' | trans }}
                         </a>
                     </p>

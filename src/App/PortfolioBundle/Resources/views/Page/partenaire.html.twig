@@ -1,0 +1,76 @@
+{% extends "AppPortfolioBundle::layout.html.twig" %}
+
+{% block title %}{{ 'portfolio.partenaire.titre' | trans }} | {{ parent() }}{% endblock %}
+{% block description %}{{ 'portfolio.partenaire.description' | trans }}{% endblock %}
+{% block keywords %}{% endblock %}
+
+{% block header_title %}{{ 'portfolio.partenaire.titre' | trans }}{% endblock %}
+
+{% block class_body %}data-spy="scroll" data-target="#myNav"{% endblock %}
+
+{% block body %}
+<div class="row-fluid page">
+    <div class="span3" id="myNav">
+        <ul class="nav nav-list nav-stacked" data-spy="affix" data-offset-top="190">
+            <li><a href="#section1"><i class="icon-chevron-right"></i> {{ 'portfolio.partenaire.section1.titre' | trans }}</a></li>
+            <li><a href="#section2"><i class="icon-chevron-right"></i> {{ 'portfolio.partenaire.section2.titre' | trans }}</a></li>
+        </ul>
+    </div>
+    <div class="span9">
+        <div class="page-right">
+            
+            <p>{{ 'portfolio.partenaire.introduction.paragraphe1' | trans }}</p>
+            <p>{{ 'portfolio.partenaire.introduction.paragraphe2' | trans }}</p>
+            <ul>
+                {% for i in 0..6%}
+                    <li>{{ ('portfolio.partenaire.introduction.liste1.' ~ i) | trans }} 
+                        (<a title="{{ 'portfolio.partenaire.introduction.en_savoir_plus' | trans }}" href="{{ path('comment_ca_marche_client') }}#section{{ loop.index + 1 }}">
+                            {{ 'portfolio.partenaire.introduction.en_savoir_plus' | trans }}
+                        </a>)
+                        {% if loop.last %}.{% else %};{% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+            <p>{{ 'portfolio.partenaire.introduction.paragraphe3' | trans }}:</p>
+            <ul>
+                {% for i in 0..1 %}
+                <li>{{ ('portfolio.partenaire.introduction.liste2.' ~ i) | trans }}</li>
+                {% endfor %}
+            </ul>
+            
+            <div id="section1" class="section-page">
+                <h2>{{ 'portfolio.partenaire.section1.titre' | trans }}</h2>
+                <div class="section-page-content">
+                    <p>
+                        {{ 'portfolio.partenaire.section1.paragraphe1' | trans }}
+                    </p>
+                </div>
+            </div>
+            
+            <div id="section2" class="section-page">
+                <h2>{{ 'portfolio.partenaire.section2.titre' | trans }}</h2>
+                <div class="section-page-content">
+                    <p>
+                        {{ 'portfolio.partenaire.section2.paragraphe1' | trans }}
+                    </p>
+                    <figure>
+                        <img src="{{ asset('/img/partenaire-menu-'~ app.request.locale ~ '.jpg') }}" alt=""/>
+                    </figure>
+                    <p>
+                        {{ 'portfolio.partenaire.section2.paragraphe2' | trans }}
+                    </p>
+                    <button class="btn margin20">{{ 'portfolio.partenaire.section2.vendre_produit' | trans }}</button>
+                    <p>
+                        {{ 'portfolio.partenaire.section2.paragraphe3' | trans }}
+                    </p>
+                </div>
+            </div>
+            
+            <p>
+                {{ 'portfolio.partenaire.remerciement' | trans | nl2br }} 
+            </p>
+            
+        </div>
+    </div>
+</div>
+{% endblock %}

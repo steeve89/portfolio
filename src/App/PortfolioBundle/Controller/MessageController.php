@@ -22,6 +22,7 @@ use App\PortfolioBundle\Entity\Projet;
 use App\PortfolioBundle\AppPortfolioEvents;
 use App\PortfolioBundle\Event\FilterMessageEvent;
 use JMS\SecurityExtraBundle\Annotation\Secure;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 /**
  * Message controller.
@@ -140,12 +141,12 @@ class MessageController extends Controller
      * @Route("/{id}/edit", name="message_edit")
      * @Method("GET")
      * @Template()
+     * 
+     * @ParamConverter("message", options={"mapping": {"id": "id"}} )
+     * @ParamConverter("projet", options={"mapping": {"slug": "slug"}} )
      */
-    public function editAction(Request $request, Message $message, $slug)
+    public function editAction(Request $request, Message $message, Projet $projet)
     {
-        //  On recupère l'entité projet qui correspond à la valeur du slug
-        $em = $this->getDoctrine()->getManager();
-        $projet = $em->getRepository('AppPortfolioBundle:Projet')->findOneBySlug($slug);
         //  On vérifie que l'utilisateur a les droits necessaires
         if( ! $this->isAuthorised( $projet->getUser()->getId() ) )
         {        
@@ -164,6 +165,7 @@ class MessageController extends Controller
             $editForm->handleRequest($request);
 
             if ($editForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
                 //  On sauvegarde les modifications effectuées sur le message
                 $em->flush();
                 //  On récupère le service translator
@@ -211,12 +213,12 @@ class MessageController extends Controller
      *
      * @Route("/{id}", name="message_delete")
      * @Method("DELETE")
+     * 
+     * @ParamConverter("message", options={"mapping": {"id": "id"}} )
+     * @ParamConverter("projet", options={"mapping": {"slug": "slug"}} )
      */
-    public function deleteAction(Request $request, Message $message, $slug)
+    public function deleteAction(Request $request, Message $message, Projet $projet)
     {
-        //  On recupère l'entité projet correspodant au slug
-        $em = $this->getDoctrine()->getManager();
-        $projet = $em->getRepository('AppPortfolioBundle:Projet')->findOneBySlug($slug); 
         //  On vérifie que l'utilisateur a les droits necessaires
         if( ! $this->isAuthorised( $projet->getUser()->getId() ) )
         {        

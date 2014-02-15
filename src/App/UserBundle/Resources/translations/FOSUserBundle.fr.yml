@@ -112,6 +112,12 @@ service_client:
         legend: FORMULAIRE DE CONTACT
         submit: Envoyer
 
+# service client
+contact_client:
+    title:  Contact Client
+    form:
+        submit: Envoyer
+
 # mssage
 message:
     pending: En attente
@@ -365,6 +371,7 @@ actions:
     paiement:         Payer
     rapport:          Rapport
     lock_unlock:      Bloqué/Débloqué
+    contact:          Contacter
 
 # Group
 group:
@@ -385,6 +392,7 @@ group:
 security:
     login:
         title: Connexion Membre
+        description: Connectez-vous sur votre espace membre pour voir l'avancement de vos projets web.
         username: "Nom d'utilisateur :"
         username_email: "Nom d'utilisateur ou Email :"
         password: "Mot de passe :"
@@ -418,6 +426,9 @@ change_password:
 # Registration
 registration:
     title: Inscription Membre
+    description: > 
+                  Inscrivez-vous pour soumettre votre projet web, bénéficiez d'un rapport régulier sur l'avancement
+                  de votre projet web, voir l'avancement de votre projet en ligne sur un sous domaine.
     check_email: 
       title:   Activation de votre compte #Validation de votre adresse electronique
       content: Un e-mail a été envoyé à l'adresse %email%. Il contient un lien d'activation sur lequel il vous faudra cliquer afin d'activer votre compte.

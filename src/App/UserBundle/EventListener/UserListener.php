@@ -216,6 +216,7 @@ class UserListener
         $auteur = $user->getNom().' '.$user->getPrenom();
         $receiver = array($user->getEmail() => $auteur);        
         //  On définit le message à envoyer au webmaster
+        $msg = "Bonjour $auteur, "."\r\n"."\r\n";
         $msg .= "Un devis est disponible pour vous: "."\r\n";
         $msg .= "Titre du projet: ".$titre_projet."\r\n";
         $msg .= 'Voir les détails sur le pojet : <a href="' . $url_projet . '">' . $url_projet . '</a>'."\r\n"."\r\n";

@@ -6,9 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" lang="{{ app.request.locale }}" content="{% block description %}{% endblock %}"/>        
         <meta name="keywords" lang="{{ app.request.locale }}" content="{% block keywords %}{% endblock %}"/>
-        <meta name="author" content="Steeve LOKO">
-        <meta name="copyright" content="loko-steeve.com">
-        {% block meta_identifier_url %}{% endblock %}                
+        <meta name="author" content="Steeve LOKO">                
         {% block stylesheets %}
             {%  stylesheets 
                     '@bootstrap_css'
@@ -17,16 +15,37 @@
                     '@AppUserBundle/Resources/public/css/fos_user.css'
                     '@AppBlogBundle/Resources/public/css/blog.css'
                     '@AppBlogBundle/Resources/public/css/prettify.css'
-                    filter = 'cssrewrite'
+                    filter = 'cssrewrite' 
                     output = 'css/style.css'
             %}
                 <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
             {% endstylesheets %}
         {% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <!--[if lt IE 9]>
+            {%  stylesheets 
+                    '@AppPortfolioBundle/Resources/public/css/jquery.ui.1.10.0.ie.css'
+                    filter = 'cssrewrite'
+                    output = 'css/style.ie.css'
+            %}
+                <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+            {% endstylesheets %}
+        <![endif]-->
+        <link rel="apple-touch-icon-precomposed" href="{{ asset('apple-touch-icon.png') }}">
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" /        
         
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+            {% javascripts 
+                '@AppPortfolioBundle/Resources/public/js/html5shiv.js'
+                output='js/main.ie.js' 
+                filter='' 
+            %}
+                <script type="text/javascript" src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+          <script src="assets/js/html5shiv.js"></script>
+        <![endif]-->
     </head>
-    <body data-spy="scroll" data-target="#myNav">
+    <body {% block class_body %}{% endblock %}>
         <div class="row-fluid">            
             <header>         
                 {% block header %}
@@ -34,7 +53,10 @@
                 {% block navbar %}
                 <div class="navbar navbar-inverse navbar-fixed-top">                    
                     <nav class="navbar-inner">
-                        <a class="brand" href="{{ path('app_portfolio_homepage') }}">{{ 'site.logo' | trans }}</a>
+                        <a class="brand" href="{{ path('app_portfolio_homepage') }}">
+                            <img class="logo" src="{{ asset('/img/logo.jpg') }}" alt="" width="20" height="20"/>
+                            {{ 'site.logo' | trans }}
+                        </a>
                         <ul class="nav">
                             <li><a title="{{ 'site.entete.menu.portfolio' | trans }}" href="{{ path('app_portfolio_homepage') }}">{{'site.entete.menu.portfolio' | trans}}</a></li>  
                             <li><a title="{{ 'site.entete.menu.blog' | trans }}" href="{{ path('app_blog_homepage') }}">{{'site.entete.menu.blog' | trans}}</a></li>
@@ -103,14 +125,14 @@
                     {{ 'site.pied_de_page.partager' | trans }}
                 </div>
                 <ul class="inline bouton-partage">
-                    <li>                        
+                    <li>
                         <div class="fb-like" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
                     </li>
                     <li class="middle">
                         <div class="g-plusone" data-size="medium"></div>
-                    </li>                 
+                    </li>
                     <li>
-                        <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en">Tweet</a>
+                        <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
                     </li>
                 </ul>
                 {% endblock %}
@@ -135,29 +157,15 @@
             {% endjavascripts %}
         {% endblock %}
         <div id="fb-root"></div>
-        {# Facebook Script #}
-        <script type="text/javascript">
-            (function(d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) return;
-                js = d.createElement(s); js.id = id;
-                js.src = "//connect.facebook.net/fr_FR/all.js#xfbml=1&appId=257588001025952";
-                fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));
-        </script>
-        {# google+ Script #}
-        <script type="text/javascript">
-            window.___gcfg = {lang: '{{ app.request.locale }}'};
-
-            (function() {
-              var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-              po.src = 'https://apis.google.com/js/platform.js';
-              var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-            })();
-        </script>
-        {# Tweeter Script #}
-        <script type="text/javascript">
-            !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
-        </script>
+        {% block javascripts_reseau_social %}
+            {% javascripts 
+                '@AppPortfolioBundle/Resources/public/js/reseau-social.js'
+                output='js/reseau-social.js' 
+                filter='' 
+            %}
+                <script type="text/javascript" src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+        {% endblock %}
+        
     </body>
 </html>

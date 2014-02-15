@@ -23,7 +23,7 @@
                 </div>
                 <p class="date-article text-right">
                     {{ 'blog.article.publier_le' | trans }}
-                    <time datetime="{{ article.createdDate | date('Y-m-d H:i:s') }}" pubdate>{{ article.createdDate|localizeddate('full', 'none') }}</time>
+                    <time datetime="{{ article.createdDate | date('Y-m-d H:i:s') }}">{{ article.createdDate|localizeddate('full', 'none') }}</time>
                 </p>
                 <div class="text-center marginTopBottom20">
                     <a title="{{ 'blog.article.lire_la_suite' | trans }}" class="btn btn-primary" href="{{ path('app_blog_article', { 'categorie': article.categories[0].slug, 'article': article.slug })}}">

@@ -178,6 +178,7 @@ class BlogController extends Controller
         {
             return $this->redirect($this->generateUrl('app_blog_categorie', array('categorie' => $categorie->getSlug())));
         }
+        //  On affiche la vue
         return $this->render('AppBlogBundle:Blog:article.html.twig', array( 
                 'categorie' => $categorie, 
                 'article' => $article,
